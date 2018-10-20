@@ -8,6 +8,8 @@ export default () => (
 
 ## Autres ressources
 
+ * [Supertest](https://github.com/visionmedia/supertest/) [EN]
  * [Jest API](https://jestjs.io/docs/en/expect) [EN]
+ * [ESLint](https://eslint.org/) [EN]
 `}</Markdown>
 )
