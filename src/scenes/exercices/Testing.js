@@ -6,6 +6,14 @@ export default () => (
   <Markdown>{`
 # TP n°6 : Les tests !
 
+## Tests unitaire
+
+Mettre en place des tests unitaire.
+
+## Tests d'intégration
+
+Mettre en place des tests d'intégration.
+
 ## Autres ressources
 
  * [Supertest](https://github.com/visionmedia/supertest/) [EN]
