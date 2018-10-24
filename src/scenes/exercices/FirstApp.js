@@ -9,28 +9,41 @@ export default () => (
 ## Partie 1 : Création du projet
 
  * Récupérer le projet de base [ici](https://github.com/JulienUsson/zz2-f5-ci-bootstrap)
- * Suivre les instructions du README.md et lancer le projet.
+ * **Suivre les instructions du README.md** et lancer le projet.
  * Intégrer la page créée dans le TP n°2.
 
 ## Partie 2 : Récupération des données
 
-Nous n'allons pas utiliser de base de données par facilité (pas d'installation, pas de langage compliquée).
-Nous allons à la place utiliser des fichiers. Comme toujours Google, Stackoverflow, les documentations sont vos amis :)
+Nous n'allons pas utiliser de base de données pour plus de facilité (pas d'installation, pas de langage compliqué).
+Nous allons à la place utiliser des fichiers. Comme toujours Google, Stackoverflow et les documentations sont vos amis :)
 
  * Réfléchir au format JSON de stockage des pizzas.
- * Récupérer les pizzas d'une "base de données" fichier.
 
-Utiliser [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) et [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify).
-[FS](https://nodejs.org/api/fs.html) permet d'écrire et de lire sur le système de fichier.
+>Par exemple : 
+>\`src/storage/pizzas.json\`
+>\`\`\`
+[
+    { name: 'Hawaïenne',  image: '/public/images/hawaienne.jpg',  note: 10 },
+    { name: 'Margherita', image: '/public/images/margherita.jpg', note: 4 }
+]
+\`\`\`
+
+ * Récupérer les pizzas de la "base de données" fichier créée précédemment.
+
+Utiliser [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) et [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) pour transformer les objets JSON en texte ou l'inverse.
+
+Le module [FS](https://nodejs.org/api/fs.html) permet d'écrire et de lire des fichiers.
+\`\`\`
+const pizzas = fs.readFileSync('../storage/pizzas.json');
+fs.writeFileSync('../storage/pizzas.json', pizzas)
+\`\`\`
+
+N'oubliez pas de mettre les fonctions d'écriture et de lecture dans un service (\`src/services/PizzaService.js\`).
 
 ## Partie 3 : Stockage des données
 
  * Faire un formulaire d'ajout de pizza (pas d'authentification pour le moment)
- * Stocker la pizza fraîchement créée dans le fichier "base de données"
-
-## Partie 4 : Have fun !
-
- * Continuer la création du site :) (En espérant que vous utilisez Git et GitFlow...)
+ * Ajouter la pizza fraîchement créée dans le fichier de "base de données" (\`src/storage/pizzas.json\`)
 
 ## Autres ressources
 
