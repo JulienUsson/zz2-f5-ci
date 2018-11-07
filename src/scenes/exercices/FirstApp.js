@@ -30,12 +30,14 @@ Nous allons à la place utiliser des fichiers. Comme toujours Google, Stackoverf
 
  * Récupérer les pizzas de la "base de données" fichier créée précédemment.
 
-Utiliser [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) et [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) pour transformer les objets JSON en texte ou l'inverse.
+Utiliser [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) et [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) pour transformer les objets JSON en texte ou l'inverse.
 
 Le module [FS](https://nodejs.org/api/fs.html) permet d'écrire et de lire des fichiers.
 \`\`\`
-const pizzas = fs.readFileSync('../storage/pizzas.json');
-fs.writeFileSync('../storage/pizzas.json', pizzas)
+const pizzas = fs.readFileSync('src/storage/pizzas.json');
+fs.writeFileSync('src/storage/pizzas.json', pizzas)
+
+// Attention: readFileSync() et writeFileSync() manipulent des chaînes de caractères et non des objets JSON.
 \`\`\`
 
 N'oubliez pas de mettre les fonctions d'écriture et de lecture dans un service (\`src/services/PizzaService.js\`).
