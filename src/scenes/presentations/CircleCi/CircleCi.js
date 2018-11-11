@@ -1,5 +1,6 @@
 import React from 'react'
 import theme from 'theme'
+import Exercice from '../../exercices/CircleCi'
 import {
   BlockQuote,
   Cite,
@@ -26,4 +27,5 @@ const Presentation = () => (
 
 export default {
   Presentation,
+  Exercice,
 }
