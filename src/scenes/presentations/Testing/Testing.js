@@ -89,6 +89,36 @@ const Presentation = () => (
     <Slide>
       <Image src={e2eImg} width="100%" />
     </Slide>
+    <Slide>
+      <Heading fit>Quelle stratégie pour tester son code ?</Heading>
+    </Slide>
+    <Slide>
+      <Heading fit>Quelle stratégie pour tester son code ?</Heading>
+      <List>
+        <ListItem>Cas nominaux</ListItem>
+        <ListItem>Cas d'erreurs</ListItem>
+      </List>
+      <Text color="red">
+        /!\ tester tous les cas = perte de temps = perte d'argent
+      </Text>
+    </Slide>
+    <Slide>
+      <Heading size="4">Exemple</Heading>
+      <Text>Tester la fonction d'import de pizzas</Text>
+      <List>
+        <ListItem>Cas nominaux</ListItem>
+        <List>
+          <ListItem>Import d'un fichier correcte</ListItem>
+        </List>
+        <ListItem>Cas d'erreurs</ListItem>
+        <List>
+          <ListItem>Import d'un fichier inexistant</ListItem>
+          <ListItem>Import d'un fichier vide</ListItem>
+          <ListItem>Import d'un fichier contenant des erreurs</ListItem>
+          <ListItem>...</ListItem>
+        </List>
+      </List>
+    </Slide>
   </Deck>
 )
 
