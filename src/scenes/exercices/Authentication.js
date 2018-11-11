@@ -16,8 +16,14 @@ export default () => (
 
 En utilisant les slides de cours et la [doc](https://github.com/expressjs/session), implémenter :
  * La connexion
+ * La déconnexion
  * L'inscription
  * Des rôles (Admin, User)
+
+Pour cela :
+ * Créer un nouveau service \`src/service/AuthService.js\`
+ * Implémenter les fonctions \`login(req, username, password)\` \`logout(req)\` \`isAuth(req)\`, ...
+ * Créer des nouvelles routes comme \`GET /login\` \`GET /logout\` \`POST /login\`, ...
 
 ## Autres ressources
 
