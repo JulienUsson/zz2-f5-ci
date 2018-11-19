@@ -44,6 +44,7 @@ jobs: # a collection of steps
 ## Autres ressources
 
  * [CircleCi doc](https://circleci.com/docs/2.0/) [EN]
+ * [CircleCi Getting started](https://circleci.com/docs/2.0/getting-started/) [EN]
  * [CircleCi doc JS](https://circleci.com/docs/2.0/language-javascript/) [EN]
 `}</Markdown>
 )
