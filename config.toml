@@ -1,0 +1,25 @@
+baseURL = "https://cours.usson.me/"
+languageCode = "fr-fr"
+title = "Intégration continue pour le web"
+theme = "kiss"
+copyright = "&copy; Julien Usson"
+
+[params.info]
+poweredby = true
+
+[params.social.config]
+platforms = ["github","email","twitter","linkedin"]
+
+[params.social]
+github = "JulienUsson"
+email = "usson.julien@gmail.com"
+twitter = "JulienUsson"
+linkedin = "julien-usson-64bbbb107"
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+[params.reveal_hugo]
+theme = "simple"
