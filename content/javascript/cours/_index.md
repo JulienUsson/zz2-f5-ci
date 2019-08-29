@@ -18,12 +18,11 @@ console.log("Hello World !")
 
 ---
 
-## Pourquoi JavaScript?
+## Pourquoi utiliser Javascript?
 
  * Simple à utiliser/apprendre
- * Permet de faire du front, du back, des scripts, des app mobiles, de l'IOT, ...
- * Populaire (1er du classement Stackoverflow Survey)
- => Très grosse communauté
+ * plein de conceptes sympas (fonctionnel, asynchrone)
+ * Populaire (1er du classement Stackoverflow Survey 2019) => Très grosse communauté
  * Parce que c'est moi qui décide
 
 --- 
@@ -38,7 +37,7 @@ console.log("Hello World !")
 
 ---
 
-> Comment utiliser les dernières versions de JS ?
+> Comment on utilise les dernières versions de Javascript ?
 
 ---
 
@@ -61,7 +60,6 @@ console.log("Hello World !")
  * TypeScript
  * ReasonML
  * CoffeeScript
- * Kotlin
  * et pleins d'autres...
 
 ---
@@ -69,6 +67,8 @@ console.log("Hello World !")
 > Et ça ressemble à quoi ?
 
 ---
+
+## Les variables
 
 ```javascript
 // Déclarer une variable
@@ -86,12 +86,149 @@ const const1 = "titi"
 
 ---
 
-## Les promesses
+## Les conditions
+
+```javascript
+const i = 0
+
+if( i == 0 ) {
+  console.log("i == 0")
+} else {
+  console.log("i != 0") 
+}
+
+i == "0" // true
+i == 0 // true
+i === "0" // false
+i === 0 // true
+```
 
 ---
 
-## La programmation fonctionnelle
+## Les boucles
+
+```javascript
+let i
+while ( i < 10 ) {
+    console.log(i)
+    i++
+}
+
+for ( let j = 0; j < 10; j++ ) {
+    console.log(j)
+}
+```
+
+---
+
+## Les fonctions
+
+```javascript
+function add ( val1, val2 ) {
+    return val1 + val2
+}
+console.log(add(1, 2))  // 3
+
+const add2 = function (val1, val2) {
+    return val1 + val2
+}
+console.log(add2(1, 2)) // 3
+
+const add3 = (val1, val2) => {
+    return val1 + val2
+}
+console.log(add3(1, 2)) // 3
+
+const add4 = (val1, val2) =>  val1 + val2
+console.log(add4(1, 2)) // 3
+
+const add5 = add4
+console.log(add5(1, 2)) // 3
+```
+
+---
+
+## Les structures de données
+
+```javascript
+const tableau = [1, 2, "toto", "tutu", 3.4]
+console.log(tableau.length)     // 5
+console.log(tableau[0])         // 1
+
+const dictionnaire = {tutu: "toto", titi: 1, toto: "tutu"}
+console.log(dictionnaire[toto]) // "tutu"
+console.log(dictionnaire.toto)  // "tutu"
+console.log(dictionnaire.titi)  // 1
+
+const collection = [ {toto: 3, tutu: 2}, {toto: 5, tutu: 2}, {toto: 7, tutu: 1}]
+console.log(collection[0].toto) // 3
+```
+
+---
+
+## Quelques méthodes utiles
+
+```javascript
+const users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+users.forEach(user => console.log(user.name))
+// toto titi tutu
+
+const uppercaseUsers = users.map(user => user.name.toUpperCase())
+// ["TOTO", "TITI", "TUTU"]
+
+const majorUsers = users.filter(user => user.age >= 18)
+// [{name: "toto", age: 18}, {name: "titi", age: 22}]
+
+const toto = users.find(user => user.name === "toto")
+// {name: "toto", age: 18}
+```
+
+---
+
+
+> Mais Javascript n'est pas fait pour être exécuté sur un navigateur ?!
 
 ---
 
 ## Nodes JS
+
+ * Interpréteur Javascript (machine virtuelle)
+ * Utilise le V8 de Google créé en 2009
+ * est livré avec `npm` (Node Package Manager)
+
+---
+
+## Comment ça marche ?
+
+```bash
+# Lancer un script
+node fichier.js
+
+# Initialiser un projet
+npm init
+
+# Installer une dépendance
+npm install dependance
+
+# Lancer un script
+npm run script
+```
+
+---
+
+## package.json
+
+```json
+{
+  "name": "nom",
+  "description": "description",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "echo hello world",
+  },
+  "dependencies": {
+    "hello-world": "^0.3.2"
+  },
+}
+
+```
