@@ -83,6 +83,7 @@ var1 = "tutu"
 const const1 = "titi"
 // const1 = "tata" /!\ IMPOSSIBLE
 ```
+⚠️ Le mot-clé `var` a été déprécié.
 
 ---
 
