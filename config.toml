@@ -12,7 +12,7 @@ platforms = ["github","email","twitter","linkedin"]
 
 [params.social]
 github = "JulienUsson"
-email = "usson.julien@gmail.com"
+email = "julien@usson.me"
 twitter = "JulienUsson"
 linkedin = "julien-usson-64bbbb107"
 
