@@ -35,6 +35,12 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 
 ---
 
+## En pratique
+
+![Gitflow](./gitflow.png)
+
+---
+
 ## Les plateformes de CI/CD
 
  * Gitlab CI
