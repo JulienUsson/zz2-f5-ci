@@ -80,7 +80,13 @@ describe("find all cars", () => {
 
 ---
 
-![Eslint](./integration-vs-unit-testing.gif)
+## Test d'integration vs test unitaire
+
+![Integration vs unit testing](./integration-vs-unit-testing.gif)
+
+---
+
+![Integration vs unit testing](./integration-vs-unit-testing2.jpg)
 
 ---
 
