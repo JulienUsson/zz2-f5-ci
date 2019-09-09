@@ -14,11 +14,11 @@ Technique permettant de vérifier la qualité du code avant son intégration dan
 
 ---
 
-> Et le déploiement continue, c'est pareil ?
+> Et le déploiement continu, c'est pareil ?
 
 ---
 
-## Le déploiement continue
+## Le déploiement continu
 
 Technique permettant de déployer automatiquement le nouveau code d'une application dans un ou plusieurs environnement.
 
