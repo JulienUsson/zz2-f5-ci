@@ -40,7 +40,7 @@ export default function func2() {
 ```javascript
 function russianRoulette() {
     if(Math.floor(Math.random() * 6) === 0) {
-        // Un problème est survenue...
+        // Un problème est survenu...
         throw new Error("BOOM");
     }
 }

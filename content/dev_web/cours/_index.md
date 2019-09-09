@@ -34,14 +34,13 @@ User-Agent: Chrome/27.0.1453.110
 ---
 
 
-## Les mots-clés HTTP
+## Les verbes HTTP
 
-| Mot-clé   | Définition                    |
+| Verbe     | Définition                    |
 | --------- | ----------------------------- |
 | GET       | Lecture d'une ressource       |
 | POST      | Création d'une ressources     |
 | PUT       | Mise à jour d'une ressource   |
-| PATCH     | Mise à jour d'une ressource   |
 | DELETE    | Suppression d'une ressource   |
 
 ---
@@ -61,7 +60,7 @@ User-Agent: Chrome/27.0.1453.110
 
 ## La norme REST
 
- * Se base sur les url, les mots-clés et les headers
+ * Se base sur les url, les verbes et les headers
  * Permet de faire une API facilement utilisable
  * Simple à comprendre
 
@@ -100,8 +99,8 @@ Accept: application/json
 
 ```json
 {
-    id: 1, 
-    name: "4 Fromages" },
+    id: 42, 
+    name: "4 Fromages",
 }
 ```
 
@@ -115,8 +114,8 @@ Host: www.pizzima.fr
 Accept: application/json
 
 {
-    name: "4 Fromages",
-    description: "Une pizza au fromage"
+    name: "Pepperoni",
+    description: "Une pizza au pepperoni"
 }
 ```
 
@@ -166,7 +165,7 @@ Accept: application/json
 
 ```javascript
 app.get('/pizzas', (req, res) => {
-    pizzaService.findAll()
+    const pizzas = pizzaService.findAll()
     res.json(pizzas)
 })
 

@@ -21,7 +21,7 @@ console.log("Hello World !")
 ## Pourquoi utiliser Javascript?
 
  * Simple à utiliser/apprendre
- * plein de conceptes sympas (fonctionnel, asynchrone)
+ * Plein de concepts sympas (fonctionnel, asynchrone)
  * Populaire (1er du classement [Stackoverflow Survey 2019](https://insights.stackoverflow.com/survey/2019#technology)) => Très grosse communauté
  * Parce que c'est moi qui décide
 
@@ -41,7 +41,7 @@ console.log("Hello World !")
 
 ---
 
-## les transpilleurs
+## les transpileurs
 
  * Le plus utilisé est BabelJS
  * Permet de transformer un langage en un autre
@@ -51,7 +51,7 @@ console.log("Hello World !")
 
 ---
 
-![Transpilateur](transpilateur.png)
+![transpileurs](transpileurs.png)
 
 ---
 
