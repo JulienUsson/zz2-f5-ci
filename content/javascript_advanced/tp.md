@@ -41,6 +41,23 @@ Ecrire un script qui récupère 1000 users et qui stocke dans un second tableau 
  * En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
+## Exercice 5
+
+La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) permet d'exécuter du code après x ms de façon asynchrone. Malheureusement, à l'époque de la création de cette fonction, les promesses n'existaient pas ! 
+
+Créer votre propre fonction setTimeout() utilisant les promesses puis écrire un programme qui affiche le dialogue suivant :
+```
+- toc toc
+**attendre 500 millisecondes**
+- qui est la?
+**attendre 10 secondes**
+- C'est Internet Explorer
+```
+
+ * En utilisant [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+ * En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses) et votre nouvelle fonction
+ * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await) et votre nouvelle fonction
+
 ## Autres ressources
 
  * [Comprendre les promesses en js](https://frank.taillandier.me/2017/03/23/comprendre-les-promesses-en-javascript/) [FR]
