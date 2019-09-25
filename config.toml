@@ -3,6 +3,7 @@ languageCode = "fr-fr"
 title = "Intégration continue pour le web"
 theme = "kiss"
 copyright = "&copy; Julien Usson"
+googleAnalytics="UA-148716459-1"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsStyle = "monokai"
