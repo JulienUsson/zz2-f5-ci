@@ -41,7 +41,7 @@ export default function func2() {
 function russianRoulette() {
     if(Math.floor(Math.random() * 6) === 0) {
         // Un problème est survenu...
-        throw new Error("BOOM");
+        throw new Error("BOOM")
     }
 }
 
@@ -50,7 +50,10 @@ try {
     console.log("t'es vivant")
 }
 catch(error) {
-    console.error("T'es mort");
+    console.error("T'es mort")
+}
+finally {
+    console.log("Game over")
 }
 // Si on catch pas, l'exception remonte la pile
 // Si l'exception remonte tout la pile c'est le crash...
@@ -127,6 +130,7 @@ function fetchUserPromise() {
         fetchUser((err, user) => {
             if(err) { 
                 reject(err)
+                return
             }
             resolve(user)
         })
