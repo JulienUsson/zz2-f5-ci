@@ -1,7 +1,8 @@
 ---
-subject: "Javascript avancé"
 title: "TP n°2 Javascript avancé"
 ---
+
+Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
 
 ## Exercice 1 : 
 
@@ -28,7 +29,7 @@ Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me
 
 ## Exercice 3 :
 
-Ecrire un script qui récupère 1000 users et qui affiche les users dont la timezone est Paris. (Utiliser [filter()]())
+Ecrire un script qui récupère 1000 users et qui affiche les users dont la timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
 
  * En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
@@ -45,7 +46,7 @@ Ecrire un script qui récupère 1000 users et qui stocke dans un second tableau 
 
 La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) permet d'exécuter du code après x ms de façon asynchrone. Malheureusement, à l'époque de la création de cette fonction, les promesses n'existaient pas ! 
 
-Créer votre propre fonction setTimeout() utilisant les promesses puis écrire un programme qui affiche le dialogue suivant :
+Créer une fonction wrappant setTimeout() dans une promesse puis écrire un programme qui affiche le dialogue suivant :
 ```
 - toc toc
 **attendre 500 millisecondes**
