@@ -1,5 +1,6 @@
 ---
 title: "TP n°2 Javascript avancé"
+weight: 1
 ---
 
 Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
@@ -48,9 +49,9 @@ La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowO
 
 Créer une fonction wrappant setTimeout() dans une promesse puis écrire un programme qui affiche le dialogue suivant :
 ```
-- toc toc
+- Toc toc
 **attendre 500 millisecondes**
-- qui est la?
+- Qui est là?
 **attendre 10 secondes**
 - C'est Internet Explorer
 ```
