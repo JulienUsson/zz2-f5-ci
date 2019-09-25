@@ -5,7 +5,7 @@
   "scripts": {
     "start": "hugo server -D -p 3000",
     "build": "hugo",
-    "prebuild": "shx rm -f static/pdf/cours/* && shx rm -f static/pdf/tp/* && babel-node --presets=@babel/env scripts/generateAssets.js"
+    "prebuild": "shx rm -rf static/pdf/* && babel-node --presets=@babel/env scripts/generateAssets.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

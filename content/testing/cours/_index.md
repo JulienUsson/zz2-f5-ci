@@ -104,3 +104,11 @@ describe("find all cars", () => {
  * Monkey testing
  * Canary testing
  * ...
+
+---
+
+## Test-driven development
+
+---
+
+## Les mocks
