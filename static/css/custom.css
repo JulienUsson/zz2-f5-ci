@@ -1,0 +1,15 @@
+pre.chroma {
+    margin-bottom: 0 !important;
+}
+pre.chroma code {
+    font-size: 1.2em;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #2196F3;
+}

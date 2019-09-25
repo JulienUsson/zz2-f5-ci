@@ -3,6 +3,12 @@ languageCode = "fr-fr"
 title = "Intégration continue pour le web"
 theme = "kiss"
 copyright = "&copy; Julien Usson"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsStyle = "monokai"
+
+[params.assets]
+customCSS = ["css/custom.css"]
 
 [params.info]
 poweredby = true
