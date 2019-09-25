@@ -5,7 +5,7 @@ weight: 2
 
 ## Exercice 1 :
 
-* En utilisant while
+En utilisant while
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 let i = 0;
@@ -16,7 +16,7 @@ while (i < numbers.length) {
 console.log(numbers);
 ```
 
-* En utilisant for
+En utilisant for
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 for (let i = 0; i < numbers.length; i++) {
@@ -25,7 +25,7 @@ for (let i = 0; i < numbers.length; i++) {
 console.log(numbers);
 ```
 
-* En utilisant for of
+En utilisant for of
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 let newTab = [];
@@ -35,7 +35,7 @@ for (let number of numbers) {
 console.log(newTab);
 ```
 
-* En utilisant map()
+En utilisant map()
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 const newTab = numbers.map(number => number + 42);
@@ -44,7 +44,7 @@ console.log(newTab);
 
 ## Exercice 2 : 
 
-* En utilisant for of
+En utilisant for of
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 let sum = 0;
@@ -54,7 +54,7 @@ for (let number of numbers) {
 console.log(sum);
 ```
 
-* En utilisant reduce()
+En utilisant reduce()
 ```javascript
 const numbers = [20, 30, 42, 66, 99];
 const sum = numbers.reduce((acc, number) => acc + number, 0);

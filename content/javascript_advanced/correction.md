@@ -14,7 +14,7 @@ colors.forEach(color => console.log(chalk[color](color)));
 
 ## Exercice 2 : 
 
-* En utilisant les promesses
+En utilisant les promesses
 ```javascript
 import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 100;
@@ -25,7 +25,7 @@ axios
   .then(users => console.log(users));
 ```
 
-* En utilisant async/await
+En utilisant async/await
 ```javascript
 import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 100;
@@ -42,9 +42,9 @@ displayUsers();
 
 ## Exercice 3 : 
 
-* En utilisant les promesses
+En utilisant les promesses
 ```javascript
-iimport axios from "axios";
+import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 1000;
 
 axios
@@ -56,7 +56,7 @@ axios
   .then(users => console.log(users));
 ```
 
-* En utilisant async/await
+En utilisant async/await
 ```javascript
 import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 1000;
@@ -76,7 +76,7 @@ displayUsers();
 
 ## Exercice 4 : 
 
-* En utilisant les promesses
+En utilisant les promesses
 ```javascript
 import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 1000;
@@ -96,7 +96,7 @@ axios
   .then(users => console.log(users));
 ```
 
-* En utilisant async/await
+En utilisant async/await
 ```javascript
 import axios from "axios";
 const NUMBER_OF_USER_TO_FETCH = 1000;
@@ -129,8 +129,8 @@ function sleep(ms) {
 }
 ```
  
- * En utilisant setTimeout()
- ```javascript
+En utilisant setTimeout()
+```javascript
 console.log("Toc toc");
 setTimeout(() => {
   console.log("Qui est là?");
@@ -140,8 +140,8 @@ setTimeout(() => {
 }, 500);
 ```
 
- * En utilisant les promesses et votre nouvelle fonction
- ```javascript
+En utilisant les promesses et votre nouvelle fonction
+```javascript
 console.log("Toc toc");
 sleep(500)
   .then(() => console.log("Qui est là?"))
@@ -149,8 +149,8 @@ sleep(500)
   .then(() => console.log("C'est Internet Explorer"));
 ```
 
- * En utilisant async/await et votre nouvelle fonction
- ```javascript
+En utilisant async/await et votre nouvelle fonction
+```javascript
 async function joking() {
   console.log("Toc toc");
   await sleep(500);
