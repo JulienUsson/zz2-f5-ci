@@ -6,8 +6,11 @@
     <article>
       <h1 class="title">{{ .Title }}</h1>
       <ul>
+        {{ range .Sections.ByWeight }}
+        <li><a href="{{ .RelPermalink }}">Cours</a> [<a href="/pdf/{{path.Dir .File.Dir}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
+        {{ end }}
         {{ range .Pages.ByWeight }}
-        <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a> [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [Hidden]{{ end }}</li>
+        <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a> [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
         {{ end }}
       </ul>
     </article>
