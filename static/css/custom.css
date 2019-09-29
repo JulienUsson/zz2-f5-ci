@@ -5,6 +5,10 @@ pre.chroma code {
     font-size: 1.2em;
 }
 
+pre code {
+    background-color: inherit;
+}
+
 .content h1,
 .content h2,
 .content h3,

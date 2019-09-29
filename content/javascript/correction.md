@@ -6,7 +6,7 @@ weight: 2
 ## Exercice 1 :
 
 En utilisant while
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 let i = 0;
 while (i < numbers.length) {
@@ -14,72 +14,72 @@ while (i < numbers.length) {
   i++;
 }
 console.log(numbers);
-```
+{{< /highlight >}}
 
 En utilisant for
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 for (let i = 0; i < numbers.length; i++) {
   numbers[i] = numbers[i] + 42;
 }
 console.log(numbers);
-```
+{{< /highlight >}}
 
 En utilisant for of
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 let newTab = [];
 for (let number of numbers) {
   newTab.push(number + 42);
 }
 console.log(newTab);
-```
+{{< /highlight >}}
 
 En utilisant map()
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 const newTab = numbers.map(number => number + 42);
 console.log(newTab);
-```
+{{< /highlight >}}
 
 ## Exercice 2 : 
 
 En utilisant for of
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 let sum = 0;
 for (let number of numbers) {
   sum += number;
 }
 console.log(sum);
-```
+{{< /highlight >}}
 
 En utilisant reduce()
-```javascript
+{{< highlight javascript >}}
 const numbers = [20, 30, 42, 66, 99];
 const sum = numbers.reduce((acc, number) => acc + number, 0);
 console.log(sum);
-```
+{{< /highlight >}}
 
 ## Exercice 3 : 
 
-```javascript
+{{< highlight javascript >}}
 const colors = ["blue", "red", "green", "yellow", "cyan"];
 colors.forEach(color => console.log(color));
-```
+{{< /highlight >}}
 
 ## Exercice 4 : 
 
-```javascript
+{{< highlight javascript >}}
 const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
 const julien = peoples.find(({ name, age }) => name === "Julien" && age === 25);
 console.log(julien);
-```
+{{< /highlight >}}
 
 ## Exercice 5 : 
 
-```javascript
+{{< highlight javascript >}}
 const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
 const underTwentySix = peoples.filter(({age}) => age < 26)
 console.log(underTwentySix)
-```
+{{< /highlight >}}

@@ -5,11 +5,10 @@ theme = "kiss"
 copyright = "&copy; Julien Usson"
 googleAnalytics="UA-148716459-1"
 pygmentsUseClasses = true
-pygmentsCodeFences = true
-pygmentsStyle = "monokai"
+pygmentsCodeFences = false # Reaveal Hugo bugfix
 
 [params.assets]
-customCSS = ["css/custom.css"]
+customCSS = ["css/custom.css", "css/syntax.css"]
 
 [params.info]
 poweredby = true
