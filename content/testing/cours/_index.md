@@ -109,6 +109,46 @@ describe("find all cars", () => {
 
 ## Test-driven development
 
+On test puis on code de façon itérative
+
+```markdown
+1. écrire un seul test qui décrit une partie du problème à résoudre
+2. écrire juste assez de code pour que le test réussisse
+3. vérifier que le test passe, ainsi que les autres tests existants
+4. goto 1
+```
+
+---
+
+## Quelques conseils
+
+ * Ecrire des fonctions courtes (10-15 lignes max)
+ * Ecrire des fonctions pures
+ * Penser à la testabilité de la fonction avant de l'écrire
+
+---
+
+> Et si on a des effets de bords, on test pas ?
+
 ---
 
 ## Les mocks
+
+C'est une fonction de remplacement utilisé lors des tests.
+Très utile pour enlever les effets de bords lors des tests.
+
+```javascript
+// foo.js
+export default function() {
+  return Math.random()
+};
+
+// foo.test.js
+import foo from "./foo"
+jest.mock('./foo');
+
+// foo is a mock function
+foo.mockImplementation(() => 42);
+foo();
+// > 42
+```
