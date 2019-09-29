@@ -3,15 +3,13 @@ languageCode = "fr-fr"
 title = "Intégration continue pour le web"
 theme = "kiss"
 copyright = "&copy; Julien Usson"
+poweredby = false
 googleAnalytics="UA-148716459-1"
 pygmentsUseClasses = true
 pygmentsCodeFences = false # Reaveal Hugo bugfix
 
 [params.assets]
 customCSS = ["css/custom.css", "css/syntax.css"]
-
-[params.info]
-poweredby = true
 
 [params.social.config]
 platforms = ["github","email","twitter","linkedin"]

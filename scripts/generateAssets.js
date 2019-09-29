@@ -55,9 +55,10 @@ async function generateExercicePdf (browser, name) {
   }
   await page.pdf({
     path: `${__dirname}/../static/pdf/${name}/tp.pdf`,
-    printBackground: false,
+    printBackground: true,
     landscape: false,
     format: 'A4',
+    margin: { top: 15, right: 0, bottom: 15, left: 0 }
   })
 }
 
@@ -80,9 +81,10 @@ async function generateCorrectionPdf (browser, name) {
   }
   await page.pdf({
     path: `${__dirname}/../static/pdf/${name}/correction.pdf`,
-    printBackground: false,
+    printBackground: true,
     landscape: false,
     format: 'A4',
+    margin: { top: 15, right: 0, bottom: 15, left: 0 }
   })
 }
 

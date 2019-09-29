@@ -17,3 +17,13 @@ pre code {
 .content h6 {
     color: #2196F3;
 }
+
+@media print{
+    .nav-right {
+        display: none;
+    }
+}
+
+pre, ul, ol, p, h2 {
+    page-break-inside: avoid;
+}
