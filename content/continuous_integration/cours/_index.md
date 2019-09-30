@@ -78,3 +78,11 @@ test:
     stage: test
     script: npm test # On lance les tests
 ```
+
+---
+
+## Le mouvement DevOps
+
+ * Concaténation de *development* et de *operations* 
+ * Un être mi-ops, mi-dev et re mi-ops derrière
+ * Accompagne l'application du code à la livraison
