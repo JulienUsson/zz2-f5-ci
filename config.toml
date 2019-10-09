@@ -28,3 +28,4 @@ isHTML = true
 [params.reveal_hugo]
 theme = "simple"
 highlight_theme = "monokai"
+slide_number=true
