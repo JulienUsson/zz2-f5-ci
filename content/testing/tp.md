@@ -2,11 +2,11 @@
 title: "TP n°5 Les tests"
 ---
 
-Maintenant que vous connaissez les bonnes pratiques en matière de tests [[14]](http://cours.usson.me/testing/cours/#/13). Le code développé dans le TP4 n'est peut-être pas le plus simple à tester.
+Le but de ce TP est d'appliquer les bonnes pratiques en matière de tests [[14]](http://cours.usson.me/testing/cours/#/13). Le code développé dans le TP4 n'étant pas le plus simple à tester, nous allons d'abord réécrire quelques bouts de code.
 
 ## Remaniement du code du tp4
 
-Réecrivez `cardService.js` afin de correspondre au fichier ci-dessous.
+Réécrivez `cardService.js` afin de correspondre au fichier ci-dessous.
 
 {{< highlight javascript >}}
 export async function readFile(path) {
@@ -32,6 +32,8 @@ export async function importWorkers() {
 
 Commençons l'écriture des tests avec des tests unitaires. Dans un premier temps, il faut créer un fichier `src/services/cardService.test.js`.
 
+⚠️ Les fichiers doivent se terminer par `.test.js` pour que [Jest](https://jestjs.io/) les retrouve automatiquement.
+
 {{< highlight javascript >}}
 import * as cardService from "./cardService"
 
@@ -44,14 +46,12 @@ describe("csvToJson", () => {
 // ...
 {{< /highlight >}}
 
-⚠️ Les fichiers doivent se terminant par `.test.js` pour que [Jest](https://jestjs.io/) les retrouve automatiquement.
+Vous devez écrire des tests unitaires uniquement pour `csvToJson` et `readFile` car `importBuildings` et `importWorkers` seront testés via des tests d'intégration.
 
-ℹ️ l'accent grave `` ` `` permet d'écrire des chaînes de caractères sur plusieurs lignes (Pratique pour écrire un faux csv).
-
-ℹ️ la commande `npm run test` permet d'éxécuter les tests.
+ℹ️ l'accent grave `` ` `` permet d'écrire des chaînes de caractères sur plusieurs lignes (pratique pour écrire un faux csv).
 
 La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie.
-L'exemple ci-dessous, montre comment *mocker* la méthode readFile pour qu'elle nous retourne la chaîne de caractère `"foo"`.
+L'exemple ci-dessous montre comment *mocker* la méthode readFile pour qu'elle nous retourne la chaîne de caractère `"foo"`.
 
 {{< highlight javascript >}}
 import fs from "fs"
@@ -60,12 +60,14 @@ jest.mock("fs")
 fs.readFile.mockImplementation((_path, _opt, callback) => callback(null, "foo"))
 {{< /highlight >}}
 
+ℹ️ la commande `npm run test` permet d'exécuter les tests.
+
 ⚠️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
 
 ## Ajout des tests d'intégration
 
-Il ne reste plus qu'à ajouter des tests d'intégrations afin de vérifiers que nos deux routes fonctionnent.
-Inspirez-vous de `src/routes/healthRouter.test.js` pour les écrires. 
+Il ne reste plus qu'à ajouter des tests d'intégration afin de vérifier que nos deux routes fonctionnent.
+Inspirez-vous de `src/routes/healthRouter.test.js` pour les écrire. 
 
 {{< highlight javascript >}}
 import request from "supertest"
@@ -82,8 +84,8 @@ describe("Test the health check", () => {
 
 ⚠️ Attention de vérifier que l'analyse de code statique (*ESLint*) ne révèle aucune erreur.
 
-Maintenant que cette nouvelle fonctionnalité est testée, elle est enfin terminée 🎉
-Si vous êtiez en équipe, ce serait le moment de créer la *merge-request* afin de faire valider votre code par vos coéquipiers afin de l'intégrer dans l'application.
+Maintenant que cette nouvelle fonctionnalité est testée, elle est enfin terminée 🎉.
+Si vous étiez en équipe, ce serait le moment de créer la *merge-request* afin de faire valider votre code par vos coéquipiers afin de l'intégrer dans l'application.
 
 Comme vous êtes seul, vous pouvez merger votre branche avec *git* (`git checkout master && git merge feature/cards-list`) ou via une *merge-request*.
 

@@ -2,7 +2,7 @@
 title: "TP n°6 L'intégration continue"
 ---
 
-Pour être certain de la qualité de code produit sur ce projet, nous allons mettre en place une intégration continue afin d'effectuer les tests lors de chaque nouveau développement.
+Pour être certain de la qualité du code produit sur ce projet, nous allons mettre en place une intégration continue afin d'effectuer les tests lors de chaque nouveau développement.
 
 ## Mise en place
 
@@ -25,11 +25,11 @@ test:
 
 Ce fichier permet, à chaque commit, de lancer les tests.
 Maintenant, pousser ce fichier sur git et regarder *Gitlab* exécuter la pipeline depuis son interface web.
-N'hésitez pas a cliquer sur la pipeline pour voir le terminal et les commandes lançées en temps réel par le job.
+N'hésitez pas à cliquer sur la pipeline pour voir le terminal et les commandes lancées en temps réel par le job.
 
 ## Amélioration de la pipeline
 
- 1. Ajouter l'éxécution d'ESLint (`npm run lint`) dans un nouveau job *lint* appartenant au stage *test*.
+ 1. Ajouter l'exécution d'ESLint (`npm run lint`) dans un nouveau job *lint* appartenant au stage *test*.
 
  2. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#cache) pour mettre en cache le répertoire `node_modules` afin d'accélérer la pipeline.
 
