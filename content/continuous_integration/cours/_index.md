@@ -63,20 +63,24 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 # L'image Docker sur laquelle on se base
 image: node:latest 
 
+# Exécuté avant chaque job
+before_script:
+    - npm install
+
 # Définition des différents stages
 stages:
-    - build
     - test
-
-# Définition d'un job du stage build
-build:
-    stage: build
-    script: npm install # On installe les dépendances
+    - deploy
 
 # Définition d'un job du stage test
 test:
     stage: test
-    script: npm test # On lance les tests
+    script: npm run test # On lance les tests
+
+# Définition d'un job du stage deploy
+deploy:
+    stage: deploy
+    script: npm run deploy # On déploie l'application
 ```
 
 ---

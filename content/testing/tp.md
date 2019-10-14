@@ -51,13 +51,13 @@ describe("csvToJson", () => {
 ℹ️ la commande `npm run test` permet d'éxécuter les tests.
 
 La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie.
-L'exemple ci-dessous, montre comment *mocker* la méthode readFile pour qu'elle nous retourne la chaîne de caractère "toto".
+L'exemple ci-dessous, montre comment *mocker* la méthode readFile pour qu'elle nous retourne la chaîne de caractère `"foo"`.
 
 {{< highlight javascript >}}
 import fs from "fs"
 jest.mock("fs")
 
-fs.readFile.mockImplementation((_path, _opt, callback) => callback(null, "toto"))
+fs.readFile.mockImplementation((_path, _opt, callback) => callback(null, "foo"))
 {{< /highlight >}}
 
 ⚠️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
@@ -80,10 +80,12 @@ describe("Test the health check", () => {
 })
 {{< /highlight >}}
 
-⚠️ Attention de vérifier que l'analyse de code statique (ESLint) ne révèle aucune erreur.
+⚠️ Attention de vérifier que l'analyse de code statique (*ESLint*) ne révèle aucune erreur.
 
 Maintenant que cette nouvelle fonctionnalité est testée, elle est enfin terminée 🎉
 Si vous êtiez en équipe, ce serait le moment de créer la *merge-request* afin de faire valider votre code par vos coéquipiers afin de l'intégrer dans l'application.
+
+Comme vous êtes seul, vous pouvez merger votre branche avec *git* (`git checkout master && git merge feature/cards-list`) ou via une *merge-request*.
 
 ## Autres ressources
 
