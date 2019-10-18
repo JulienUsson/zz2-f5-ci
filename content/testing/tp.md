@@ -1,5 +1,6 @@
 ---
 title: "TP n°5 Les tests"
+weight: 1
 ---
 
 Le but de ce TP est d'appliquer les bonnes pratiques en matière de tests [[14]](http://cours.usson.me/testing/cours/#/13). Le code développé dans le TP4 n'étant pas le plus simple à tester, nous allons d'abord réécrire quelques bouts de code.

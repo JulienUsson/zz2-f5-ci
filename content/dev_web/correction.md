@@ -37,13 +37,12 @@ export default router
 
 {{< /highlight >}}
 
-## src/services/cardService.js
+## src/utils/readFile.js
 
 {{< highlight javascript >}}
 import fs from "fs"
 
-// Transforme fs.readFile en promesse
-export function readFile(path) {
+export default function readFile(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, "utf8", (err, data) => {
       if (err) {
@@ -54,8 +53,13 @@ export function readFile(path) {
     })
   })
 }
+{{< /highlight >}}
 
-// Transforme un fichier csv en objet Javascript
+## src/services/cardService.js
+
+{{< highlight javascript >}}
+import readFile from "../utils/readFile"
+
 export function csvToJson(file) {
   const [headerLine, ...lines] = file.split("\n")
   const headers = headerLine.split(";")
@@ -70,7 +74,9 @@ export function csvToJson(file) {
 }
 
 export async function importBuildings() {
-  const buildingsFile = await readFile(`${__dirname}/../ressources/buildings.csv`)
+  const buildingsFile = await readFile(
+    `${__dirname}/../ressources/buildings.csv`
+  )
   return csvToJson(buildingsFile)
 }
 
