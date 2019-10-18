@@ -7,12 +7,20 @@ Le but de ce TP est d'appliquer les bonnes pratiques en matière de tests [[14]]
 
 ## Remaniement du code du tp4
 
+Créer le fichier `src/utils/readFile.js` exportant une fonction readFile transformant `fs.readFile` en promesse [[6]](https://cours.usson.me/javascript_advanced/cours/#/6).
+
+{{< highlight javascript >}}
+import fs from "fs"
+
+export default function readFile(path) {
+  // ...
+}
+{{< /highlight >}}
+
 Réécrivez `cardService.js` afin de correspondre au fichier ci-dessous.
 
 {{< highlight javascript >}}
-export async function readFile(path) {
-  // Permet la lecture d'un fichier via des promesses
-}
+import readFile from "../utils/readFile"
 
 export function csvToJson(file) {
   // transforme un csv en json en utilisant l'en-tête du fichier pour définir les attributs.
@@ -26,7 +34,6 @@ export async function importBuildings() {
 export async function importWorkers() {
   // ...
 }
-
 {{< /highlight >}}
 
 ## Ajout des tests unitaires
@@ -44,26 +51,13 @@ describe("csvToJson", () => {
   })
   // ...
 })
-// ...
 {{< /highlight >}}
 
-Vous devez écrire des tests unitaires uniquement pour `csvToJson` et `readFile` car `importBuildings` et `importWorkers` seront testés via des tests d'intégration.
+Vous devez écrire des tests unitaires uniquement pour `csvToJson` car `importBuildings` et `importWorkers` seront testés via des tests d'intégration.
 
 ℹ️ l'accent grave `` ` `` permet d'écrire des chaînes de caractères sur plusieurs lignes (pratique pour écrire un faux csv).
 
-La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie.
-L'exemple ci-dessous montre comment *mocker* la méthode readFile pour qu'elle nous retourne la chaîne de caractère `"foo"`.
-
-{{< highlight javascript >}}
-import fs from "fs"
-jest.mock("fs")
-
-fs.readFile.mockImplementation((_path, _opt, callback) => callback(null, "foo"))
-{{< /highlight >}}
-
 ℹ️ la commande `npm run test` permet d'exécuter les tests.
-
-⚠️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
 
 ## Ajout des tests d'intégration
 
@@ -82,6 +76,18 @@ describe("Test the health check", () => {
   })
 })
 {{< /highlight >}}
+
+La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie.
+L'exemple ci-dessous montre comment *mocker* la méthode *readFile* pour qu'elle nous retourne la chaîne de caractère `"foo"`.
+
+{{< highlight javascript >}}
+import readFile from "../utils/readFile"
+jest.mock("../utils/readFile")
+
+readFile.mockImplementation((_path) => Promise.resolve("foo"))
+{{< /highlight >}}
+
+⚠️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
 
 ⚠️ Attention de vérifier que l'analyse de code statique (*ESLint*) ne révèle aucune erreur.
 
