@@ -145,10 +145,15 @@ export default function() {
 
 // foo.test.js
 import foo from "./foo"
+
+// Mock l'ensemble des fonctions du module
 jest.mock('./foo');
 
-// foo is a mock function
+foo();
+// -> undefined
+
+// Change l'implémentation de la fonction
 foo.mockImplementation(() => 42);
 foo();
-// > 42
+// -> 42
 ```
