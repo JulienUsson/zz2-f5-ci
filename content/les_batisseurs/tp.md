@@ -48,8 +48,6 @@ Google est votre ami.
 
  * Création de la route `POST /games` [[doc]](http://localhost:3000/api-docs/#/default/post_games) pour créer une partie. 
 
- * Création de la route `GET /games/{gameId}` [[doc]](http://localhost:3000/api-docs/#/default/get_games__gameId_) pour récupérer les informations d'une partie. 
-
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
 ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire.
@@ -61,6 +59,14 @@ Google est votre ami.
 ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un objet Javascript en string.
 
 ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une string en objet Javascript.
+
+### En tant que joueur, je peux voir les détails d'une partie
+
+ * Création de la route `GET /games/{gameId}` [[doc]](http://localhost:3000/api-docs/#/default/get_games__gameId_) pour récupérer les informations d'une partie. 
+
+### En tant que joueur, je peux lister les parties existante
+
+ * Création de la route `GET /games` [[doc]](http://localhost:3000/api-docs/#/default/get_games) pour lister les partie. 
 
 ### En tant que joueur, je peux ouvrir un chantier
 
