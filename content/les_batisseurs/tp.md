@@ -25,6 +25,12 @@ Le tp sera noté selon les critères suivants :
 - Code (qualité du code, fonctionnalités implémentées, ...)
 - Gestion de projet (découpe en ticket, priorisation, partage des tâches, ...)
 
+## Frontend
+
+Une application frontend est disponible sur [batisseurs.usson.me](https://batisseurs.usson.me).
+
+Par défaut, l'application utilise un backend se trouvant à l'adresse `http://localhost:3000`. Si ce n'est pas votre cas, vous pouvez le configurer via l'icône ⚙️ en haut à droite.
+
 ## Rappels
 
 Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`http://localhost:3000/api-docs/`](http://localhost:3000/api-docs/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
