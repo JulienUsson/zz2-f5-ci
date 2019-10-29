@@ -12,13 +12,13 @@ import * as cardService from "./cardService"
 describe("csvToJson", () => {
   test("should transform a csv to a javascript object", async () => {
     const testCsv = `\
-toto;titi;tutu
+wood;stone;victory point
 1;2;3
 4;5;6`
 
     expect(cardService.csvToJson(testCsv)).toEqual([
-      { toto: 1, titi: 2, tutu: 3 },
-      { toto: 4, titi: 5, tutu: 6 }
+      { wood: 1, stone: 2, victoryPoint: 3 },
+      { wood: 4, stone: 5, victoryPoint: 6 }
     ])
   })
 })
@@ -36,15 +36,15 @@ jest.mock("../utils/readFile")
 describe("/cards/workers", () => {
   test("should response the GET method", async () => {
     const testCsv = `\
-toto;titi;tutu
+wood;stone;victory point
 1;2;3
 4;5;6`
     readFile.mockResolvedValue(testCsv)
     const response = await request(app).get("/cards/workers")
     expect(response.statusCode).toBe(200)
     expect(response.body).toStrictEqual([
-      { toto: 1, titi: 2, tutu: 3 },
-      { toto: 4, titi: 5, tutu: 6 }
+      { wood: 1, stone: 2, victoryPoint: 3 },
+      { wood: 4, stone: 5, victoryPoint: 6 }
     ])
   })
 
@@ -59,15 +59,15 @@ toto;titi;tutu
 describe("/cards/buildings", () => {
   test("should response the GET method", async () => {
     const testCsv = `\
-toto;titi;tutu
+wood;stone;victory point
 1;2;3
 4;5;6`
     readFile.mockResolvedValue(testCsv)
     const response = await request(app).get("/cards/buildings")
     expect(response.statusCode).toBe(200)
     expect(response.body).toStrictEqual([
-      { toto: 1, titi: 2, tutu: 3 },
-      { toto: 4, titi: 5, tutu: 6 }
+      { wood: 1, stone: 2, victoryPoint: 3 },
+      { wood: 4, stone: 5, victoryPoint: 6 }
     ])
   })
 

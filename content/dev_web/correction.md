@@ -59,6 +59,7 @@ export default function readFile(path) {
 
 {{< highlight javascript >}}
 import readFile from "../utils/readFile"
+import camelCase from "lodash/camelCase"
 
 export function csvToJson(file) {
   const [headerLine, ...lines] = file.split("\n")
@@ -67,7 +68,7 @@ export function csvToJson(file) {
     const cells = line.split(";")
     const tmpObject = {}
     for (let i = 0; i < cells.length; i++) {
-      tmpObject[headers[i]] = Number.parseInt(cells[i])
+      tmpObject[camelCase(headers[i])] = Number.parseInt(cells[i])
     }
     return tmpObject
   })

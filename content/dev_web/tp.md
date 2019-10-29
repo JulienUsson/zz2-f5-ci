@@ -81,7 +81,9 @@ export async function importWorkers() {
 }
 {{< /highlight >}}
 
-Vous n'avez plus qu'à coder ces deux fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources` et qu'il existe la fonction [fs.readFile()](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) pour lire un fichier.
+Vous n'avez plus qu'à coder ces deux fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources`.
+
+ * La fonction [fs.readFile()](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) permet de lire un fichier.
 
 {{< highlight javascript >}}
 // __dirname correspond au répertoire du fichier courant `src/services/`
@@ -96,7 +98,11 @@ fs.readFile(__dirname + "/../ressources/buildings.csv", "utf8", (err, file) => {
 
 ℹ️ La fonction readFile utilise un callback, il peut être intéressant (😉) de créer un wrapper la transformant en promesse.
 
-Il nous suffit maintenant de remplacer le code dans le routeur par l'utilisation de notre service et tout devrait fonctionner 🎉.
+ * La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) permet de diviser une chaîne de caractères à partir d'un séparateur.
+
+ * La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) permet de transformer une chaîne de caractères dans son équivalent en camel case.
+
+Une fois terminé, il suffit de remplacer le code dans le routeur par l'utilisation de notre service et tout devrait fonctionner 🎉.
 
 {{< highlight javascript >}}
 // ...
