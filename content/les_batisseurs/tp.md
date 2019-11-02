@@ -84,6 +84,14 @@ Google est votre ami.
 
  * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
 
+### En tant que joueur, je peux acheter des actions supplémentaires
+
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+
+### En tant que joueur, je peux terminer mon tour
+
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+
 ### En tant que joueur, je peux terminer un bâtiment
 
 ### En tant que joueur, je peux utiliser les machines
