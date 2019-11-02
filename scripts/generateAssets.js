@@ -28,6 +28,13 @@ async function generatePresentationPdf(browser, name) {
     console.error(`${gotoUrl} unreachable`)
     process.exit(1)
   }
+
+  const content = await page.content()
+  if (content.includes('404 page not found')) {
+    // eslint-disable-next-line no-console
+    console.warn(`${name} has no presentation`)
+    return
+  }
   await page.pdf({
     path: `${__dirname}/../static/pdf/${name}/cours.pdf`,
     printBackground: true,
