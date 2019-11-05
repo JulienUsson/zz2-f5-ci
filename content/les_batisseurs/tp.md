@@ -50,6 +50,12 @@ Google est votre ami.
 
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
+ℹ️ Le joueur 1 commence toujours.
+
+ℹ️ Un apprenti est un ouvrier avec un prix de 2 écus.
+
+ℹ️ Il ne faut pas gérer les pièces d'or, on utilisera que des pièces d'argent.
+
 ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire.
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
