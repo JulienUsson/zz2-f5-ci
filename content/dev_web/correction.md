@@ -37,6 +37,22 @@ export default router
 
 {{< /highlight >}}
 
+## src/routes/index.js
+
+{{< highlight javascript >}}
+import cardRouter from "./cardRouter"
+import healthRouter from "./healthRouter"
+import express from "express"
+
+const router = express.Router()
+
+// Ne pas oubliez d'ajouter le routeur ici
+router.use("/cards", cardRouter)
+router.use("/health", healthRouter)
+
+export default router
+{{< /highlight >}}
+
 ## src/utils/readFile.js
 
 {{< highlight javascript >}}
