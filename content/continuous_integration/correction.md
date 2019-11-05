@@ -25,6 +25,7 @@ test:
   only:
     - master
     - /^feature/*$/
+    - /^bugfix/*$/
     - merge_requests
 
 lint:
@@ -33,5 +34,6 @@ lint:
   only:
     - master
     - /^feature/*$/
+    - /^bugfix/*$/
     - merge_requests
 ```

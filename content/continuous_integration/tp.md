@@ -33,7 +33,7 @@ N'hésitez pas à cliquer sur la pipeline pour voir le terminal et les commandes
 
  2. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#cache) pour mettre en cache le répertoire `node_modules` afin d'accélérer la pipeline.
 
- 3. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) pour lancer les tests uniquement sur les branches commençant par `feature/` et `master`.
+ 3. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) pour lancer les tests uniquement sur les branches commençant par `feature/`, `bugfix/` et `master`.
 
  4. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/merge_request_pipelines/) pour empêcher une merge-request d'être mergé si la pipeline échoue.
 
