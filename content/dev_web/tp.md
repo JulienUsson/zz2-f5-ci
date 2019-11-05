@@ -3,7 +3,7 @@ title: "TP n°4 Le developpement web"
 weight: 1
 ---
 
-Lors de ce TP, nous allons commencer le développement du jeu **Les Bâtisseurs - Moyen-Âge**. Dans un premier temps, je vous conseille soit de [lire les règles](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/blob/master/rules.pdf) soit de [regarder la vidéo explicative](https://www.youtube.com/watch?v=YINhY-7AXqw).
+Lors de ce TP, nous allons commencer le développement du jeu **Les Bâtisseurs - Moyen-Âge**. Dans un premier temps, je vous propose soit de [lire les règles](../../les_batisseurs/rules.pdf) soit de [regarder la vidéo explicative](https://www.youtube.com/watch?v=YINhY-7AXqw).
 
 ## Partie 1: Récupération du projet
 

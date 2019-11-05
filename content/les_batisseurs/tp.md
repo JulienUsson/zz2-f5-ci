@@ -38,7 +38,7 @@ Une documentation détaillée de l'ensemble des routes attendues est disponible 
 
 Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://www.getpostman.com/) [[aide]](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/tree/master#use-postman-to-request-the-application).
 
-Les règles du jeu sont disponibles [ici](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/blob/master/rules.pdf) ou [ici](https://www.youtube.com/watch?v=YINhY-7AXqw) en vidéo.
+Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici](https://www.youtube.com/watch?v=YINhY-7AXqw) en vidéo.
 
 Google est votre ami.
 
