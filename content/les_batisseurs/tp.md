@@ -8,7 +8,7 @@ Formez une équipe de trois personnes et choisissez un des projets. Invitez les 
 
 ## Gestion de projet
 
-Pour simplifier votre organisation, vous pouvez vous servir de la vue *board* de la section *issues* de Gitlab. En organisant votre *board* comme ci-dessous, vous pourrez savoir qui fait quoi, qu'elle est la prochaine tâche à faire ainsi que les *merge-requests* en attente.
+Pour simplifier votre organisation, vous **devez** vous servir de la vue *board* de la section *issues* de Gitlab. En organisant votre *board* comme ci-dessous, vous pourrez savoir qui fait quoi, qu'elle est la prochaine tâche à faire ainsi que les *merge-requests* en attente.
 
 ![kanban example](../kanban.png)
 
@@ -42,7 +42,17 @@ Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici](https://www.you
 
 Google est votre ami.
 
-## Tâches
+
+## Règles et informations supplémentaires
+
+Le joueur 1 commence toujours.
+
+Un apprenti est un ouvrier avec un prix de 2 écus.
+
+Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'argent.
+
+
+## User Stories
 
 ### En tant que joueur, je peux créer une partie
 
@@ -50,21 +60,15 @@ Google est votre ami.
 
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
-ℹ️ Le joueur 1 commence toujours.
-
-ℹ️ Un apprenti est un ouvrier avec un prix de 2 écus.
-
-ℹ️ Il ne faut pas gérer les pièces d'or, on utilisera que des pièces d'argent.
-
-ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire.
+ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire unique.
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
 
-ℹ️ [fs.writeFile()](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) permet d'écrire dans un fichier.
+ℹ️ [fs.writeFile()](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) permet d'écrire dans un fichier (pensez aux promises 😉).
 
 ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un objet Javascript en string.
 
-ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une string en objet Javascript.
+ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir un string en objet Javascript.
 
 ### En tant que joueur, je peux voir les détails d'une partie
 
@@ -77,6 +81,8 @@ Google est votre ami.
 ### En tant que joueur, je peux ouvrir un chantier
 
  * Création de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+
+⚠️ Attention de ne pas oublier de prendre en compte le *header* HTTP `player-id` qui détermine le joueur qui effectue l'action.
 
 ### En tant que joueur, je peux recruter un ouvrier
 
@@ -102,6 +108,6 @@ Google est votre ami.
 
 ### En tant que joueur, je peux utiliser les machines
 
-ℹ️ Une des possibilité est qu'une fois un bâtiment terminé, on peut créer un nouveau ouvrier correspondant aux caractéristiques de la machine. 
+ℹ️ Une des possibilité est qu'une fois un bâtiment machine terminé, on peut créer un ouvrier correspondant aux caractéristiques de la carte. 
 
 ### En tant que joueur, je peux terminer une partie
