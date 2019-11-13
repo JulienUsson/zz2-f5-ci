@@ -24,8 +24,8 @@ test:
   script: npm run test
   only:
     - master
-    - /^feature/*$/
-    - /^bugfix/*$/
+    - /^feature\/.*$/
+    - /^bugfix\/.*$/
     - merge_requests
 
 lint:
@@ -33,7 +33,7 @@ lint:
   script: npm run lint
   only:
     - master
-    - /^feature/*$/
-    - /^bugfix/*$/
+    - /^feature\/.*$/
+    - /^bugfix\/.*$/
     - merge_requests
 ```
