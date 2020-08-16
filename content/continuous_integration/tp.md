@@ -1,5 +1,6 @@
 ---
 title: "TP n°6 L'intégration continue"
+weight: 2
 ---
 
 Pour être certain de la qualité du code produit sur ce projet, nous allons mettre en place une intégration continue afin d'effectuer les tests lors de chaque nouveau développement.

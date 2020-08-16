@@ -1,6 +1,8 @@
 ---
 title: "L'intégration continue"
+name: "Cours"
 outputs: ["Reveal"]
+weight: 1
 ---
 
 # Intégration continue

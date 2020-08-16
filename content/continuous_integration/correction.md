@@ -1,6 +1,7 @@
 ---
 title: "Correction TP n°6 L'intégration continue"
-weight: 2
+weight: 3
+draft: true
 ---
 
 ## .gitlab-ci.yml

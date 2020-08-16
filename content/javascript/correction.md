@@ -1,6 +1,7 @@
 ---
 title: "Correction TP n°1 Javascript"
-weight: 2
+weight: 3
+draft: true
 ---
 
 ## Exercice 1 :

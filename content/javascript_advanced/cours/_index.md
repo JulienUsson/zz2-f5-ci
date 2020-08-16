@@ -1,6 +1,7 @@
 ---
 title: "Javascript avancé"
 outputs: ["Reveal"]
+weight: 1
 ---
 
 # Javascript 2

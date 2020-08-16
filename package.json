@@ -1,6 +1,6 @@
 {
   "name": "zz2-f5-ci",
-  "version": "2019",
+  "version": "2020.0.0",
   "private": true,
   "scripts": {
     "start": "hugo server -D -p 3000",

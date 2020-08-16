@@ -1,5 +1,6 @@
 ---
 title: "TP n°3 Git"
+weight: 2
 ---
 
 ## Partie 1 : L'heure de mettre les mains dans le cambouis !

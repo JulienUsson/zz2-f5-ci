@@ -1,6 +1,7 @@
 ---
 title: "Le developpement web"
 outputs: ["Reveal"]
+weight: 1
 ---
 
 # Le developpement web

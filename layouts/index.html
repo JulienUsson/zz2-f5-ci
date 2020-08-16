@@ -6,21 +6,25 @@
     <article>
       <h1 class="title">{{ .Title }}</h1>
       <ul>
-        {{ range .Sections.ByWeight }}
-        <li><a href="{{ .RelPermalink }}">Cours</a> [<a href="/pdf/{{path.Dir .File.Dir}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
-        {{ end }}
-        {{ range .Pages.ByWeight }}
-        <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a> [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
-        {{ end }}
+        <ul>
+          {{ range .Sections.ByWeight }}
+            <li><a href="{{ .RelPermalink }}">Cours</a> [<a href="/pdf/{{path.Dir .File.Dir}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
+          {{ end }}
+          {{ range .Pages.ByWeight }}
+            {{ if ne .File.BaseFileName "_index" }}
+              <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a> [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
+            {{ end }}
+          {{ end }}
+        </ul>
       </ul>
     </article>
     {{ end }}
-    <article>
+    <!-- <article>
       <ul>
         <h1 class="title">Questionnaire d'évaluation sur le cours</h1>
         <li><a href="https://docs.google.com/forms/d/1_Toc85vKdQtd39tMWl0pEAdYgVcDpt-NMOMAlo7QdBk/">Lien</a></li>
       </ul>
-    </article>
+    </article> -->
   </div>
 </section>
 {{ partial "footer" . }}

@@ -1,6 +1,7 @@
 ---
 title: "Git"
 outputs: ["Reveal"]
+weight: 1
 ---
 
 # Git

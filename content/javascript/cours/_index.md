@@ -1,6 +1,7 @@
 ---
 title: "Javascript"
 outputs: ["Reveal"]
+weight: 1
 ---
 
 # Javascript
