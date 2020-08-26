@@ -54,28 +54,11 @@ router.use("/health", healthRouter)
 export default router
 {{< /highlight >}}
 
-## src/utils/readFile.js
-
-{{< highlight javascript >}}
-import fs from "fs"
-
-export default function readFile(path) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, "utf8", (err, data) => {
-      if (err) {
-        reject(err)
-        return
-      }
-      resolve(data)
-    })
-  })
-}
-{{< /highlight >}}
-
 ## src/services/cardService.js
 
 {{< highlight javascript >}}
-import readFile from "../utils/readFile"
+import fs from "fs"
+import path from "path"
 import camelCase from "lodash/camelCase"
 
 export function csvToJson(file) {
@@ -92,14 +75,16 @@ export function csvToJson(file) {
 }
 
 export async function importBuildings() {
-  const buildingsFile = await readFile(
-    `${__dirname}/../ressources/buildings.csv`
-  )
+  const buildingsPath = path.join(__dirname, "../ressources/buildings.csv")
+  const buildingsFile = await fs.promises.readFile(buildingsPath)
+  // L'exception n'est pas catché donc elle va remonter si elle est levée.
   return csvToJson(buildingsFile)
 }
 
 export async function importWorkers() {
-  const buildingsFile = await readFile(`${__dirname}/../ressources/workers.csv`)
-  return csvToJson(buildingsFile)
+  const workersPath = path.join(__dirname, "../ressources/workers.csv")
+  const workersFile = await fs.promises.readFile(workersPath)
+  // L'exception n'est pas catché donc elle va remonter si elle est levée.
+  return csvToJson(workersFile)
 }
 {{< /highlight >}}

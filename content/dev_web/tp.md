@@ -11,11 +11,11 @@ Pour récupérer le projet, nous allons nous rendre sur le [dépôt Gitlab](http
 
 Je vous conseille de passer le dépôt en privé dans les paramètres afin d'éviter toute tentations [[aide]](https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility).
 
-Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone [URL]` où l'url est celle indiquée en haut à droite lorsque l'on clique sur le bouton *clone*. Il existe deux façon de cloner un projet, soit en utilisant SSH soit en utilisant HTTPS. L'avantage de SSH est qu'il n'est pas nécessaire de taper son login/mot de passe à chaque `git push` mais il faut générer et configurer une clé privée [[aide]](https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html). Je vous conseille d'utiliser HTTPS pour l'instant.
+Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone [URL]` où l'url est celle indiquée en haut à droite lorsque l'on clique sur le bouton *clone*. Il existe deux façon de cloner un projet, soit en utilisant SSH soit en utilisant HTTPS. L'avantage de SSH est qu'il n'est pas nécessaire de taper son login/mot de passe à chaque `git push` mais il faut générer et configurer une clé privée [[aide]](https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html). **Je vous conseille d'utiliser HTTPS pour l'instant.**
 
 ## Partie 2 : Démarrage du projet
 
-Je vous conseille d'utiliser [Visual Studio Code](https://code.visualstudio.com/) lors de vos développement. C'est un IDE développé par Microsoft et Open Source très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités. Une liste de plugins recommandés est disponible dans le [Readme](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter#recommended-visual-studio-code-plugins) du projet.
+Je vous conseille d'utiliser [Visual Studio Code](https://code.visualstudio.com/) lors de vos développement. C'est un IDE développé par Microsoft. Il est Open Source et est très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités. Une liste de plugins recommandés est disponible dans le [Readme](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter#recommended-visual-studio-code-plugins) du projet.
 
 Une fois le projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
 Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application.
@@ -26,11 +26,11 @@ Avant de commencer à développer, il est important de **toujours** travailler d
 
 ## Partie 3 : Création de nouvelles routes
 
-Nous allons développer deux nouvelles routes permettant d'afficher l'ensemble des cartes du jeu. Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`http://localhost:3000/api-docs/`](http://localhost:3000/api-docs/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
+Nous allons développer deux nouvelles routes permettant d'afficher l'ensemble des cartes du jeu. Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://batisseurs-api.usson.me/`](https://batisseurs-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
 
-Lors de ce TP, nous allons développer `GET /cards/workers` et `GET /cards/buildings` des routes permettant de récupérer respectivement les cartes des ouvriers et les cartes des bâtiments.
+Lors de ce TP, nous allons développer `findAllBuildings` et `findAllWorkers` des routes permettant de récupérer respectivement les cartes des ouvriers et les cartes des bâtiments.
 
-![api documentation](../swagger.png)
+[![api documentation](../swagger.png)](https://batisseurs-api.usson.me/#api-Cards-findAllBuildings)
 
 On va créer un nouveau router `src/routes/cardRouter.js` et y coller le code suivant :
 
@@ -51,26 +51,32 @@ On va maintenant initialiser les deux routes répondant à notre besoin.
 
 {{< highlight javascript >}}
 router.get("/workers", function(req, res) {
-  const workers = [] // C'est ici que l'on récupérera nos ouvriers
+  const workers = [] 
+  // C'est ici que l'on récupérera nos ouvriers
   res.json(workers)
 })
 
 router.get("/buildings", function(req, res) {
-  const buildings = [] // C'est ici que l'on récupérera nos bâtiments
+  const buildings = [] 
+  // C'est ici que l'on récupérera nos bâtiments
   res.json(buildings)
 })
 {{< /highlight >}}
 
 Rendez-vous sur [`http://localhost:3000/cards/workers`](http://localhost:3000/cards/workers) et [`http://localhost:3000/cards/buildings`](http://localhost:3000/cards/buildings) et vous devriez obtenir un tableau vide 🎉.
 
-## Partie 4 : Création du service
+## Partie 4 : Récupération des données
 
-⚠️ Ne jamais écrire du code métier dans des routeurs. Le code métier s'écrit dans des services. Il faut garder les routeurs les plus simples possibles.
+Il est maintenant temps d'écrire le code permettant de lire les CSV et de les transformer en objets Javascript. Nous pourrions écrire ce code directement dans la route mais cela un problème: si nous avons besoin du code ailleurs il faudra dupliquer le code ce qui n'est pas une bonne idée. Ensuite, séparer les responsabilités (*separation of concerns*) entre le code métier (gestion des cartes, des parties, etc\...) et le code gérant le serveur (routeurs, etc\...) permet d'avoir un code plus clair. Pour finir, découper son code en fonctions simples est une bonne façon d'avoir un code clair et compréhensible.
 
-Nous allons créer un fichier service `src/services/cardService.js` afin d'écrire notre code métier en dehors de notre routeur. Nous pourrons importer et utiliser notre nouveau service dans notre routeur. Un service est simplement un module exportant des fonctions réutilisables effectuant du code métier. Par exemple, lire et retourner une liste de cartes est du code métier. On peut déjà imaginer que notre service comportera deux fonctions `importWorkers()` et `importBuildings()`.
+Il est donc recommandé d'écrire le code métier dans des fichiers à part appelés `service`.
+
+Nous allons créer un fichier `src/services/cardService.js` afin d'écrire tout le code permettant d'intéragir avec les cartes. Nous pourrons ensuite importer et utiliser ses fonctions  dans notre routeur. On peut déjà imaginer que notre service comportera deux fonctions `importWorkers()` et `importBuildings()`.
 
 {{< highlight javascript >}}
 import fs from "fs"
+import path from "path"
+import _ from "lodash"
 
 export async function importBuildings() {
   // Import buildings code
@@ -83,24 +89,23 @@ export async function importWorkers() {
 
 Vous n'avez plus qu'à coder ces deux fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources`.
 
- * La fonction [fs.readFile()](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) permet de lire un fichier.
+ * La fonction [fs.promises.readFile()](https://nodejs.org/api/fs.html#fs_fspromises_readfile_path_options) (`import fs from "fs"`) permet de lire un fichier.
 
 {{< highlight javascript >}}
-// __dirname correspond au répertoire du fichier courant `src/services/`
-fs.readFile(__dirname + "/../ressources/buildings.csv", "utf8", (err, file) => {
-  if (err) {
-    console.error(err)
-    return
-  };
+try {
+  // __dirname correspond au répertoire du fichier courant soit `src/services/` dans ce cas
+  // La méthode path.join() (import path from "path") permet de créer un chemin en concatenant des strings
+  const filePath = path.join(__dirname, "../ressources/buildings.csv")
+  const file = await fs.promises.readFile(filePath, "utf8")
   console.log(file) // Contenu du fichier
-})
+} catch(e) {
+  // Une erreur e est survenue
+}
 {{< /highlight >}}
 
-ℹ️ La fonction readFile utilise un callback, il peut être intéressant (😉) de créer un wrapper la transformant en promesse.
+ * La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) (méthode de string) permet de diviser une chaîne de caractères à partir d'un séparateur.
 
- * La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) permet de diviser une chaîne de caractères à partir d'un séparateur.
-
- * La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) permet de transformer une chaîne de caractères dans son équivalent en camel case.
+ * La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) (`import _ from "lodash"`) permet de transformer une chaîne de caractères dans son équivalent en camel case.
 
 Une fois terminé, il suffit de remplacer le code dans le routeur par l'utilisation de notre service et tout devrait fonctionner 🎉.
 
@@ -110,11 +115,13 @@ import * as cardService from "../services/cardService"
 // ...
 router.get("/workers", async function(req, res) {
   const workers = await cardService.importWorkers()
+  // Ne pas oublier de gérer les exceptions pouvant être lancées par importWorkers()
   res.json(workers)
 })
 
 router.get("/buildings", async function(req, res) {
   const buildings = await cardService.importBuildings()
+  // Ne pas oublier de gérer les exceptions pouvant être lancées par importBuildings()
   res.json(buildings)
 })
 // ...

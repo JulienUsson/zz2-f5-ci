@@ -4,7 +4,7 @@ title: "TP final Les bâtisseurs : Moyen-Âge"
 
 ## Mise en place du projet
 
-Formez une équipe de trois personnes et choisissez un des projets. Invitez les deux personnes manquantes sur le projet et n'oubliez pas de m'inviter ([@JulienUsson](https://gitlab.com/JulienUsson)) pour que je puisse vous noter 😉. Rajoutez un fichier `authors.md` avec votre pseudo suivi de votre nom afin que je sache quel pseudo correspond à quelle personne. Vous êtes prêts à coder 🎉.
+Formez une équipe de deux personnes et choisissez un des deux projets pour continuer le développement. Invitez la personne manquante sur le projet et n'oubliez pas de m'inviter ([@JulienUsson](https://gitlab.com/JulienUsson)) pour que je puisse vous noter 😉. Rajoutez un fichier `authors.md` avec votre pseudo suivi de votre nom afin que je sache quel pseudo correspond à quelle personne. Vous êtes prêts à coder 🎉.
 
 ## Gestion de projet
 
@@ -33,7 +33,7 @@ Par défaut, l'application utilise un backend se trouvant à l'adresse `http://l
 
 ## Rappels
 
-Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`http://localhost:3000/api-docs/`](http://localhost:3000/api-docs/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
+Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://batisseurs-api.usson.me/`](https://batisseurs-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
 
 
 Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://www.getpostman.com/) [[aide]](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/tree/master#use-postman-to-request-the-application).
@@ -56,7 +56,7 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ### En tant que joueur, je peux créer une partie
 
- * Création de la route `POST /games` [[doc]](http://localhost:3000/api-docs/#/default/post_games) pour créer une partie. 
+ * Création de la route `POST /games` [[doc]](https://batisseurs-api.usson.me/#api-Game-createGame) pour créer une partie. 
 
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
@@ -72,37 +72,37 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ### En tant que joueur, je peux voir les détails d'une partie
 
- * Création de la route `GET /games/{gameId}` [[doc]](http://localhost:3000/api-docs/#/default/get_games__gameId_) pour récupérer les informations d'une partie. 
+ * Création de la route `GET /games/{gameId}` [[doc]](https://batisseurs-api.usson.me/#api-Game-getGame) pour récupérer les informations d'une partie. 
 
 ### En tant que joueur, je peux lister les parties existante
 
- * Création de la route `GET /games` [[doc]](http://localhost:3000/api-docs/#/default/get_games) pour lister les partie. 
+ * Création de la route `GET /games` [[doc]](https://batisseurs-api.usson.me/#api-Game-findAllGames) pour lister les partie. 
 
 ### En tant que joueur, je peux ouvrir un chantier
 
- * Création de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Création de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ⚠️ Attention de ne pas oublier de prendre en compte le *header* HTTP `player-id` qui détermine le joueur qui effectue l'action.
 
 ### En tant que joueur, je peux recruter un ouvrier
 
- * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ### En tant que joueur, je peux envoyer travailler un ouvrier
 
- * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ### En tant que joueur, je peux prendre un ou plusieurs écus
 
- * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ### En tant que joueur, je peux acheter des actions supplémentaires
 
- * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ### En tant que joueur, je peux terminer mon tour
 
- * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](http://localhost:3000/api-docs/#/default/post_games__gameId__actions). 
+ * Amélioration de la route `POST /games/{gameId}/actions` [[doc]](https://batisseurs-api.usson.me/#api-Game-playAction). 
 
 ### En tant que joueur, je peux terminer un bâtiment
 
