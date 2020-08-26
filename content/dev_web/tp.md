@@ -127,4 +127,6 @@ router.get("/buildings", async function(req, res) {
 // ...
 {{< /highlight >}}
 
+ℹ️ Rendez-vous dans [l'annexe](https://cours.usson.me/annexes/snippets/) pour apprendre à renvoyer une erreur.
+
 ℹ️ Pour tester vos nouvelles routes, vous pouvez soit utiliser votre navigateur soit le logiciel [Postman](https://www.getpostman.com/) [[aide]](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/tree/master#use-postman-to-request-the-application).
