@@ -12,7 +12,11 @@
           {{ end }}
           {{ range .Pages.ByWeight }}
             {{ if ne .File.BaseFileName "_index" }}
-              <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a> [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]{{ if .Draft }} [HIDDEN]{{ end }}</li>
+              <li><a href="{{ .RelPermalink }}">{{.File.BaseFileName | humanize}}</a>
+                {{ if ne .Params.pdf false }}
+                  [<a href="/pdf/{{path.Dir .File.Dir}}/{{.File.BaseFileName}}.pdf" target="_blank">PDF</a>]
+                {{ end }}
+              {{ if .Draft }} [HIDDEN]{{ end }}</li>
             {{ end }}
           {{ end }}
         </ul>

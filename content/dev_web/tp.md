@@ -15,7 +15,7 @@ Maintenant que vous avez votre copie, il suffit de la télécharger sur votre or
 
 ## Partie 2 : Démarrage du projet
 
-Je vous conseille d'utiliser [Visual Studio Code](https://code.visualstudio.com/) lors de vos développement. C'est un IDE développé par Microsoft. Il est Open Source et est très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités. Une liste de plugins recommandés est disponible dans le [Readme](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter#recommended-visual-studio-code-plugins) du projet.
+Je vous conseille d'utiliser [Visual Studio Code](https://code.visualstudio.com/) lors de vos développement. C'est un IDE développé par Microsoft. Il est Open Source et est très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités. Une liste de plugins recommandés est disponible dans [l'annexe](https://cours.usson.me/annexes/vscode_plugins/).
 
 Une fois le projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
 Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application.
