@@ -69,7 +69,7 @@ Rendez-vous sur [`http://localhost:3000/cards/workers`](http://localhost:3000/ca
 
 ## Partie 4 : Récupération des données
 
-Il est maintenant temps d'écrire le code permettant de lire les CSV et de les transformer en objets Javascript. Nous pourrions écrire ce code directement dans la route mais cela un problème: si nous avons besoin du code ailleurs il faudra dupliquer le code ce qui n'est pas une bonne idée. Ensuite, séparer les responsabilités (*separation of concerns*) entre le code métier (gestion des cartes, des parties, etc\...) et le code gérant le serveur (routeurs, etc\...) permet d'avoir un code plus clair. Pour finir, découper son code en fonctions simples est une bonne façon d'avoir un code clair et compréhensible.
+Il est maintenant temps d'écrire le code permettant de lire les CSV et de les transformer en objets Javascript. Nous pourrions écrire ce code directement dans la route mais cela pose un problème: si nous avons besoin du code ailleurs il faudra dupliquer le code. De plus, séparer les responsabilités (*separation of concerns*) entre le code métier (gestion des cartes, des parties, etc\...) et le code gérant le serveur (routeurs, etc\...) permet d'avoir un code plus clair.
 
 Il est donc recommandé d'écrire le code métier dans des fichiers à part appelés `service`.
 
@@ -80,6 +80,10 @@ import fs from "fs"
 import path from "path"
 import _ from "lodash"
 
+export function csvToJson(file) {
+  // csvToJson code
+}
+
 export async function importBuildings() {
   // Import buildings code
 }
@@ -89,9 +93,9 @@ export async function importWorkers() {
 }
 {{< /highlight >}}
 
-Vous n'avez plus qu'à coder ces deux fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources`.
+Vous n'avez plus qu'à coder ces trois fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources`.
 
- * La fonction [fs.promises.readFile()](https://nodejs.org/api/fs.html#fs_fspromises_readfile_path_options) (`import fs from "fs"`) permet de lire un fichier.
+ℹ️ La fonction [fs.promises.readFile()](https://nodejs.org/api/fs.html#fs_fspromises_readfile_path_options) (`import fs from "fs"`) permet de lire un fichier.
 
 {{< highlight javascript >}}
 try {
@@ -105,9 +109,9 @@ try {
 }
 {{< /highlight >}}
 
- * La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) (méthode de string) permet de diviser une chaîne de caractères à partir d'un séparateur.
+ℹ️ La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) (méthode de string) permet de diviser une chaîne de caractères à partir d'un séparateur.
 
- * La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) (`import _ from "lodash"`) permet de transformer une chaîne de caractères dans son équivalent en camel case.
+ℹ️ La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) (`import _ from "lodash"`) permet de transformer une chaîne de caractères dans son équivalent en camel case.
 
 Une fois terminé, il suffit de remplacer le code dans le routeur par l'utilisation de notre service et tout devrait fonctionner 🎉.
 
@@ -131,4 +135,4 @@ router.get("/buildings", async function(req, res) {
 
 ℹ️ Rendez-vous dans [l'annexe](https://cours.usson.me/annexes/snippets/) pour apprendre à renvoyer une erreur.
 
-ℹ️ Pour tester vos nouvelles routes, vous pouvez soit utiliser votre navigateur soit le logiciel [Postman](https://cours.usson.me/annexes/postman/).
+ℹ️ Pour tester vos nouvelles routes, vous pouvez soit utiliser votre navigateur (ne marche que pour les requêtes GET) soit le logiciel [Postman](https://cours.usson.me/annexes/postman/).
