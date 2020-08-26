@@ -36,7 +36,7 @@ Par défaut, l'application utilise un backend se trouvant à l'adresse `http://l
 Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://batisseurs-api.usson.me/`](https://batisseurs-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
 
 
-Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://www.getpostman.com/) [[aide]](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter/tree/master#use-postman-to-request-the-application).
+Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
 
 Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici](https://www.youtube.com/watch?v=YINhY-7AXqw) en vidéo.
 
