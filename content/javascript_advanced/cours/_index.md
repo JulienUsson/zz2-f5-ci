@@ -12,26 +12,23 @@ Le retour
 ## Les modules
 
 ```javascript
-// Chaque fichier est un module qui peut exporter ou importer des fonctions, classes, ...
+// Chaque fichier est appelé module. 
+// Un module peut exporter ou importer des fonctions, variables, etc... d'autres modules
 
-// import par défaut d'une fonction foo de la bibliothèque "foo"
-import foo from "foo"
-// import nommé d'une fonction bar de la bibliothèque "bar"
-import { bar } from "bar"
-// on peut renommer un import nommé
-import { foo as foobar } from "foobar" 
-// Et faire les 3 en même temps
-import defaultFoo, { namedBar, secondBar as renamedBar } from "baz"
+// Export par défaut (un seul par module)
+export default function func1() {/* some code */ }
+// Pour l'import
+import func1 from "./fichier1"
 
-// export nommé 
-export function func1() {
-    // some code
-}
+// export nommé (0 ou n par module)
+export function func2() {/* some code */ }
+export function func3() {/* some code */ }
+// Pour l'import
+import { func2, func3 } from "./fichier1"
+// On peut cumuler les deux
+import func1, { func2, func3 } from "./fichier1"
 
-// export par défaut
-export default function func2() {
-    // some code
-}
+// On peut utiliser uniquement les fonctions, variables, etc... exportés
 ```
 
 ---
@@ -39,82 +36,70 @@ export default function func2() {
 ## Les exceptions
 
 ```javascript
-function russianRoulette() {
-    if(Math.floor(Math.random() * 6) === 0) {
-        // Un problème est survenu...
-        throw new Error("BOOM")
+function readFile(file) {
+    // Some code
+    if("file don't exist") {
+        throw new Error("Error: can't read file") // Termine directement la fonction
     }
+    // Some code
 }
 
+let text = ""
 try {
-    russianRoulette();
-    console.log("t'es vivant")
+    text = readFile("./foo.txt");  
+} catch (error) {
+    text = error.message
 }
-catch(error) {
-    console.error("T'es mort")
-}
-finally {
-    console.log("Game over")
-}
+console.log(text)
 // Si on catch pas, l'exception remonte la pile
-// Si l'exception remonte tout la pile c'est le crash...
+// Si l'exception remonte toute la pile c'est le crash...
 ```
 ---
 
 ## Javascript est non bloquant (asynchrone)
 
-```javascript
-console.log("1")
+![Async](./async.png)
 
-// La lecture du fichier est exécuté en tâche de fond par la machine virtuelle
-// L'exécution du code continue
-fs.readFile('/toto.txt', (err, data) => {
-    // Une fois le fichier lu (quand tout le reste a été traité), le callback est exécuté
-    console.log("2")
+---
+
+## Asynchronité: Les callbacks
+
+```javascript
+import fs from "fs"
+
+console.log("Foo")
+
+fs.readFile('./foo.txt', function (err, data) {
+  if (err) {
+      console.error("Impossible de lire le fichier")
+      throw err
+  }
+  console.log(data);
 });
 
-console.log("3")
-// => 1 3 2
+console.log("Bar")
+// Foo Bar data
 ```
 
 ---
 
-## Le callback hell
+## Asynchronité: Les promesses (depuis 2015)
 
 ```javascript
-// On récupère l'utilisateur courant
-fetchUser((errUser, user) => {
-    if(errUser) {
-        // On affiche l'erreur s'il y en a une
-        console.error(errUser)
-        return
-    }
-    // On récupère les messages de l'utilisateur courant
-    fetchUserPosts(user, (errPosts, posts) => {
-        if(errRights) {
-            // On affiche l'erreur s'il y en a une
-            console.error(errRights)
-            return
-        }
-        // On affiche les messages
-        console.log(posts)
-    })
+import fs from "fs"
+
+console.log("Foo")
+
+fs.promises.readFile('./foo.txt').then(function (data) {
+    console.log(data)
 })
-```
+.catch(function (err) {
+    console.error("Impossible de lire le fichier")
+    throw err
+})
 
----
-
-## La solution: les promesses
-
-```javascript
-// On récupère l'utilisateur courant
-const result = fetchUserPromise()
-    // On récupère les messages de l'utilisateur courant
-    .then(user => fetchUserPostsPromise(user))
-    // On affiche les messages
-    .then(posts => console.log(posts))
-    // On affiche l'erreur s'il y en a une
-    .catch(error => console.error(error))
+console.log("Bar")
+// Foo Bar data
 ```
 
 ---
@@ -122,33 +107,27 @@ const result = fetchUserPromise()
 ## Transformer un callback en promesse
 
 ```javascript
-function fetchUser(callback) {  
-    //some code
-}
+import fs from "fs"
 
-function fetchUserPromise() {
-    return new Promise(function(resolve, reject) {
-        fetchUser((err, user) => {
+function customPromiseReadFile(path) {
+    return new Promise(function (resolve, reject) {
+        fs.promises.readFile(path).then(function (data) {
             if(err) { 
                 reject(err)
                 return
             }
-            resolve(user)
+            resolve(data)
         })
     })
 }
-
-fetchUserPromise()
-    .then(user => console.log(user))
-    .catch(err => console.error(err))
 ```
 
 ---
 
-## La syntaxe async/await
+## Asynchronité: La syntaxe async/await (sucre syntaxique)
 
 ```javascript
-// pour utiliser await il faut que la fonction soit déclarée avec async
+// On ne peut utiliser le mot-clé await que dans une fonction async
 async function getPostsPromise() {
     try {
        const user = await fetchUser()
@@ -160,14 +139,17 @@ async function getPostsPromise() {
     }
 }
 
-getPostsPromise()
-    .then(posts => console.log(posts))
-    .catch(err => console.error(err))
-// ou avec async/await si on est dans une fonction async
-try {
-    const posts = await getPostsPromise()
-    console.log(posts)
-} catch(err) {
-    console.error(err)
+// Cette fonction est totalement identique à la précédente pour l'interpréteur JS
+function getPostsPromise() {
+    return new Promise(function (resolve, reject) {
+        fetchUser().then(function (user) {
+            fetchUserPosts(user).then(function (posts) {
+                resolve(posts)
+            })
+        }).catch(function (e) {
+            console.error(e)
+            reject(e)
+        })
+    })
 }
 ```

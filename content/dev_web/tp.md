@@ -22,6 +22,8 @@ Un répertoire *node_modules* a été créé contenant l'ensemble des dépendanc
 
 Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'application. Rendez-vous sur [`http://localhost:3000/health`](http://localhost:3000/health) et le message `{ health: "ok" }` devrait s'afficher confirmant le bon fonctionnement du site 🎉.
 
+ℹ️ Si le port est déjà pris (très probable sur les machines de l'ISIMA), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
+
 Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela nous allons créer une branche `feature/cards-list` avec la commande `git branch feature/cards-list` puis nous déplacer dessus avec la commande `git checkout feature/cards-list`. N'hésitez pas à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomique** avec une description **claire**.
 
 ## Partie 3 : Création de nouvelles routes
