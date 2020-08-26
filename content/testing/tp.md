@@ -3,39 +3,6 @@ title: "TP n°5 Les tests"
 weight: 2
 ---
 
-Le but de ce TP est d'appliquer les bonnes pratiques en matière de tests [[14]](http://cours.usson.me/testing/cours/#/13). Le code développé dans le TP4 n'étant pas le plus simple à tester, nous allons d'abord réécrire quelques bouts de code.
-
-## Remaniement du code du tp4
-
-Créer le fichier `src/utils/readFile.js` exportant une fonction readFile transformant `fs.readFile` en promesse [[6]](https://cours.usson.me/javascript_advanced/cours/#/6).
-
-{{< highlight javascript >}}
-import fs from "fs"
-
-export default function readFile(path) {
-  // ...
-}
-{{< /highlight >}}
-
-Réécrivez `cardService.js` afin de correspondre au fichier ci-dessous.
-
-{{< highlight javascript >}}
-import readFile from "../utils/readFile"
-
-export function csvToJson(file) {
-  // transforme un csv en json en utilisant l'en-tête du fichier pour définir les attributs.
-}
-
-export async function importBuildings() {
-  const buildingsFile = await readFile(__dirname + "/../ressources/buildings.csv")
-  return csvToJson(buildingsFile)
-}
-
-export async function importWorkers() {
-  // ...
-}
-{{< /highlight >}}
-
 ## Ajout des tests unitaires
 
 Commençons l'écriture des tests avec des tests unitaires. Dans un premier temps, il faut créer un fichier `src/services/cardService.test.js`.
@@ -54,6 +21,8 @@ describe("csvToJson", () => {
 {{< /highlight >}}
 
 Vous devez écrire des tests unitaires uniquement pour `csvToJson` car `importBuildings` et `importWorkers` seront testés via des tests d'intégration.
+
+ℹ️ Nous pourrions tester `importBuildings` et `importWorkers` via des tests unitaire et oublier les tests d'intégration mais cela permet de voir les deux tests lors de ce TP.
 
 ℹ️ l'accent grave `` ` `` permet d'écrire des chaînes de caractères sur plusieurs lignes (pratique pour écrire un faux csv).
 
@@ -77,14 +46,27 @@ describe("Test the health check", () => {
 })
 {{< /highlight >}}
 
-La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie.
-L'exemple ci-dessous montre comment *mocker* la méthode *readFile* pour qu'elle nous retourne la chaîne de caractère `"foo"`.
+La lecture d'un fichier étant un effet de bord, il est conseillé de *mocker* cette partie. Cela permettra de modifier les cartes sans avoir à retoucher les tests.
+L'exemple ci-dessous montre comment *mocker* la méthode *fs.promises.readFile* pour qu'elle nous retourne la chaîne de caractère `"foo"` ou l'erreur `"erreur"`.
 
 {{< highlight javascript >}}
-import readFile from "../utils/readFile"
-jest.mock("../utils/readFile")
+import fs from "fs"
+jest.mock("fs")
 
-readFile.mockImplementation((_path) => Promise.resolve("foo"))
+fs.promises = {
+  // mockResolvedValue mock une promesse qui réussie
+  readFile: jest.fn().mockResolvedValue("foo")
+}
+// expect().resolves permet de tester une promesse en réussite
+expect(fs.promises.readFile("bar")).resolves.toBe("foo")
+
+// Ou pour un cas d'erreur
+fs.promises = {
+  // mockRejectedValue mock une promesse qui échoue
+  readFile: jest.fn().mockRejectedValue("erreur")
+}
+// expect().rejects permet de tester une promesse en erreur
+expect(fs.promises.readFile("bar")).rejects.toBe("erreur")
 {{< /highlight >}}
 
 ⚠️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.

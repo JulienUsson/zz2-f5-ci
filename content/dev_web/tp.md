@@ -71,7 +71,7 @@ Il est maintenant temps d'écrire le code permettant de lire les CSV et de les t
 
 Il est donc recommandé d'écrire le code métier dans des fichiers à part appelés `service`.
 
-Nous allons créer un fichier `src/services/cardService.js` afin d'écrire tout le code permettant d'intéragir avec les cartes. Nous pourrons ensuite importer et utiliser ses fonctions  dans notre routeur. On peut déjà imaginer que notre service comportera deux fonctions `importWorkers()` et `importBuildings()`.
+Nous allons créer un fichier `src/services/cardService.js` afin d'écrire tout le code permettant d'intéragir avec les cartes. Nous pourrons ensuite importer et utiliser ses fonctions  dans notre routeur. On peut déjà imaginer que notre service comportera les fonctions `importWorkers()`, `importBuildings()` et `csvToJson(file)`.
 
 {{< highlight javascript >}}
 import fs from "fs"
