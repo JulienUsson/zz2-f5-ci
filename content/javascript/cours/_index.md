@@ -23,7 +23,9 @@ console.log("Hello World !")
 
  * Simple à utiliser/apprendre
  * Plein de concepts sympas (fonctionnel, asynchrone)
- * Populaire (1er du classement [Stackoverflow Survey 2019](https://insights.stackoverflow.com/survey/2019#technology)) => Très grosse communauté
+ * Populaire (58.3% sur [Stackoverflow Survey 2020](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved)) 
+    
+    => Très grosse communauté (pleins de libs, tutos, etc...)
  * Parce que c'est moi qui décide
 
 --- 
@@ -34,7 +36,7 @@ console.log("Hello World !")
  * A partir d'ES6 (ES2015), une version tous les ans
  * Tous les navigateurs modernes supportent ES5
  * Quelques navigateurs supportent ES6
- * Aujourd'hui ES2019
+ * Aujourd'hui ES2020
 
 ---
 
@@ -47,7 +49,7 @@ console.log("Hello World !")
  * Le plus utilisé est BabelJS
  * Permet de transformer un langage en un autre
  * Ne pas confondre avec un compilateur
- * ES2019 => ES5, plus de soucis de compatibilité !
+ * ES2020 => ES5, plus de soucis de compatibilité !
  * Les polyfills permettent également une meilleure rétrocompatibilité
 
 ---
@@ -58,7 +60,7 @@ console.log("Hello World !")
 
 ## Quelques langages
 
- * TypeScript
+ * TypeScript (2ème sur [Stackoverflow Survey 2020](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved)) 
  * ReasonML
  * CoffeeScript
  * et pleins d'autres...
@@ -91,12 +93,12 @@ const const1 = "titi"
 ## Les conditions
 
 ```javascript
-const i = 0
+let i = 0
 
-if( i == 0 ) {
-  console.log("i == 0")
+if( i === 0 ) {
+  console.log("i === 0")
 } else {
-  console.log("i != 0") 
+  console.log("i !== 0") 
 }
 
 i == "0" // true
@@ -110,7 +112,7 @@ i === 0 // true
 ## Les boucles
 
 ```javascript
-let i
+let i = 0
 while ( i < 10 ) {
     console.log(i)
     i++
