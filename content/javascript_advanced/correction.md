@@ -7,13 +7,30 @@ draft: true
 ## Exercice 1 :
 
 {{< highlight javascript >}}
+function russianRoulette() {
+  if (Math.random() < 0.5) {
+    throw new Error("PAN");
+  }
+}
+
+try {
+  russianRoulette();
+  console.log("You survived !");
+} catch (e) {
+  console.log("You're dead :(");
+}
+{{< /highlight >}}
+
+## Exercice 2 :
+
+{{< highlight javascript >}}
 import chalk from "chalk";
 
 const colors = ["blue", "red", "green", "yellow", "cyan"];
 colors.forEach(color => console.log(chalk[color](color)));
 {{< /highlight >}}
 
-## Exercice 2 : 
+## Exercice 3 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -41,7 +58,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 3 : 
+## Exercice 4 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -75,7 +92,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 4 : 
+## Exercice 5 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -118,7 +135,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 5 : 
+## Exercice 6 : 
 
 {{< highlight javascript >}}
 function sleep(ms) {

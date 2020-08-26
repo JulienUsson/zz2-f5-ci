@@ -5,7 +5,24 @@ weight: 2
 
 Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
 
-## Exercice 1 : 
+## Exercice 1 :  Comprendre les exceptions
+
+En utilisant la fonction suivante sans la modifier :
+ * Regarder comment se comporte ce code lorsque l'exception est levée.
+ * Faites en sorte que le log `You're dead :(` s'affiche si l'exception est levée en utilisant `try {} catch(e) {}`.
+ * Faites en sorte que le log `You survived :D` s'affiche si l'exception n'est pas levée en utilisant le même `try {} catch(e) {}` que précedemment.
+
+```javascript
+function russianRoulette() {
+  if (Math.random() < 0.5) {
+    throw new Error("PAN");
+  }
+}
+
+russianRoulette()
+```
+
+## Exercice 2 :  Utiliser une bibliothèque
 
 Ecrire un script utilisant la bibliothèque [Chalk](https://github.com/chalk/chalk#usage) qui écrit chaque élément du tableau suivant dans la couleur de l'élément.
 
@@ -17,7 +34,7 @@ const colors = ["blue", "red", "green", "yellow", "cyan"]
 
 ⚠️ N'oubliez pas d'ajouter la bibliothèque `Chalk` avec le bouton `Add dependency` de CodeSandbox.
 
-## Exercice 2 :
+## Exercice 3 : Utiliser les promesses
 
 Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me/api/?results=100) avec [axios](https://github.com/axios/axios#example) et qui les affichent.
 
@@ -28,7 +45,7 @@ Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me
 
 ⚠️ N'oubliez pas d'ajouter la bibliothèque `Axios` avec le bouton `Add dependency` de CodeSandbox.
 
-## Exercice 3 :
+## Exercice 4 : Utiliser les promesses
 
 Ecrire un script qui récupère 1000 users et qui affiche les users dont la timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
 
@@ -36,14 +53,14 @@ Ecrire un script qui récupère 1000 users et qui affiche les users dont la time
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
 
-## Exercice 4 :
+## Exercice 5 : Utiliser les promesses
 
 Ecrire un script qui récupère 1000 users et qui stocke dans un second tableau uniquement le prénom et le nom de tous les users dont le timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter), [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map) et [forEach()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach))
 
  * En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
-## Exercice 5
+## Exercice 6 : Transformer un callback en promesse
 
 La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) permet d'exécuter du code après x ms de façon asynchrone. Malheureusement, à l'époque de la création de cette fonction, les promesses n'existaient pas ! 
 
