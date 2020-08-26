@@ -20,13 +20,13 @@ Tester, c'est douter
 
 ## Static analysis / Linting
 
- * Eslint => le plus utilisé en Javascript
  * Analyse du code sans l'exécuter
  * Détecte les erreurs de programmation comme :
     * Les variables non utilisées
     * Les imports manquants
     * ...
  * Intégré aux IDEs pour un feedback immédiat
+ * Eslint => le plus utilisé en Javascript
 
 ---
 

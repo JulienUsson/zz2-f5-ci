@@ -31,16 +31,20 @@ src/routes/cardRouter.test.js
 {{< highlight javascript >}}
 import request from "supertest"
 import app from "../app"
-import readFile from "../utils/readFile"
-jest.mock("../utils/readFile")
+import fs from "fs"
+jest.mock("fs")
 
-describe("/cards/workers", () => {
-  test("should response the GET method", async () => {
-    const testCsv = `\
+const testCsv = `\
 wood;stone;victory point
 1;2;3
 4;5;6`
-    readFile.mockResolvedValue(testCsv)
+
+describe("/cards/workers", () => {
+  test("should response the GET method", async () => {
+    fs.promises = {
+      readFile: jest.fn().mockResolvedValue(testCsv)
+    }
+
     const response = await request(app).get("/cards/workers")
     expect(response.statusCode).toBe(200)
     expect(response.body).toStrictEqual([
@@ -50,7 +54,9 @@ wood;stone;victory point
   })
 
   test("should return 500 if reading failed", async () => {
-    readFile.mockRejectedValue(Error("Error test"))
+    fs.promises = {
+      readFile: jest.fn().mockRejectedValue(Error("Error test"))
+    }
     const response = await request(app).get("/cards/workers")
     expect(response.statusCode).toBe(500)
     expect(response.text).toEqual("Can't read workers cards.")
@@ -59,11 +65,9 @@ wood;stone;victory point
 
 describe("/cards/buildings", () => {
   test("should response the GET method", async () => {
-    const testCsv = `\
-wood;stone;victory point
-1;2;3
-4;5;6`
-    readFile.mockResolvedValue(testCsv)
+    fs.promises = {
+      readFile: jest.fn().mockResolvedValue(testCsv)
+    }
     const response = await request(app).get("/cards/buildings")
     expect(response.statusCode).toBe(200)
     expect(response.body).toStrictEqual([
@@ -73,7 +77,9 @@ wood;stone;victory point
   })
 
   test("should return 500 if reading failed", async () => {
-    readFile.mockRejectedValue(Error("Error test"))
+    fs.promises = {
+      readFile: jest.fn().mockRejectedValue(Error("Error test"))
+    }
     const response = await request(app).get("/cards/buildings")
     expect(response.statusCode).toBe(500)
     expect(response.text).toEqual("Can't read buildings cards.")

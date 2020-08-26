@@ -25,6 +25,12 @@ Vous devez écrire des tests unitaires uniquement pour `csvToJson` car `importBu
 ℹ️ Nous pourrions tester `importBuildings` et `importWorkers` via des tests unitaire et oublier les tests d'intégration mais cela permet de voir les deux tests lors de ce TP.
 
 ℹ️ l'accent grave `` ` `` permet d'écrire des chaînes de caractères sur plusieurs lignes (pratique pour écrire un faux csv).
+{{< highlight javascript >}}
+const multilineText = `\
+foo
+bar
+baz`
+{{< /highlight >}}
 
 ℹ️ la commande `npm run test` permet d'exécuter les tests.
 
