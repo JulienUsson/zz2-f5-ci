@@ -32,6 +32,17 @@ Accept: text/html
 User-Agent: Chrome/27.0.1453.110
 ```
 
+## La réponse
+
+```HTTP
+HTTP/2 200 
+content-type: text/html; charset=UTF-8
+Content-Length: 155
+date: Wed, 26 Aug 2020 13:59:36 GMT
+
+<html>...</html>
+```
+
 ---
 
 
@@ -48,7 +59,6 @@ User-Agent: Chrome/27.0.1453.110
 
 ## Les headers HTTP
 
-
 | Headers       | Définition                    |
 | ------------- | ----------------------------- |
 | Accept        | Format des données attendues  |
@@ -56,6 +66,23 @@ User-Agent: Chrome/27.0.1453.110
 | Cache-Control | Politique de cache            |
 | Authorization | Token d'authentification      |
 | Origin        | L'origine de la consultation  |
+
+---
+
+## Les codes de retour
+
+
+| Headers       | Définition                    |
+| ------------- | ----------------------------- |
+| 2xx           | Success                       |
+| 200           | Ok                            |
+| 4xx           | Client errors                 |
+| 400           | Bad Request                   |
+| 401           | Unauthorized                  |
+| 403           | Forbidden                     |
+| 404           | Not found                     |
+| 5xx           | Server errors                 |
+| 500           | Internal Server Error         |
 
 ---
 
@@ -80,6 +107,7 @@ Accept: application/json
 ```
 
 ```json
+// Status code 200
 [
     {id: 1, name: "Classique jambon" },
     {id: 2, name: "Bellachô" },
@@ -99,6 +127,7 @@ Accept: application/json
 ```
 
 ```json
+// Status code 200
 {
     id: 42, 
     name: "4 Fromages",
@@ -120,6 +149,15 @@ Accept: application/json
 }
 ```
 
+```json
+// Status code 201
+{
+    id: 50,
+    name: "Pepperoni",
+    description: "Une pizza au pepperoni"
+}
+```
+
 ---
 
 ## Modifier la pizza n°42
@@ -135,6 +173,15 @@ Accept: application/json
 }
 ```
 
+```json
+// Status code 200
+{
+    id: 42,
+    name: "5 Fromages",
+    description: "Une pizza au fromage"
+}
+```
+
 ---
 
 ## Supprimer la pizza n°42
@@ -145,6 +192,14 @@ Host: www.pizzima.fr
 Accept: application/json
 ```
 
+```json
+// Status code 200
+{
+    id: 42,
+    name: "5 Fromages",
+    description: "Une pizza au fromage"
+}
+```
 
 ---
 
@@ -154,6 +209,11 @@ Accept: application/json
 GET /pizzas/42/ingredients
 Host: www.pizzima.fr
 Accept: application/json
+```
+
+```json
+// Status code 200
+["Sauce tomate", "Mozzarella", "Jambon"]
 ```
 
 ---
@@ -169,16 +229,16 @@ import pizzaService from "../services/pizzaService"
 
 app.get('/pizzas', (req, res) => {
     const pizzas = pizzaService.findAll()
-    res.json(pizzas)
+    res.status(200).json(pizzas)
 })
 
 app.post('/pizzas/:id', (req, res) => {
-    pizzaService.update(req.params.id, req.body)
-    res.sendStatus(200)
+    const updatedPizza = pizzaService.update(req.params.id, req.body)
+    res.status(200).json(updatedPizza)
 })
 
 app.delete('/pizzas/:id', (req, res) => {
-    pizzaService.delete(req.params.id)
-    res.sendStatus(200)
+    const removedPizza = pizzaService.delete(req.params.id)
+    res.status(200).json(removedPizza)
 })
 ```
