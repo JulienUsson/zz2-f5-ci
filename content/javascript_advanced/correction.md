@@ -21,16 +21,7 @@ try {
 }
 {{< /highlight >}}
 
-## Exercice 2 :
-
-{{< highlight javascript >}}
-import chalk from "chalk";
-
-const colors = ["blue", "red", "green", "yellow", "cyan"];
-colors.forEach(color => console.log(chalk[color](color)));
-{{< /highlight >}}
-
-## Exercice 3 : 
+## Exercice 2 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -58,7 +49,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 4 : 
+## Exercice 3 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -92,7 +83,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 5 : 
+## Exercice 4 : 
 
 En utilisant les promesses
 {{< highlight javascript >}}
@@ -135,7 +126,7 @@ async function displayUsers() {
 displayUsers();
 {{< /highlight >}}
 
-## Exercice 6 : 
+## Exercice 5 : 
 
 {{< highlight javascript >}}
 function sleep(ms) {

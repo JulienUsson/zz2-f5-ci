@@ -1,7 +1,7 @@
 ---
 title: "Correction TP n°1 Javascript"
 weight: 3
-draft: true
+draft: false
 ---
 
 ## Exercice 1 :
@@ -72,15 +72,15 @@ colors.forEach(color => console.log(color));
 ## Exercice 4 : 
 
 {{< highlight javascript >}}
-const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
-const julien = peoples.find(({ name, age }) => name === "Julien" && age === 25);
+const users = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
+const julien = users.find(({ name, age }) => name === "Julien" && age === 25);
 console.log(julien);
 {{< /highlight >}}
 
 ## Exercice 5 : 
 
 {{< highlight javascript >}}
-const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
-const underTwentySix = peoples.filter(({age}) => age < 26)
+const users = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
+const underTwentySix = users.filter(({age}) => age < 26)
 console.log(underTwentySix)
 {{< /highlight >}}

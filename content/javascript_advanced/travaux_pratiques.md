@@ -22,19 +22,7 @@ function russianRoulette() {
 russianRoulette()
 ```
 
-## Exercice 2 :  Utiliser une bibliothèque
-
-Ecrire un script utilisant la bibliothèque [Chalk](https://github.com/chalk/chalk#usage) qui écrit chaque élément du tableau suivant dans la couleur de l'élément.
-
-```javascript
-const colors = ["blue", "red", "green", "yellow", "cyan"]
-```
-
-⚠️ `const chalk = require('chalk');` est l'ancienne syntaxe, il faut utiliser `import chalk from "chalk"`. 
-
-⚠️ N'oubliez pas d'ajouter la bibliothèque `Chalk` avec le bouton `Add dependency` de CodeSandbox.
-
-## Exercice 3 : Utiliser les promesses
+## Exercice 2 : Utiliser les promesses
 
 Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me/api/?results=100) avec [axios](https://github.com/axios/axios#example) et qui les affichent.
 
@@ -43,9 +31,9 @@ Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me
 
 ⚠️ Attention à l'aspect asynchrone du code ! Mettez des logs un peu partout et regarder l'ordre d'affichage. 
 
-⚠️ N'oubliez pas d'ajouter la bibliothèque `Axios` avec le bouton `Add dependency` de CodeSandbox.
+⚠️ N'oubliez pas d'ajouter la bibliothèque `Axios` avec le bouton `Add dependency` sur CodeSandbox ou via `npm install --save axios` en local.
 
-## Exercice 4 : Utiliser les promesses
+## Exercice 3 : Utiliser les promesses
 
 Ecrire un script qui récupère 1000 users et qui affiche les users dont la timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
 
@@ -53,14 +41,14 @@ Ecrire un script qui récupère 1000 users et qui affiche les users dont la time
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
 
-## Exercice 5 : Utiliser les promesses
+## Exercice 4 : Utiliser les promesses
 
 Ecrire un script qui récupère 1000 users et qui stocke dans un second tableau uniquement le prénom et le nom de tous les users dont le timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter), [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map) et [forEach()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach))
 
  * En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
  * En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
-## Exercice 6 : Transformer un callback en promesse
+## Exercice 5 : Transformer un callback en promesse
 
 La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) permet d'exécuter du code après x ms de façon asynchrone. Malheureusement, à l'époque de la création de cette fonction, les promesses n'existaient pas ! 
 

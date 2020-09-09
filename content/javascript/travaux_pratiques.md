@@ -47,7 +47,7 @@ const colors = ["blue", "red", "green", "yellow", "cyan"]
 Ecrire un script qui récupère l'objet `{name: "Julien", age: 25}` du tableau.
 
 ```javascript
-const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
+const users = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
 // Résultat attendu : {name: "Julien", age: 25}
 ```
 
@@ -58,7 +58,7 @@ const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bas
 Ecrire un script qui récupère les personnes ayant moins de 26ans du tableau.
 
 ```javascript
-const peoples = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
+const users = [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}, {name: "Raphaël", age: 28}, {name: "Alexandre", age: 42}, {name: "Julien", age: 55}]
 // Résultat attendu : [{name: "Julien", age: 25}, {name: "Maud", age: 24}, {name: "Bastien", age: 22}]
 ```
 
