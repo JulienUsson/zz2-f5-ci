@@ -111,7 +111,7 @@ import fs from "fs"
 
 function customPromiseReadFile(path) {
     return new Promise(function (resolve, reject) {
-        fs.promises.readFile(path).then(function (data) {
+        fs.readFile(path, function (err, data) {
             if(err) { 
                 reject(err)
                 return
