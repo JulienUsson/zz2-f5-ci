@@ -225,7 +225,7 @@ Accept: application/json
 ## ExpressJS
 
 ```javascript
-import pizzaService from "../services/pizzaService"
+import * as pizzaService from "../services/pizzaService"
 
 app.get('/pizzas', (req, res) => {
     const pizzas = pizzaService.findAll()
