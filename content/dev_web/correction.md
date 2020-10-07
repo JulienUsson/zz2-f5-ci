@@ -76,14 +76,14 @@ export function csvToJson(file) {
 
 export async function importBuildings() {
   const buildingsPath = path.join(__dirname, "../ressources/buildings.csv")
-  const buildingsFile = await fs.promises.readFile(buildingsPath)
+  const buildingsFile = await fs.promises.readFile(buildingsPath, "utf8")
   // L'exception n'est pas catché donc elle va remonter si elle est levée.
   return csvToJson(buildingsFile)
 }
 
 export async function importWorkers() {
   const workersPath = path.join(__dirname, "../ressources/workers.csv")
-  const workersFile = await fs.promises.readFile(workersPath)
+  const workersFile = await fs.promises.readFile(workersPath, "utf8")
   // L'exception n'est pas catché donc elle va remonter si elle est levée.
   return csvToJson(workersFile)
 }
