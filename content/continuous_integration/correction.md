@@ -10,7 +10,8 @@ draft: false
 image: node:latest
 
 cache:
-  key: node-cache
+  files:
+    - package.json
   paths:
   - node_modules/
 
