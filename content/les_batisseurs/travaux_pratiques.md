@@ -4,7 +4,7 @@ title: "TP final Les bâtisseurs : Moyen-Âge"
 
 ## Mise en place du projet
 
-Formez une équipe de deux personnes et choisissez un des deux projets pour continuer le développement. Invitez la personne manquante sur le projet et n'oubliez pas de m'inviter ([@JulienUsson](https://gitlab.com/JulienUsson)) pour que je puisse vous noter 😉. Rajoutez un fichier `authors.md` avec votre pseudo suivi de votre nom afin que je sache quel pseudo correspond à quelle personne. Vous êtes prêts à coder 🎉.
+Formez une équipe de deux personnes et choisissez un des deux projets pour continuer le développement. Invitez la personne manquante sur le projet et n'oubliez pas de m'inviter ([@JulienUsson](https://gitlab.com/JulienUsson)) avec le **droit Reporter** minimum pour que je puisse vous noter 😉. Rajoutez un fichier `authors.md` avec votre pseudo suivi de votre nom afin que je sache quel pseudo correspond à quelle personne. Vous êtes prêts à coder 🎉.
 
 ## Gestion de projet
 
