@@ -54,6 +54,8 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ## User Stories
 
+⚠️ Les aides ne sont données qu'à titre indicatif. Vous pouvez utiliser la méthode que vous préférez.
+
 ### En tant que joueur, je peux créer une partie
 
  * Création de la route `POST /games` [[doc]](https://batisseurs-api.usson.me/#api-Game-createGame) pour créer une partie. 
@@ -61,6 +63,29 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
 ℹ️ Les apprentis sont les cartes qui coûtent 2 écus.
+
+<details>
+    <summary>Aide</summary>
+
+ * Créer une partie avec les valeurs de départ. (s'aider de la [doc](https://batisseurs-api.usson.me/#api-Game-createGame) et des [règles](../rules.pdf) pour déduire les valeurs).
+ Attention il faut sauvegardé les decks dans la partie mais ne pas l'envoyer au joueur (il pourrait tricher avec ces infos).
+On peut le stocker dans `game._private.buildingsDeck` et dans `game._private.workersDeck` puis le filter avant l'envoi via :
+
+```javascript
+function filterPrivateField(obj) {
+    delete obj._private
+    return obj
+}
+
+router.get("/games/:gameId", function(req, res) {
+    const game = // ...
+    res.json(filterPrivateField(game))
+})
+```
+
+ * Lire de fichier `storage/database.json`, s'il n'existe pas le créer avec la valeur `[]` (tableau vide) puis le transformer en JS avec [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse).
+ * Ajouter la partie créée dans le tableau des parties.
+ * Ecraser le fichier `storage/database.json` avec le nouveau tableau des parties.  
 
 ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire unique.
 
@@ -74,13 +99,33 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir un string en objet Javascript.
 
+</details>
+
 ### En tant que joueur, je peux voir les détails d'une partie
 
  * Création de la route `GET /games/{gameId}` [[doc]](https://batisseurs-api.usson.me/#api-Game-getGame) pour récupérer les informations d'une partie. 
 
+<details>
+    <summary>Aide</summary>
+    
+ * Lire le fichier de base de données et le parser.
+ * Utiliser [find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) pour trouver la partie via son id.
+ * La retourner 
+
+</details>
+
 ### En tant que joueur, je peux lister les parties existante
 
  * Création de la route `GET /games` [[doc]](https://batisseurs-api.usson.me/#api-Game-findAllGames) pour lister les partie. 
+
+
+<details>
+    <summary>Aide</summary>
+    
+ * Lire le fichier de base de données et le parser.
+ * Retourner le tableau des parties.
+    
+</details>
 
 ### En tant que joueur, je peux ouvrir un chantier
 
@@ -112,6 +157,11 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ### En tant que joueur, je peux utiliser les machines
 
-ℹ️ Une des possibilité est qu'une fois un bâtiment machine terminé, on peut créer un ouvrier correspondant aux caractéristiques de la carte. 
+<details>
+    <summary>Aide</summary>
+
+Une des possibilité est qu'une fois un bâtiment machine terminé, on peut créer un ouvrier correspondant aux caractéristiques de la carte. 
+
+</details>
 
 ### En tant que joueur, je peux terminer une partie

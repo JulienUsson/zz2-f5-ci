@@ -29,3 +29,6 @@ isHTML = true
 theme = "simple"
 highlight_theme = "monokai"
 slide_number=true
+
+[markup.goldmark.renderer]
+unsafe= true
