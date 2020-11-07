@@ -60,6 +60,8 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
  * Sauvegarder les parties dans un/des fichier(s) dans le répertoire `/storage` afin de conserver les parties entre deux redémarrages.
 
+ℹ️ Les apprentis sont les cartes qui coûtent 2 écus.
+
 ℹ️ [uuidv4()](https://www.npmjs.com/package/uuid) permet de générer un identifiant aléatoire unique.
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
