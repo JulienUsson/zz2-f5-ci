@@ -66,7 +66,9 @@ Il ne faut pas gérer les pièces d'or, on utilisera uniquement des pièces d'ar
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
 
-ℹ️ [fs.writeFile()](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) permet d'écrire dans un fichier (pensez aux promises 😉).
+ℹ️ [fs.promises.readFile()](https://nodejs.org/api/fs.html#fs_fspromises_readdir_path_options) permet de lire dans un fichier.
+
+ℹ️ [fs.promises.writeFile()](https://nodejs.org/api/fs.html#fs_fspromises_writefile_file_data_options) permet d'écrire dans un fichier.
 
 ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un objet Javascript en string.
 
