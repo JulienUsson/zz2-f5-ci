@@ -41,3 +41,25 @@ import HttpError from "../middlewares/HttpError"
 
 throw new HttpError(400, "error message")
 ```
+
+## Route parameters
+
+```javascript
+app.get('/games/:gameId', function (req, res) {
+  const gameId = req.params.gameId
+  
+  // ...
+})
+```
+
+## Read body of the request
+
+```javascript
+app.post('/games', function (req, res) {
+  const name = req.body.name
+  const numberOfPlayers = req.body.numberOfPlayers
+  const shuffle = req.body.shuffle
+
+  // ...
+})
+```
