@@ -15,20 +15,21 @@ Le retour
 // Chaque fichier est appelé module. 
 // Un module peut exporter ou importer des fonctions, variables, etc... d'autres modules
 
-// Export par défaut (un seul par module)
-export default function func1() {/* some code */ }
+// exports nommés (0 ou n par module) 
+export function func1() {/* some code */ } // fichier1.js
 // Pour l'import
-import func1 from "./fichier1"
+import { func1 } from "./fichier1" // fichier2.js
+// On peut le renommer
+import { func1 as toto } from "./fichier1" // fichier2.js
 
-// export nommé (0 ou n par module)
-export function func2() {/* some code */ }
-export function func3() {/* some code */ }
+
+// Export par défaut (un seul par module)
+export default function func1() {/* some code */ } // fichier1.js
 // Pour l'import
-import { func2, func3 } from "./fichier1"
+import func1 from "./fichier1" // fichier2.js
+
 // On peut cumuler les deux
 import func1, { func2, func3 } from "./fichier1"
-
-// On peut utiliser uniquement les fonctions, variables, etc... exportés
 ```
 
 ---
@@ -39,7 +40,8 @@ import func1, { func2, func3 } from "./fichier1"
 function readFile(file) {
     // Some code
     if("file don't exist") {
-        throw new Error("Error: can't read file") // Termine directement la fonction
+        throw new Error("Error: can't read file") 
+        // Termine directement la fonction (comme un 'return')
     }
     // Some code
 }
@@ -47,11 +49,12 @@ function readFile(file) {
 let text = ""
 try {
     text = readFile("./foo.txt");  
-} catch (error) {
-    text = error.message
+} catch (err) {
+    console.error(err)
+    process.exit(1)
 }
 console.log(text)
-// Si on catch pas, l'exception remonte la pile
+// Si on catch pas, l'exception remonte la pile d'exécution jusqu'à trouver un catch
 // Si l'exception remonte toute la pile c'est le crash...
 ```
 ---
@@ -62,7 +65,7 @@ console.log(text)
 
 ---
 
-## Asynchronité: Les callbacks
+## Asynchronité: Les callbacks (deprecated)
 
 ```javascript
 import fs from "fs"

@@ -30,7 +30,7 @@ isHTML = true
 
 [params.reveal_hugo]
 theme = "simple"
-highlight_theme = "monokai"
+highlight_theme = "vs2015"
 slide_number=true
 
 [markup.goldmark.renderer]

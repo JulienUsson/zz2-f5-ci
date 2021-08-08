@@ -26,7 +26,7 @@ Tester, c'est douter
     * Les imports manquants
     * ...
  * Intégré aux IDEs pour un feedback immédiat
- * Eslint => le plus utilisé en Javascript
+ * [Eslint](https://eslint.org/) => le plus utilisé en Javascript
 
 ---
 

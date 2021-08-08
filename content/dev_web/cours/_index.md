@@ -9,6 +9,12 @@ weight: 1
 
 ---
 
+
+> Mais c'est quoi une application web ?
+
+
+---
+
 ## Une application web 
 
  * Ca répond à des requêtes HTTP

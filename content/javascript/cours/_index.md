@@ -23,7 +23,7 @@ console.log("Hello World !")
 
  * Simple à utiliser/apprendre
  * Plein de concepts sympas (fonctionnel, asynchrone)
- * Populaire (58.3% sur [Stackoverflow Survey 2020](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved)) 
+ * Populaire (61.51% sur [Stackoverflow Survey 2021](https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted)) 
     
     => Très grosse communauté (pleins de libs, tutos, etc...)
  * Parce que c'est moi qui décide
@@ -35,8 +35,8 @@ console.log("Hello World !")
  * Avant ES5, une version tous les 3-5ans
  * A partir d'ES6 (ES2015), une version tous les ans
  * Tous les navigateurs modernes supportent ES5
- * Quelques navigateurs supportent ES6
- * Aujourd'hui ES2020
+ * mais ne supportent **pas** ES6 ([Caniuse](https://caniuse.com/?search=es6))
+ * Aujourd'hui ES2021
 
 ---
 
@@ -46,11 +46,11 @@ console.log("Hello World !")
 
 ## les transpileurs
 
- * Le plus utilisé est BabelJS
+ * Le plus utilisé est [BabelJS](https://babeljs.io/)
  * Permet de transformer un langage en un autre
  * Ne pas confondre avec un compilateur
- * ES2020 => ES5, plus de soucis de compatibilité !
- * Les polyfills permettent également une meilleure rétrocompatibilité
+ * ES2021 => ES5, plus de soucis de compatibilité !
+ * Les [polyfills](https://developer.mozilla.org/fr/docs/Glossary/Polyfill) permettent également une meilleure rétrocompatibilité
 
 ---
 
@@ -60,7 +60,7 @@ console.log("Hello World !")
 
 ## Quelques langages
 
- * TypeScript (2ème sur [Stackoverflow Survey 2020](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved)) 
+ * TypeScript (3ème sur [Stackoverflow Survey 2021](https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted)) 
  * ReasonML
  * CoffeeScript
  * et pleins d'autres...
