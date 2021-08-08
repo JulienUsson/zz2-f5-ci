@@ -1,7 +1,6 @@
 ---
 title: "Code snippets"
 weight: 1
-pdf: false
 ---
 
 ## Add a router

@@ -1,7 +1,6 @@
 ---
 title: "Recommanded Visual Studio Code plugins"
-weight: 4
-pdf: false
+weight: 3
 ---
 
  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
