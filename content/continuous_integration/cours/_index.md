@@ -45,6 +45,7 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 
 ## Les plateformes de CI/CD
 
+ * Github Actions
  * Gitlab CI
  * Circle CI
  * Travis CI
@@ -57,32 +58,10 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 
 ---
 
-# Gitlab CI
+# Github Actions
 
 ```yaml
-# fichier .gitlab-ci.yml placé à la racine du dépôt
-
-# L'image Docker sur laquelle on se base
-image: node:latest 
-
-# Exécuté avant chaque job
-before_script:
-    - npm install
-
-# Définition des différents stages
-stages:
-    - test
-    - deploy
-
-# Définition d'un job du stage test
-test:
-    stage: test
-    script: npm run test # On lance les tests
-
-# Définition d'un job du stage deploy
-deploy:
-    stage: deploy
-    script: npm run deploy # On déploie l'application
+ TODO
 ```
 
 ---

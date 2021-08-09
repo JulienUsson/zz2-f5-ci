@@ -3,15 +3,13 @@ title: "TP n°4 Le developpement web"
 weight: 2
 ---
 
-Lors de ce TP, nous allons commencer le développement du jeu **Les Bâtisseurs - Moyen-Âge**. Dans un premier temps, je vous propose soit de [lire les règles](../../les_batisseurs/rules.pdf) soit de [regarder la vidéo explicative](https://www.youtube.com/watch?v=YINhY-7AXqw).
+Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans un premier temps, je vous propose soit de [lire les règles](../../jaipur/rules.pdf) soit de [regarder la vidéo explicative](https://www.youtube.com/watch?v=xdQymiuB5-c).
 
 ## Partie 1: Récupération du projet
 
-Pour récupérer le projet, nous allons nous rendre sur le [dépôt Gitlab](https://gitlab.com/JulienUsson/les-batisseurs-backend-starter) hébergeant le starter. Une fois sur la page connectée à Gitlab, il suffit de forker le projet avec le bouton *fork* en haut à droite [[aide]](https://docs.gitlab.com/ee/workflow/forking_workflow.html#creating-a-fork). Cela va créer une copie du dépôt vous appartenant afin que chacun puisse travailler sur son propre dépôt.
+Pour récupérer le projet, nous allons nous rendre sur le [dépôt Github](https://github.com/JulienUsson/jaipur-backend-starter) hébergeant le starter. Une fois sur la page connectée à Github, il suffit de forker le projet avec le bouton *fork* en haut à droite [[aide]](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository). Cela va créer une copie du dépôt vous appartenant afin que chacun puisse travailler sur son propre dépôt.
 
-Je vous conseille de passer le dépôt en privé dans les paramètres afin d'éviter toute tentations [[aide]](https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility).
-
-Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone [URL]` où l'url est celle indiquée en haut à droite lorsque l'on clique sur le bouton *clone*. Il existe deux façon de cloner un projet, soit en utilisant SSH soit en utilisant HTTPS. L'avantage de SSH est qu'il n'est pas nécessaire de taper son login/mot de passe à chaque `git push` mais il faut générer et configurer une clé privée [[aide]](https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html). **Je vous conseille d'utiliser HTTPS pour l'instant.**
+Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY` [[aide]](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository).
 
 ## Partie 2 : Démarrage du projet
 
