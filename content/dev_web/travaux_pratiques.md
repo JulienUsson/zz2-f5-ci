@@ -26,11 +26,11 @@ Avant de commencer à développer, il est important de **toujours** travailler d
 
 ## Partie 3 : Création de nouvelles routes
 
-Nous allons développer deux nouvelles routes permettant d'afficher l'ensemble des cartes du jeu. Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://batisseurs-api.usson.me/`](https://batisseurs-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
+Nous allons développer deux nouvelles routes permettant d'afficher l'ensemble des cartes du jeu. Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://jaipur-api.usson.me/`](https://jaipur-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
 
 Lors de ce TP, nous allons développer `findAllBuildings` et `findAllWorkers` des routes permettant de récupérer respectivement les cartes des ouvriers et les cartes des bâtiments.
 
-[![api documentation](../swagger.png)](https://batisseurs-api.usson.me/#api-Cards-findAllBuildings)
+[![api documentation](../swagger.png)](https://jaipur-api.usson.me/#api-Cards-findAllBuildings)
 
 On va créer un nouveau router `src/routes/cardRouter.js` et y coller le code suivant :
 
