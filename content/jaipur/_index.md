@@ -1,4 +1,4 @@
 ---
 title: "Jaipur"
-weight: 8
+weight: 9
 ---

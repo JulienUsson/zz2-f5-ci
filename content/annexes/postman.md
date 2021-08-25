@@ -1,6 +1,6 @@
 ---
 title: "Use Postman to request the application"
-weight: 1
+weight: 2
 ---
 
  - Download Postman [here](https://www.postman.com/downloads/) (it's already installed on Isima's computers)

@@ -30,6 +30,7 @@ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](
 
 ## Représentation d'une partie en Javascript
 
+⚠️ Ceci est une des nombreuses façons de le faire. Vous pouvez utiliser la méthode que vous préférez.
 
 ```json
 {
@@ -91,15 +92,17 @@ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](
 
 ℹ️ On peut sauvegarder les parties sous forme d'un tableau de parties dans le fichier.
 
+ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
+
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
 
-ℹ️ [fs.readFileSync()](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options) permet de lire une string d'un fichier.
+ℹ️ [fs.readFileSync()](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options) permet de lire une **string** d'un fichier.
 
-ℹ️ [fs.writeFileSync()](https://nodejs.org/api/fs.html#fs_fs_writefilesync_file_data_options) permet d'écrire une string dans un fichier.
+ℹ️ [fs.writeFileSync()](https://nodejs.org/api/fs.html#fs_fs_writefilesync_file_data_options) permet d'écrire une **string** dans un fichier.
 
-ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un objet Javascript en string.
+ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un **objet** Javascript en **string**.
 
-ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une string en objet Javascript.
+ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une **string** en **objet** Javascript.
 
 </details>
 
@@ -130,6 +133,7 @@ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](
 ### En tant que joueur, je peux vendre des cartes [2]
 
  * Création de la route `POST /sell` [[doc]](https://jaipur-api.usson.me/#api-Game-sell).
+ * Permettre l'action uniquement si la transaction est valide (paragraphe *"Restriction lors d'une vente"* des règles)
  * Permettre l'action uniquement si c'est le tour du joueur.
  
 ### En tant que joueur, je peux terminer une partie [2]

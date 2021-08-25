@@ -13,15 +13,16 @@ Le retour
 
 ```javascript
 // Chaque fichier est appelé module. 
-// Un module peut exporter ou importer des fonctions, variables, etc... d'autres modules
+// Un module peut exporter ou importer des fonctions, variables, etc...
 
 // exports nommés (0 ou n par module) 
 export function func1() {/* some code */ } // fichier1.js
-// Pour l'import
 import { func1 } from "./fichier1" // fichier2.js
-// On peut le renommer
+// On peut le renommer si besoin
 import { func1 as toto } from "./fichier1" // fichier2.js
-
+// On peut tout importer sous un même nom
+import * as Utils from "./fichier1" // fichier2.js
+Utils.func1()
 
 // Export par défaut (un seul par module)
 export default function func1() {/* some code */ } // fichier1.js

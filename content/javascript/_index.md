@@ -1,4 +1,4 @@
 ---
 title: "Javascript"
-weight: 1
+weight: 2
 ---
