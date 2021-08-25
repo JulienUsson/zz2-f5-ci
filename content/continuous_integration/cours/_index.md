@@ -60,8 +60,29 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 
 # Github Actions
 
+.github/workflows/continuous-integration.yml
+
 ```yaml
- TODO
+name: Continuous integration
+on: [push]
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm install
+  test: 
+    needs: setup
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Run tests
+        run: npm run test
 ```
 
 ---

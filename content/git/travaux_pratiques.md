@@ -3,13 +3,15 @@ title: "TP n°3 Git"
 weight: 2
 ---
 
-## Partie 1 : L'heure de mettre les mains dans le cambouis !
+## Partie 1 : Github
+
+Allez sur [Github](https://github.com/) pour vous créer un compte, cela sera utile pour la suite des TPs. 
+
+ℹ️ N'hésitez pas à rajouter votre compte Github sur votre CV, surtout si vous voulez être développeur.
+
+## Partie 2 : L'heure de mettre les mains dans le cambouis !
 
 Rendez-vous sur [Katacoda](https://katacoda.com/courses/git) [EN], un site génial contenant pleins de tutoriels interractifs et faîtes les 9 exercices sur Git.
-
-## Partie 2 : Gitlab
-
-Allez sur [Gitlab](https://gitlab.com/) pour vous créer un compte, cela sera utile pour la suite des TPs.
 
 ## Autres ressources
 

@@ -154,6 +154,6 @@ $ git push origin master
 
 ---
 
-## Les merge requests
+## Les pull requests
 
-![Merge request](./merge-request.png)
+![Pull request](./merge-request.png)

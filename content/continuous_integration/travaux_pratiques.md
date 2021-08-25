@@ -7,37 +7,43 @@ Pour être certain de la qualité du code produit sur ce projet, nous allons met
 
 ## Mise en place
 
-Pour commencer, nous allons créer un fichier `.gitlab-ci.yml` et l'initialiser avec le contenu suivant
+Pour commencer, nous allons créer un fichier `.github/workflows/continuous-integration.yml` et l'initialiser avec l'exemple du cours.
 
 ```yaml
-image: node:latest 
-
-before_script:
-    - npm install
-
-stages:
-    - test
-
-test:
-    stage: test
-    script: 
-        - npm run test
+name: Continuous integration
+on: [push]
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm install
+  test: 
+    needs: setup
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Run tests
+        run: npm run test
 ```
 
 Ce fichier permet, à chaque commit, de lancer les tests.
-Maintenant, pousser ce fichier sur git et regarder *Gitlab* exécuter la pipeline depuis son interface web.
+Maintenant, pousser ce fichier sur git et regarder *Github* exécuter la pipeline depuis son interface web.
 N'hésitez pas à cliquer sur la pipeline pour voir le terminal et les commandes lancées en temps réel par le job.
 
 ## Amélioration de la pipeline
 
- 1. Ajouter l'exécution d'ESLint (`npm run lint`) dans un nouveau job *lint* appartenant au stage *test*.
+ 1. Ajouter l'exécution d'ESLint (`npm run lint`) dans un nouveau job *lint*.
 
- 2. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#cache) pour mettre en cache le répertoire `node_modules` afin d'accélérer la pipeline.
-
- 3. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) pour lancer les tests uniquement sur les branches commençant par `feature/`, `bugfix/` et `master`.
-
- 4. Utiliser la [documentation](https://docs.gitlab.com/ee/ci/merge_request_pipelines/) pour empêcher une merge-request d'être mergé si la pipeline échoue.
+ 2. Utiliser la [documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags) pour lancer les jobs :
+    * lors d'un push sur `master`.
+    * lors d'une pull request sur une branche commençant par `feature/**` ou `bugfix/**`.
 
 ## Autres ressources
 
- * [Gitlab CI documentation](https://docs.gitlab.com/ee/ci/) [EN]
+ * [Github Actions documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions) [EN]
