@@ -17,7 +17,7 @@ on:
       - feature/**
       - bugfix/**
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -28,16 +28,13 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm install
-  test: 
-    needs: setup
-    runs-on: ubuntu-latest
-    steps: 
       - name: Run tests
         run: npm run test
-  lint: 
-    needs: setup
-    runs-on: ubuntu-latest
-    steps: 
       - name: Run lint
         run: npm run lint
+      - name: Save coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: coverage/**
 ```

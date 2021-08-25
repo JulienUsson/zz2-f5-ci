@@ -66,7 +66,7 @@ Technique permettant de déployer automatiquement le nouveau code d'une applicat
 name: Continuous integration
 on: [push]
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -77,10 +77,6 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm install
-  test: 
-    needs: setup
-    runs-on: ubuntu-latest
-    steps: 
       - name: Run tests
         run: npm run test
 ```

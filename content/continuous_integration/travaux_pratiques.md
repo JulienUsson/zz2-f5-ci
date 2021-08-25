@@ -13,7 +13,7 @@ Pour commencer, nous allons créer un fichier `.github/workflows/continuous-inte
 name: Continuous integration
 on: [push]
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -24,10 +24,6 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm install
-  test: 
-    needs: setup
-    runs-on: ubuntu-latest
-    steps: 
       - name: Run tests
         run: npm run test
 ```
@@ -38,11 +34,13 @@ N'hésitez pas à cliquer sur la pipeline pour voir le terminal et les commandes
 
 ## Amélioration de la pipeline
 
- 1. Ajouter l'exécution d'ESLint (`npm run lint`) dans un nouveau job *lint*.
+ 1. Ajouter l'exécution d'ESLint (`npm run lint`) à la suite du job *test*.
 
  2. Utiliser la [documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags) pour lancer les jobs :
     * lors d'un push sur `master`.
     * lors d'une pull request sur une branche commençant par `feature/**` ou `bugfix/**`.
+
+ 3. Lors de l'execution des tests, un repertoire *coverage* est créer contenant un rapport de couverture des tests. Sauvegarder ce rapport dans Github en utilisant le concept d'artifacts. Aidez-vous de la [documentation](https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts).
 
 ## Autres ressources
 
