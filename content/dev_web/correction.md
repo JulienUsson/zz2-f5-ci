@@ -4,87 +4,101 @@ weight: 3
 draft: true
 ---
 
-## src/routes/cardRouter.js
-
-{{< highlight javascript >}}
-import express from "express"
-import HttpError from "../middlewares/HttpError"
-import * as cardService from "../services/cardService"
-const router = express.Router()
-
-// Accessible via http://localhost:3000/cards/workers
-router.get("/workers", async function(req, res) {
-  try {
-    const workers = await cardService.importWorkers()
-    res.json(workers)
-  } catch (e) {
-    // Retourne une erreur 500 si la lecture à échouée
-    throw new HttpError(500, "Can't read workers cards.")
-  }
-})
-
-// Accessible via http://localhost:3000/cards/buildings
-router.get("/buildings", async function(req, res) {
-  try {
-    const buildings = await cardService.importBuildings()
-    res.json(buildings)
-  } catch (e) {
-    // Retourne une erreur 500 si la lecture à échouée
-    throw new HttpError(500, "Can't read buildings cards.")
-  }
-})
-
-export default router
-
-{{< /highlight >}}
-
-## src/routes/index.js
-
-{{< highlight javascript >}}
-import cardRouter from "./cardRouter"
-import healthRouter from "./healthRouter"
-import express from "express"
-
-const router = express.Router()
-
-// Ne pas oubliez d'ajouter le routeur ici
-router.use("/cards", cardRouter)
-router.use("/health", healthRouter)
-
-export default router
-{{< /highlight >}}
-
-## src/services/cardService.js
+## src/services/gameService.js
 
 {{< highlight javascript >}}
 import fs from "fs"
 import path from "path"
-import camelCase from "lodash/camelCase"
+import _ from "lodash"
 
-export function csvToJson(file) {
-  const [headerLine, ...lines] = file.split("\n")
-  const headers = headerLine.split(";")
-  return lines.map(line => {
-    const cells = line.split(";")
-    const tmpObject = {}
-    for (let i = 0; i < cells.length; i++) {
-      tmpObject[camelCase(headers[i])] = Number.parseInt(cells[i])
+const DATABASE_FILE = path.join(__dirname, "../../storage/database.json")
+
+export function getGames() {
+  try {
+    const file = fs.readFileSync(DATABASE_FILE)
+    return JSON.parse(file)
+  } catch (e) {
+    return []
+  }
+}
+
+export function saveGame(game) {
+  const games = getGames()
+  const gameIndex = games.findIndex((g) => g.id === game.id)
+  if (gameIndex >= 0) {
+    games[gameIndex] = game
+  } else {
+    games.push(game)
+  }
+  try {
+    fs.mkdirSync(path.dirname(DATABASE_FILE))
+  } catch (e) {
+    // Do nothing
+  }
+  fs.writeFileSync(path.join(DATABASE_FILE), JSON.stringify(games))
+}
+
+function initDeck() {
+  const deck = []
+  _.range(6).map((_) => deck.push("diamonds"))
+  _.range(6).map((_) => deck.push("gold"))
+  _.range(6).map((_) => deck.push("silver"))
+  _.range(8).map((_) => deck.push("cloth"))
+  _.range(8).map((_) => deck.push("spice"))
+  _.range(10).map((_) => deck.push("leather"))
+  _.range(11 - 3).map((_) => deck.push("camel"))
+  return _.shuffle(deck)
+}
+
+function drawCards(deck, count = 1) {
+  const drawedCards = []
+  for (let i = 0; i < count; i++) {
+    drawedCards.push(deck.pop())
+  }
+  return drawedCards
+}
+
+function putCamelsFromHandToHerd(game) {
+  game._players.forEach((player) => {
+    let camelIndex = player.hand.findIndex((card) => card === "camel")
+    while (camelIndex !== -1) {
+      player.hand.splice(camelIndex, 1)
+      player.camelsCount++
+      camelIndex = player.hand.findIndex((card) => card === "camel")
     }
-    return tmpObject
   })
 }
 
-export async function importBuildings() {
-  const buildingsPath = path.join(__dirname, "../ressources/buildings.csv")
-  const buildingsFile = await fs.promises.readFile(buildingsPath, "utf8")
-  // L'exception n'est pas catché donc elle va remonter si elle est levée.
-  return csvToJson(buildingsFile)
-}
-
-export async function importWorkers() {
-  const workersPath = path.join(__dirname, "../ressources/workers.csv")
-  const workersFile = await fs.promises.readFile(workersPath, "utf8")
-  // L'exception n'est pas catché donc elle va remonter si elle est levée.
-  return csvToJson(workersFile)
+export function createGame(name) {
+  const deck = initDeck()
+  const market = ["camel", "camel", "camel", ...drawCards(deck, 2)]
+  const game = {
+    id: getGames().length + 1,
+    name,
+    market,
+    _deck: deck,
+    _players: [
+      { hand: drawCards(deck, 5), camelsCount: 0, score: 0 },
+      { hand: drawCards(deck, 5), camelsCount: 0, score: 0 },
+    ],
+    currentPlayerIndex: 0,
+    tokens: {
+      diamonds: [7, 7, 5, 5, 5],
+      gold: [6, 6, 5, 5, 5],
+      silver: [5, 5, 5, 5, 5],
+      cloth: [5, 3, 3, 2, 2, 1, 1],
+      spice: [5, 3, 3, 2, 2, 1, 1],
+      leather: [4, 3, 2, 1, 1, 1, 1, 1, 1],
+    },
+    _bonusTokens: {
+      3: _.shuffle([2, 1, 2, 3, 1, 2, 3]),
+      4: _.shuffle([4, 6, 6, 4, 5, 5]),
+      5: _.shuffle([8, 10, 9, 8, 10]),
+    },
+    isDone: false,
+  }
+  putCamelsFromHandToHerd(game)
+  saveGame(game)
+  return game
 }
 {{< /highlight >}}

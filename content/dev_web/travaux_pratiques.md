@@ -3,17 +3,17 @@ title: "TP n°4 Le developpement web"
 weight: 2
 ---
 
-Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans un premier temps, je vous propose soit de [lire les règles](../../jaipur/rules.pdf) soit de [regarder la vidéo explicative](https://www.youtube.com/watch?v=xdQymiuB5-c).
+Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans un premier temps, je vous propose de lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles).
 
-## Partie 1: Récupération du projet
+## Récupération du projet
 
-Pour récupérer le projet, nous allons nous rendre sur le [dépôt Github](https://github.com/JulienUsson/jaipur-backend-starter) hébergeant le starter. Une fois sur la page connectée à Github, il suffit de forker le projet avec le bouton *fork* en haut à droite [[aide]](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository). Cela va créer une copie du dépôt vous appartenant afin que chacun puisse travailler sur son propre dépôt.
+Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant.
 
 Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY` [[aide]](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository).
 
-## Partie 2 : Démarrage du projet
+## Démarrage du projet
 
-Je vous conseille d'utiliser [Visual Studio Code](https://code.visualstudio.com/) lors de vos développement. C'est un IDE développé par Microsoft. Il est Open Source et est très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités. Une liste de plugins recommandés est disponible dans [l'annexe](https://cours.usson.me/annexes/vscode_plugins/).
+Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développement.
 
 Une fois le projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
 Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application.
@@ -22,115 +22,180 @@ Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'app
 
 ℹ️ Si le port est déjà pris (très probable sur les machines de l'ISIMA), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
 
-Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela nous allons créer une branche `feature/cards-list` avec la commande `git branch feature/cards-list` puis nous déplacer dessus avec la commande `git checkout feature/cards-list`. N'hésitez pas à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomique** avec une description **claire**.
 
-## Partie 3 : Création de nouvelles routes
+## Création d'une partie
 
-Nous allons développer deux nouvelles routes permettant d'afficher l'ensemble des cartes du jeu. Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://jaipur-api.usson.me/`](https://jaipur-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet sinon le Front-end ne marchera pas.
+Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](http://localhost:1313/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listé dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce a cela, tous les tp fonctionneront de la même façon et la même application frontend fonctionera avec chacun de vos backend.
 
-Lors de ce TP, nous allons développer `findAllBuildings` et `findAllWorkers` des routes permettant de récupérer respectivement les cartes des ouvriers et les cartes des bâtiments.
 
-[![api documentation](../swagger.png)](https://jaipur-api.usson.me/#api-Cards-findAllBuildings)
+Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela nous allons créer une branche `feature/create-game` avec la commande `git branch feature/create-game` puis nous déplacer dessus avec la commande `git checkout feature/create-game`. N'hésitez pas à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomique** avec une description **claire**.
 
-On va créer un nouveau router `src/routes/cardRouter.js` et y coller le code suivant :
 
+La spécification de la route qui permet de créer une partie est disponible [ici](https://jaipur-api.usson.me/#api-Game-createGame). 
+
+![spécification](/dev_web/swagger.png)
+
+Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de notre route est `/games` et qu'elle répond au verbe HTTP `POST`. Ensuite, notre route prend en entrée (via son corps) un objet json qui contient une propriété name qui est une chaîne de caractères.
+ La réponse attendu est un statut 201 qui signifie `created`. Le message contenu dans la réponse est un objet représentant une `game`. Pour savoir comment initialiser un objet `game`, il faut lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles). Comme vous l'avez remarqué (ou pas), l'objet `game` manque d'informations car la spécification définit le minimum pour que le frontend fonctionne. Je vous conseille d'utiliser la structure suivante pour votre objet `game`.
+
+{{< highlight JavaScript >}}
+{
+    // identifiant de la partie
+    "id": 1,
+    "name": "nom de la partie",
+    // pioche
+    "_deck": ["diamond", "camel", "cloth", "cloth", ...],
+    // marché
+    "market": ["camel", "camel", "camel", "cloth", "gold"],
+    "_players": [
+        {
+            // main
+            "hand": ["cloth", "silver", "diamonds"],
+            // nombre de chameaux
+            "camelsCount": 2, 
+            // Score actuel
+            "score": 0,
+        },
+        {
+            "hand": ["gold", "gold", "leather", "diamonds", "spice"],
+            "camelsCount": 0,
+            "score": 0,
+        }
+    ],
+    // joueur courant (0 ou 1)
+    "currentPlayerIndex": 0,
+    "tokens": {
+        "diamonds": [7,7,5,5,5],
+        "gold": [6,6,5,5,5],
+        "silver": [5,5,5,5,5],
+        "cloth": [5,3,3,2,2,1,1],
+        "spice": [5,3,3,2,2,1,1],
+        "leather": [4,3,2,1,1,1,1,1,1],
+    },
+    // ne pas oublier de les mélanger au début de la partie
+    "_bonusTokens": {
+        "3": [2,1,2,3,1,2,3],
+        "4": [4,6,6,4,5,5],
+        "5": [8,10,9,8,10]
+    },
+    // est-ce que la partie est terminée?
+    "isDone": false
+}
+{{< /highlight >}}
+
+> A votre avis, pourquoi ces propriétés ne sont pas dans la spécification et quel est l'intêret de les préfixer par un `_` ?
+
+## Let's code
+
+Premièrement il faut créer un nouveau router qui va gérer les routes commencent par `/games`.
+
+`/src/routes/gameRouter.js`
 {{< highlight javascript >}}
 import express from "express"
+import * as gameService from "../services/gameService"
+
 const router = express.Router()
 
-// routes
+// Listen to POST /games
+router.post("/", function (req, res) {
+  const newGame = gameService.createGame(req.params.name)
+  res.status(201).json(newGame)
+})
 
 export default router
 {{< /highlight >}}
-et l'inscrire dans le fichier `src/routes/index.js`.
+
+`/src/routes/index.js`
 {{< highlight javascript >}}
-router.use("/cards", cardRouter)
+import express from "express"
+
+import healthRouter from "./healthRouter"
+import gameRouter from "./gameRouter"
+
+const router = express.Router()
+
+router.use("/health", healthRouter)
+router.use("/games", gameRouter)
+
+export default router
 {{< /highlight >}}
 
-On va maintenant initialiser les deux routes répondant à notre besoin.
+La bonne pratique lorsque l'on développe des routes est d'écrire notre code métier dans des fichier de service. Toute l'intelligence de notre application sera contenu dans des services et nos routes seront le plus bête possible et ne feront qu'appeler des services.
 
-{{< highlight javascript >}}
-router.get("/workers", function(req, res) {
-  const workers = [] 
-  // C'est ici que l'on récupérera nos ouvriers
-  res.json(workers)
-})
+Utiliser le squelette du service `gameService` ci-dessous pour développer votre première fonctionnalité.
 
-router.get("/buildings", function(req, res) {
-  const buildings = [] 
-  // C'est ici que l'on récupérera nos bâtiments
-  res.json(buildings)
-})
-{{< /highlight >}}
-
-Rendez-vous sur [`http://localhost:3000/cards/workers`](http://localhost:3000/cards/workers) et [`http://localhost:3000/cards/buildings`](http://localhost:3000/cards/buildings) et vous devriez obtenir un tableau vide 🎉.
-
-## Partie 4 : Récupération des données
-
-Il est maintenant temps d'écrire le code permettant de lire les CSV et de les transformer en objets Javascript. Nous pourrions écrire ce code directement dans la route mais cela pose un problème: si nous avons besoin du code ailleurs il faudra dupliquer le code. De plus, séparer les responsabilités (*separation of concerns*) entre le code métier (gestion des cartes, des parties, etc\...) et le code gérant le serveur (routeurs, etc\...) permet d'avoir un code plus clair.
-
-Il est donc recommandé d'écrire le code métier dans des fichiers à part appelés `service`.
-
-Nous allons créer un fichier `src/services/cardService.js` afin d'écrire tout le code permettant d'intéragir avec les cartes. Nous pourrons ensuite importer et utiliser ses fonctions  dans notre routeur. On peut déjà imaginer que notre service comportera les fonctions `importWorkers()`, `importBuildings()` et `csvToJson(file)`.
-
+`/src/services/gameService.js`
 {{< highlight javascript >}}
 import fs from "fs"
 import path from "path"
 import _ from "lodash"
 
-export function csvToJson(file) {
-  // csvToJson code
+const DATABASE_FILE = path.join(__dirname, "../../storage/database.json")
+
+// Read the file storage/database.json and return the parsed array of games.
+export function getGames() {
+  try {
+    const file = fs.readFileSync(DATABASE_FILE)
+    return JSON.parse(file)
+  } catch (e) {
+    return []
+  }
 }
 
-export async function importBuildings() {
-  // Import buildings code
+// Save a game to storage/database.json
+export function saveGame(game) {
+  const games = getGames()
+  const gameIndex = games.findIndex((g) => g.id === game.id)
+  if (gameIndex >= 0) {
+    games[gameIndex] = game
+  } else {
+    games.push(game)
+  }
+  try {
+    fs.mkdirSync(path.dirname(DATABASE_FILE))
+  } catch (e) {
+    // Do nothing
+  }
+  fs.writeFileSync(path.join(DATABASE_FILE), JSON.stringify(games))
 }
 
-export async function importWorkers() {
-  // Import workers code
+// Return a shuffled deck
+function initDeck() {
+  // TODO
+  return []
+}
+
+// Draw {count} cards of a deck
+function drawCards(deck, count = 1) {
+  // TODO
+}
+
+// Transfer camels from players hand (_players[i].hand) to their herd (_players[i].camelsCount)
+function putCamelsFromHandToHerd(game) {
+  // TODO
+}
+
+// Create a game object
+export function createGame(name) {
+  // TODO
+  return {}
 }
 {{< /highlight >}}
 
-Vous n'avez plus qu'à coder ces trois fonctions sachant que la liste des cartes se trouve au format CSV dans le répertoire `src/ressources`.
+ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
 
-ℹ️ La fonction [fs.promises.readFile()](https://nodejs.org/api/fs.html#fs_fspromises_readfile_path_options) (`import fs from "fs"`) permet de lire un fichier.
+ℹ️ Les parties sont sauvegardés sous forme d'un tableau de parties dans le fichier `storage/database.json`.
 
-{{< highlight javascript >}}
-try {
-  // __dirname correspond au répertoire du fichier courant soit `src/services/` dans ce cas
-  // La méthode path.join() (import path from "path") permet de créer un chemin en concatenant des strings
-  const filePath = path.join(__dirname, "../ressources/buildings.csv")
-  const file = await fs.promises.readFile(filePath, "utf8")
-  console.log(file) // Contenu du fichier
-} catch(e) {
-  // Une erreur e est survenue
-}
-{{< /highlight >}}
+ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
-ℹ️ La fonction [split()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/split) (méthode de string) permet de diviser une chaîne de caractères à partir d'un séparateur.
+ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
 
-ℹ️ La fonction [_.camelCase()](https://lodash.com/docs/4.17.15#camelCase) (`import _ from "lodash"`) permet de transformer une chaîne de caractères dans son équivalent en camel case.
+ℹ️ [fs.readFileSync()](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options) permet de lire une **string** d'un fichier.
 
-Une fois terminé, il suffit de remplacer le code dans le routeur par l'utilisation de notre service et tout devrait fonctionner 🎉.
+ℹ️ [fs.writeFileSync()](https://nodejs.org/api/fs.html#fs_fs_writefilesync_file_data_options) permet d'écrire une **string** dans un fichier.
 
-{{< highlight javascript >}}
-// ...
-import * as cardService from "../services/cardService"
-// ...
-router.get("/workers", async function(req, res) {
-  const workers = await cardService.importWorkers()
-  // Ne pas oublier de gérer les exceptions pouvant être lancées par importWorkers()
-  res.json(workers)
-})
+ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un **objet** Javascript en **string**.
 
-router.get("/buildings", async function(req, res) {
-  const buildings = await cardService.importBuildings()
-  // Ne pas oublier de gérer les exceptions pouvant être lancées par importBuildings()
-  res.json(buildings)
-})
-// ...
-{{< /highlight >}}
+ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une **string** en **objet** Javascript.
 
-ℹ️ Rendez-vous dans [l'annexe](https://cours.usson.me/annexes/snippets/) pour apprendre à renvoyer une erreur.
-
-ℹ️ Pour tester vos nouvelles routes, vous pouvez soit utiliser votre navigateur (ne marche que pour les requêtes GET) soit le logiciel [Postman](https://cours.usson.me/annexes/postman/).
+ℹ️ [path.join()](https://nodejs.org/api/path.html#path_path_join_paths) permet de concatener des chemins de fichier.
