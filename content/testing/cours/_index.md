@@ -70,11 +70,10 @@ describe("add", () => {
 
 ```javascript
 describe("find all cars", () => {
-    test("should respond with a 200", () => {
-        return request(app)
-            .get("/cars")
-            .expect("Content-Type", "application/json")
-            .expect(200)
+    test("should respond with a 200", async () => {
+        const response = await request(app).get("/cars")
+        expect(response.statusCode).toBe(200)
+        expect(response.body).toEqual([{...}, {...}]})
     })
 })
 ```
@@ -140,21 +139,21 @@ Très utile pour enlever les effets de bords lors des tests.
 
 ```javascript
 // foo.js
-export default function() {
+export function bar() {
   return Math.random()
 };
 
 // foo.test.js
-import foo from "./foo"
+import { bar } from "./foo"
 
 // Mock l'ensemble des fonctions du module
 jest.mock('./foo');
 
-foo();
-// -> undefined
+bar();
+// -> undefined (mock par défaut)
 
 // Change l'implémentation de la fonction
-foo.mockImplementation(() => 42);
-foo();
+bar.mockImplementation(() => 42);
+bar();
 // -> 42
 ```

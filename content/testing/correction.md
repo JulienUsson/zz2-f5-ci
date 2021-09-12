@@ -4,85 +4,69 @@ weight: 3
 draft: true
 ---
 
-## Ajout des tests unitaires
+## Tests unitaires
 
-src/services/cardService.test.js
+src/services/gameService.test.js
 {{< highlight javascript >}}
-import * as cardService from "./cardService"
+import * as gameService from "./gameService"
 
-describe("csvToJson", () => {
-  test("should transform a csv to a javascript object", async () => {
-    const testCsv = `\
-wood;stone;victory point
-1;2;3
-4;5;6`
+describe("Game service", () => {
+  test("should init a deck", () => {
+    const defaultDeck = gameService.initDeck()
+    expect(defaultDeck.length).toBe(52)
+    expect(defaultDeck.filter((card) => card === "diamonds").length).toBe(6)
+    // etc
+  })
 
-    expect(cardService.csvToJson(testCsv)).toEqual([
-      { wood: 1, stone: 2, victoryPoint: 3 },
-      { wood: 4, stone: 5, victoryPoint: 6 }
-    ])
+  test("should draw cards", () => {
+    const deck = ["camel", "diamonds", "gold"]
+    const drawedCard = gameService.drawCards(deck, 1)
+    expect(deck.length).toBe(2)
+    expect(drawedCard).toStrictEqual(["camel"])
+  })
+
+  test("should put camels from hand to herd", () => {
+    const game = {
+      _players: [
+        { hand: ["camel", "gold"], camelsCount: 0 },
+        { hand: ["gold", "gold"], camelsCount: 0 },
+      ],
+    }
+    gameService.putCamelsFromHandToHerd(game)
+    expect(game._players[0].hand.length).toBe(1)
+    expect(game._players[0].hand).toStrictEqual(["gold"])
+    expect(game._players[0].camelsCount).toBe(1)
+
+    expect(game._players[1].hand.length).toBe(2)
+    expect(game._players[1].hand).toStrictEqual(["gold", "gold"])
+    expect(game._players[1].camelsCount).toBe(0)
   })
 })
 {{< /highlight >}}
 
-## Ajout des tests d'intégration
+## Tests d'intégration
 
-src/routes/cardRouter.test.js
+src/routes/gameRouter.test.js
 {{< highlight javascript >}}
 import request from "supertest"
 import app from "../app"
-import fs from "fs"
+import lodash from "lodash"
+
+// Prevent database service to write tests game to filesystem
 jest.mock("fs")
 
-const testCsv = `\
-wood;stone;victory point
-1;2;3
-4;5;6`
+// Prevent shuffle for tests
+jest.mock("lodash")
+lodash.shuffle.mockImplementation((array) => array)
 
-describe("/cards/workers", () => {
-  test("should response the GET method", async () => {
-    fs.promises = {
-      readFile: jest.fn().mockResolvedValue(testCsv)
-    }
-
-    const response = await request(app).get("/cards/workers")
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toStrictEqual([
-      { wood: 1, stone: 2, victoryPoint: 3 },
-      { wood: 4, stone: 5, victoryPoint: 6 }
-    ])
-  })
-
-  test("should return 500 if reading failed", async () => {
-    fs.promises = {
-      readFile: jest.fn().mockRejectedValue(Error("Error test"))
-    }
-    const response = await request(app).get("/cards/workers")
-    expect(response.statusCode).toBe(500)
-    expect(response.text).toEqual("Can't read workers cards.")
-  })
-})
-
-describe("/cards/buildings", () => {
-  test("should response the GET method", async () => {
-    fs.promises = {
-      readFile: jest.fn().mockResolvedValue(testCsv)
-    }
-    const response = await request(app).get("/cards/buildings")
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toStrictEqual([
-      { wood: 1, stone: 2, victoryPoint: 3 },
-      { wood: 4, stone: 5, victoryPoint: 6 }
-    ])
-  })
-
-  test("should return 500 if reading failed", async () => {
-    fs.promises = {
-      readFile: jest.fn().mockRejectedValue(Error("Error test"))
-    }
-    const response = await request(app).get("/cards/buildings")
-    expect(response.statusCode).toBe(500)
-    expect(response.text).toEqual("Can't read buildings cards.")
+describe("Game router", () => {
+  test("should create a game", async () => {
+    const response = await request(app).post("/games").send({ name: "test" })
+    expect(response.statusCode).toBe(201)
+    expect(response.body.id).toBe(1)
+    expect(response.body.name).toBe("test")
+    expect(response.body.market[0]).toBe("camel")
+    // etc
   })
 })
 {{< /highlight >}}

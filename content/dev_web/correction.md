@@ -40,7 +40,7 @@ export function initDeck() {
 export function drawCards(deck, count = 1) {
   const drawedCards = []
   for (let i = 0; i < count; i++) {
-    drawedCards.push(deck.pop())
+    drawedCards.push(deck.shift())
   }
   return drawedCards
 }
