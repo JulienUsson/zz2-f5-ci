@@ -4,53 +4,40 @@ weight: 3
 draft: true
 ---
 
+## src/routes/gameRouter.js
+
+{{< highlight javascript >}}
+// Listen to POST /games
+router.post("/", function (req, res) {
+  if (!req.body.name) {
+    return res.status(400).send("Missing name parameter")
+  }
+  const newGame = gameService.createGame(req.body.name)
+  res.status(201).json(newGame)
+})
+{{< /highlight >}}
+
 ## src/services/gameService.js
 
 {{< highlight javascript >}}
-import fs from "fs"
-import path from "path"
-import _ from "lodash"
+import * as databaseService from "./databaseService"
+import { shuffle } from "lodash"
 
-const DATABASE_FILE = path.join(__dirname, "../../storage/database.json")
-
-export function getGames() {
-  try {
-    const file = fs.readFileSync(DATABASE_FILE)
-    return JSON.parse(file)
-  } catch (e) {
-    return []
-  }
-}
-
-export function saveGame(game) {
-  const games = getGames()
-  const gameIndex = games.findIndex((g) => g.id === game.id)
-  if (gameIndex >= 0) {
-    games[gameIndex] = game
-  } else {
-    games.push(game)
-  }
-  try {
-    fs.mkdirSync(path.dirname(DATABASE_FILE))
-  } catch (e) {
-    // Do nothing
-  }
-  fs.writeFileSync(path.join(DATABASE_FILE), JSON.stringify(games))
-}
-
-function initDeck() {
+// Return a shuffled starting deck except 3 camels
+export function initDeck() {
   const deck = []
-  _.range(6).map((_) => deck.push("diamonds"))
-  _.range(6).map((_) => deck.push("gold"))
-  _.range(6).map((_) => deck.push("silver"))
-  _.range(8).map((_) => deck.push("cloth"))
-  _.range(8).map((_) => deck.push("spice"))
-  _.range(10).map((_) => deck.push("leather"))
-  _.range(11 - 3).map((_) => deck.push("camel"))
-  return _.shuffle(deck)
+  for (let i = 0; i < 6; i++) deck.push("diamonds")
+  for (let i = 0; i < 6; i++) deck.push("gold")
+  for (let i = 0; i < 6; i++) deck.push("silver")
+  for (let i = 0; i < 8; i++) deck.push("cloth")
+  for (let i = 0; i < 8; i++) deck.push("spice")
+  for (let i = 0; i < 10; i++) deck.push("leather")
+  for (let i = 0; i < 11 - 3; i++) deck.push("camel")
+  return shuffle(deck)
 }
 
-function drawCards(deck, count = 1) {
+// Draw {count} cards of a deck
+export function drawCards(deck, count = 1) {
   const drawedCards = []
   for (let i = 0; i < count; i++) {
     drawedCards.push(deck.pop())
@@ -58,7 +45,8 @@ function drawCards(deck, count = 1) {
   return drawedCards
 }
 
-function putCamelsFromHandToHerd(game) {
+// Transfer camels from players hand (_players[i].hand) to their herd (_players[i].camelsCount)
+export function putCamelsFromHandToHerd(game) {
   game._players.forEach((player) => {
     let camelIndex = player.hand.findIndex((card) => card === "camel")
     while (camelIndex !== -1) {
@@ -69,11 +57,12 @@ function putCamelsFromHandToHerd(game) {
   })
 }
 
+// Create a game object
 export function createGame(name) {
   const deck = initDeck()
   const market = ["camel", "camel", "camel", ...drawCards(deck, 2)]
   const game = {
-    id: getGames().length + 1,
+    id: databaseService.getGames().length + 1,
     name,
     market,
     _deck: deck,
@@ -91,14 +80,14 @@ export function createGame(name) {
       leather: [4, 3, 2, 1, 1, 1, 1, 1, 1],
     },
     _bonusTokens: {
-      3: _.shuffle([2, 1, 2, 3, 1, 2, 3]),
-      4: _.shuffle([4, 6, 6, 4, 5, 5]),
-      5: _.shuffle([8, 10, 9, 8, 10]),
+      3: shuffle([2, 1, 2, 3, 1, 2, 3]),
+      4: shuffle([4, 6, 6, 4, 5, 5]),
+      5: shuffle([8, 10, 9, 8, 10]),
     },
     isDone: false,
   }
   putCamelsFromHandToHerd(game)
-  saveGame(game)
+  databaseService.saveGame(game)
   return game
 }
 {{< /highlight >}}

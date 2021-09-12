@@ -3,7 +3,7 @@ title: "TP n°4 Le developpement web"
 weight: 2
 ---
 
-Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans un premier temps, je vous propose de lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles).
+Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans un premier temps, je vous propose de lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles) si ce n'est pas déjà fait.
 
 ## Récupération du projet
 
@@ -20,7 +20,7 @@ Un répertoire *node_modules* a été créé contenant l'ensemble des dépendanc
 
 Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'application. Rendez-vous sur [`http://localhost:3000/health`](http://localhost:3000/health) et le message `{ health: "ok" }` devrait s'afficher confirmant le bon fonctionnement du site 🎉.
 
-ℹ️ Si le port est déjà pris (très probable sur les machines de l'ISIMA), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
+ℹ️ Si le port est déjà pris (très probable sur les clients léger), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
 
 
 ## Création d'une partie
@@ -87,7 +87,7 @@ Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de not
 
 ## Let's code
 
-Premièrement il faut créer un nouveau router qui va gérer les routes commencent par `/games`.
+Utiliser ces squelettes de code pour coder votre première fonctionnalitée.
 
 `/src/routes/gameRouter.js`
 {{< highlight javascript >}}
@@ -98,68 +98,20 @@ const router = express.Router()
 
 // Listen to POST /games
 router.post("/", function (req, res) {
-  const newGame = gameService.createGame(req.params.name)
+  // TODO return 400 if req.body.name doesn't exist
+  const newGame = gameService.createGame(req.body.name)
   res.status(201).json(newGame)
 })
 
 export default router
 {{< /highlight >}}
 
-`/src/routes/index.js`
-{{< highlight javascript >}}
-import express from "express"
-
-import healthRouter from "./healthRouter"
-import gameRouter from "./gameRouter"
-
-const router = express.Router()
-
-router.use("/health", healthRouter)
-router.use("/games", gameRouter)
-
-export default router
-{{< /highlight >}}
-
-La bonne pratique lorsque l'on développe des routes est d'écrire notre code métier dans des fichier de service. Toute l'intelligence de notre application sera contenu dans des services et nos routes seront le plus bête possible et ne feront qu'appeler des services.
-
-Utiliser le squelette du service `gameService` ci-dessous pour développer votre première fonctionnalité.
-
 `/src/services/gameService.js`
 {{< highlight javascript >}}
-import fs from "fs"
-import path from "path"
-import _ from "lodash"
+import * as databaseService from "./databaseService"
+import { shuffle } from "lodash"
 
-const DATABASE_FILE = path.join(__dirname, "../../storage/database.json")
-
-// Read the file storage/database.json and return the parsed array of games.
-export function getGames() {
-  try {
-    const file = fs.readFileSync(DATABASE_FILE)
-    return JSON.parse(file)
-  } catch (e) {
-    return []
-  }
-}
-
-// Save a game to storage/database.json
-export function saveGame(game) {
-  const games = getGames()
-  const gameIndex = games.findIndex((g) => g.id === game.id)
-  if (gameIndex >= 0) {
-    games[gameIndex] = game
-  } else {
-    games.push(game)
-  }
-  try {
-    fs.mkdirSync(path.dirname(DATABASE_FILE))
-  } catch (e) {
-    // Do nothing
-  }
-  fs.writeFileSync(path.join(DATABASE_FILE), JSON.stringify(games))
-}
-
-// Return a shuffled deck
+// Return a shuffled starting deck except 3 camels
 function initDeck() {
   // TODO
   return []
@@ -182,20 +134,25 @@ export function createGame(name) {
 }
 {{< /highlight >}}
 
+`/src/routes/index.js`
+{{< highlight javascript >}}
+import express from "express"
+
+import healthRouter from "./healthRouter"
+import gameRouter from "./gameRouter"
+
+const router = express.Router()
+
+router.use("/health", healthRouter)
+router.use("/games", gameRouter)
+
+export default router
+{{< /highlight >}}
+
 ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
 
-ℹ️ Les parties sont sauvegardés sous forme d'un tableau de parties dans le fichier `storage/database.json`.
+ℹ️ Les parties sont sauvegardés sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `databaseService`.
 
 ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
-
-ℹ️ [fs.readFileSync()](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options) permet de lire une **string** d'un fichier.
-
-ℹ️ [fs.writeFileSync()](https://nodejs.org/api/fs.html#fs_fs_writefilesync_file_data_options) permet d'écrire une **string** dans un fichier.
-
-ℹ️ [JSON.stringify()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/stringify) permet de convertir un **objet** Javascript en **string**.
-
-ℹ️ [JSON.parse()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON/parse) permet de convertir une **string** en **objet** Javascript.
-
-ℹ️ [path.join()](https://nodejs.org/api/path.html#path_path_join_paths) permet de concatener des chemins de fichier.
