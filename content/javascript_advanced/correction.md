@@ -1,7 +1,7 @@
 ---
 title: "Correction TP n°2 Javascript avancé"
 weight: 3
-draft: true
+draft: false
 ---
 
 ## Exercice 1 :
@@ -54,13 +54,13 @@ displayUsers();
 En utilisant les promesses
 {{< highlight javascript >}}
 import axios from "axios";
-const NUMBER_OF_USER_TO_FETCH = 1000;
+const NUMBER_OF_USER_TO_FETCH = 100;
 
 axios
   .get(`https://randomuser.me/api/?results=${NUMBER_OF_USER_TO_FETCH}`)
   .then(response => response.data.results)
   .then(users =>
-    users.filter(user => user.location.timezone.description.includes("Paris"))
+    users.filter(user => user.location.country === "France")
   )
   .then(users => console.log(users));
 {{< /highlight >}}
@@ -68,7 +68,7 @@ axios
 En utilisant async/await
 {{< highlight javascript >}}
 import axios from "axios";
-const NUMBER_OF_USER_TO_FETCH = 1000;
+const NUMBER_OF_USER_TO_FETCH = 100;
 
 async function displayUsers() {
   const response = await axios.get(
@@ -88,7 +88,7 @@ displayUsers();
 En utilisant les promesses
 {{< highlight javascript >}}
 import axios from "axios";
-const NUMBER_OF_USER_TO_FETCH = 1000;
+const NUMBER_OF_USER_TO_FETCH = 100;
 
 axios
   .get(`https://randomuser.me/api/?results=${NUMBER_OF_USER_TO_FETCH}`)
@@ -108,7 +108,7 @@ axios
 En utilisant async/await
 {{< highlight javascript >}}
 import axios from "axios";
-const NUMBER_OF_USER_TO_FETCH = 1000;
+const NUMBER_OF_USER_TO_FETCH = 100;
 
 async function displayUsers() {
   const response = await axios.get(
