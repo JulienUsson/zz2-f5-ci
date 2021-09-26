@@ -24,15 +24,15 @@ describe("Game service", () => {
 })
 {{< /highlight >}}
 
-ℹ️ La fonction `createGame` sera testé par le test d'intégration.
+ℹ️ La fonction `createGame` sera testée par le test d'intégration.
 
-ℹ️ la commande `npm run test` permet d'exécuter les tests.
+ℹ️ La commande `npm run test` permet d'exécuter les tests.
 
-ℹ️  Les fichiers doivent se terminer par `.test.js` pour que [Jest](https://jestjs.io/) les retrouve automatiquement.
+ℹ️ Les fichiers doivent se terminer par `.test.js` pour que [Jest](https://jestjs.io/) les retrouve automatiquement.
 
-ℹ️  N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
+ℹ️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
 
-ℹ️  Attention de vérifier que l'analyse de code statique ([ESLint](https://eslint.org/)) ne révèle aucune erreur.
+ℹ️ Attention de vérifier que l'analyse de code statique ([ESLint](https://eslint.org/)) ne révèle aucune erreur.
 
 ## Ajout des tests d'intégration
 

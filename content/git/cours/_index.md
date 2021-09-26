@@ -26,7 +26,6 @@ fichier.old.older.oldest.js
 
  * SubVersioN (SVN)
  * Mercurial
- * Bazaar
  * ...
 
 ---
@@ -141,8 +140,8 @@ $ git push origin master
 
 ## Où héberger son dépôt
 
- * Github
- * **Gitlab**
+ * **Github**
+ * Gitlab
  * Bitbucket
  * ...
 
@@ -154,6 +153,12 @@ $ git push origin master
 
 ---
 
+## Git dans les TP
+
+![Gitflow](./git-tp.png)
+
+---
+
 ## Les pull requests
 
-![Pull request](./merge-request.png)
+![Pull request](./pull-request.jpg)

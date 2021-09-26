@@ -35,7 +35,7 @@ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](
 
  * Création de la route `POST /games` [[doc]](https://jaipur-api.usson.me/#api-Game-createGame).
 
-### En tant que joueur, je peux liste les parties [1]
+### En tant que joueur, je peux lister les parties [1]
 
  * Création de la route `GET /games` [[doc]](https://jaipur-api.usson.me/#api-Game-findAllGames).
 

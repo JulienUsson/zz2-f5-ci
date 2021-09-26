@@ -13,22 +13,22 @@ Maintenant que vous avez votre copie, il suffit de la télécharger sur votre or
 
 ## Démarrage du projet
 
-Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développement.
+Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développements.
 
 Une fois le projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
 Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application.
 
 Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'application. Rendez-vous sur [`http://localhost:3000/health`](http://localhost:3000/health) et le message `{ health: "ok" }` devrait s'afficher confirmant le bon fonctionnement du site 🎉.
 
-ℹ️ Si le port est déjà pris (très probable sur les clients léger), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
+ℹ️ Si le port est déjà pris (très probable sur les clients légers), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
 
 
 ## Création d'une partie
 
-Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](http://localhost:1313/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listé dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce a cela, tous les tp fonctionneront de la même façon et la même application frontend fonctionera avec chacun de vos backend.
+Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](http://localhost:1313/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listées dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce à cela, tous les TP fonctionneront de la même façon et la même application frontend fonctionnera avec chacun de vos backends.
 
 
-Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela nous allons créer une branche `feature/create-game` avec la commande `git branch feature/create-game` puis nous déplacer dessus avec la commande `git checkout feature/create-game`. N'hésitez pas à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomique** avec une description **claire**.
+Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela, nous allons créer une branche `feature/create-game` avec la commande `git branch feature/create-game` puis nous déplacer dessus avec la commande `git checkout feature/create-game`. Je vous invite à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomiques** avec une description **claire**.
 
 
 La spécification de la route qui permet de créer une partie est disponible [ici](https://jaipur-api.usson.me/#api-Game-createGame). 
@@ -36,7 +36,7 @@ La spécification de la route qui permet de créer une partie est disponible [ic
 ![spécification](/dev_web/swagger.png)
 
 Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de notre route est `/games` et qu'elle répond au verbe HTTP `POST`. Ensuite, notre route prend en entrée (via son corps) un objet json qui contient une propriété name qui est une chaîne de caractères.
- La réponse attendu est un statut 201 qui signifie `created`. Le message contenu dans la réponse est un objet représentant une `game`. Pour savoir comment initialiser un objet `game`, il faut lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles). Comme vous l'avez remarqué (ou pas), l'objet `game` manque d'informations car la spécification définit le minimum pour que le frontend fonctionne. Je vous conseille d'utiliser la structure suivante pour votre objet `game`.
+ La réponse attendue est un statut 201 qui signifie `created`. Le message contenu dans la réponse est un objet représentant une `game`. Pour savoir comment initialiser un objet `game`, il faut lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles). Comme vous l'avez remarqué (ou pas), l'objet `game` manque d'informations car la spécification définit le minimum pour que le frontend fonctionne. Je vous conseille d'utiliser la structure suivante pour votre objet `game`.
 
 {{< highlight JavaScript >}}
 {
@@ -87,7 +87,7 @@ Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de not
 
 ## Let's code
 
-Utiliser ces squelettes de code pour coder votre première fonctionnalitée.
+Utiliser ces squelettes de code pour coder votre première fonctionnalité.
 
 `/src/routes/gameRouter.js`
 {{< highlight javascript >}}
@@ -151,7 +151,7 @@ export default router
 
 ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
 
-ℹ️ Les parties sont sauvegardés sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `databaseService`.
+ℹ️ Les parties sont sauvegardées sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `databaseService`.
 
 ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
