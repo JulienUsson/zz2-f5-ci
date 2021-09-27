@@ -231,16 +231,20 @@ Accept: application/json
 ## ExpressJS
 
 ```javascript
-import * as pizzaService from "../services/pizzaService"
-
 app.get('/pizzas', (req, res) => {
     const pizzas = pizzaService.findAll()
     res.status(200).json(pizzas)
 })
 
+app.get('/pizzas/:id', (req, res) => {
+    const pizza = pizzaService.findOneById(req.params.id)
+    if(!pizza) return res.status(404).send("Not found")
+    res.status(200).json(updatedPizza)
+})
+
 app.post('/pizzas/:id', (req, res) => {
     const updatedPizza = pizzaService.update(req.params.id, req.body)
-    res.status(200).json(updatedPizza)
+    res.status(201).json(updatedPizza)
 })
 
 app.delete('/pizzas/:id', (req, res) => {

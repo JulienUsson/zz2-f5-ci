@@ -26,7 +26,7 @@ Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici en vidéo](https
 
 Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://jaipur-api.usson.me/`](https://jaipur-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet.
 
-Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
+Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/).
 
 
 ## User Stories

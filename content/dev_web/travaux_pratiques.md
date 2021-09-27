@@ -25,7 +25,7 @@ Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'app
 
 ## Création d'une partie
 
-Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](http://localhost:1313/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listées dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce à cela, tous les TP fonctionneront de la même façon et la même application frontend fonctionnera avec chacun de vos backends.
+Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listées dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce à cela, tous les TP fonctionneront de la même façon et la même application frontend fonctionnera avec chacun de vos backends.
 
 
 Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela, nous allons créer une branche `feature/create-game` avec la commande `git branch feature/create-game` puis nous déplacer dessus avec la commande `git checkout feature/create-game`. Je vous invite à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomiques** avec une description **claire**.
@@ -149,10 +149,14 @@ router.use("/games", gameRouter)
 export default router
 {{< /highlight >}}
 
-ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](https://cours.usson.me/annexes/postman/).
+ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/).
 
 ℹ️ Les parties sont sauvegardées sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `databaseService`.
 
 ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
 ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
+
+ℹ️ [Array.shift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) permet de supprimer le premier élément d'un tableau et de le récupérer.
+
+ℹ️ [Array.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) permet de supprimer un élément d'un tableau.
