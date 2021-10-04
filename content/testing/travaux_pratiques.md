@@ -10,29 +10,29 @@ src/services/gameService.test.js
 import * as gameService from "./gameService"
 
 describe("Game service", () => {
-  test("should init a deck", () => {
-    // TOTO
+  test("should put camels from hand to herd", () => {
+    // TODO
   })
 
   test("should draw cards", () => {
     // TODO
   })
 
-  test("should put camels from hand to herd", () => {
+  test("should init a deck", () => {
     // TODO
   })
 })
 {{< /highlight >}}
 
-ℹ️ La fonction `createGame` sera testée par le test d'intégration.
-
 ℹ️ La commande `npm run test` permet d'exécuter les tests.
+
+ℹ️ Aidez-vous des fichiers `src/routes/healthRouter.test.js` et `src/services/databaseService.test.js` présent dans le projet.
 
 ℹ️ Les fichiers doivent se terminer par `.test.js` pour que [Jest](https://jestjs.io/) les retrouve automatiquement.
 
 ℹ️ N'oubliez pas de tester les cas nominaux ainsi que les cas d'erreurs.
 
-ℹ️ Attention de vérifier que l'analyse de code statique ([ESLint](https://eslint.org/)) ne révèle aucune erreur.
+ℹ️ Attention de vérifier que l'analyse de code statique ([ESLint](https://eslint.org/)) ne révèle aucune erreur avec la commande `npm run lint:fix`.
 
 ## Ajout des tests d'intégration
 
@@ -45,7 +45,7 @@ import lodash from "lodash"
 // Prevent database service to write tests game to filesystem
 jest.mock("fs")
 
-// TODO: Prevent shuffle for tests
+// TODO: Mock lodash shuffle
 
 describe("Game router", () => {
   test("should create a game", async () => {
