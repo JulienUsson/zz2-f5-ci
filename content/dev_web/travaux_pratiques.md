@@ -112,18 +112,18 @@ import * as databaseService from "./databaseService"
 import { shuffle } from "lodash"
 
 // Return a shuffled starting deck except 3 camels
-function initDeck() {
+export function initDeck() {
   // TODO
   return []
 }
 
 // Draw {count} cards of a deck
-function drawCards(deck, count = 1) {
+export function drawCards(deck, count = 1) {
   // TODO
 }
 
 // Transfer camels from players hand (_players[i].hand) to their herd (_players[i].camelsCount)
-function putCamelsFromHandToHerd(game) {
+export function putCamelsFromHandToHerd(game) {
   // TODO
 }
 
