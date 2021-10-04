@@ -7,9 +7,7 @@ Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans u
 
 ## Récupération du projet
 
-Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant.
-
-Maintenant que vous avez votre copie, il suffit de la télécharger sur votre ordinateur via la commande `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY` [[aide]](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository).
+Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant. Ensuite pour récupérer le projet, il faut fait un [git clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository) (Utiliser bien SSH et non HTTPS). Il faut aussi [générer des clés SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) pour pouvoir utiliser `git pull` et `git push`.
 
 ## Démarrage du projet
 
