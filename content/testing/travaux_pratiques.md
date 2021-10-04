@@ -36,7 +36,7 @@ describe("Game service", () => {
 
 ## Ajout des tests d'intégration
 
-src/services/gameService.test.js
+src/routes/gameRouter.test.js
 {{< highlight javascript >}}
 import request from "supertest"
 import app from "../app"
