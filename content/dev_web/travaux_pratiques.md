@@ -7,7 +7,9 @@ Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans u
 
 ## Récupération du projet
 
-Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant. Ensuite pour récupérer le projet, il faut fait un [git clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository) (Utiliser bien SSH et non HTTPS). Il faut aussi [générer des clés SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) pour pouvoir utiliser `git pull` et `git push`.
+Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant. Ensuite pour récupérer le projet, il faut fait un [git clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository). Pour utiliser `git pull` et `git push` il faut: 
+ * si on utiliser SSH, [générer des clés SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). 
+ * si on utilise HTTPS, [créer un token d'accès](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ## Démarrage du projet
 
