@@ -1,5 +1,5 @@
 ---
-title: "Correction TP n°2 Javascript avancé"
+title: "Correction TP n°2 Javascript intermédiaire"
 weight: 3
 draft: true
 ---

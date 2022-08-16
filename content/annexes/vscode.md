@@ -1,14 +1,14 @@
 ---
 title: "Visual Studio Code"
-weight: 1
+weight: 2
 ---
 
- 
- Visual Studio Code est un IDE développé par Microsoft. Il est Open Source et est très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et pleins d'autres fonctionnalités.
+Visual Studio Code (VSCode) est un IDE développé par Microsoft. Il est Open Source et très utilisé dans le monde Javascript. Il intègre un système de plugins, une interface graphique pour Git, un terminal intégré et plein d'autres fonctionnalités utiles pour ce cours.
 
 ## Installation
 
-[Voir documentation officielle](https://code.visualstudio.com/)
+[Voir documentation officielle](https://code.visualstudio.com/). 
+Il est installé par défault sur les ordinateurs de l'ISIMA.
 
 ## Plugins recommandés
 

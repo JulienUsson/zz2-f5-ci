@@ -7,20 +7,20 @@ Lors de ce TP, nous allons commencer le développement du jeu **Jaipur**. Dans u
 
 ## Récupération du projet
 
-Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant. Ensuite pour récupérer le projet, il faut fait un [git clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository). Pour utiliser `git pull` et `git push` il faut: 
- * si on utiliser SSH, [générer des clés SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). 
+Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-backend-starter). Il faut [forker](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) le projet ce qui va créer une copie du dépôt vous appartenant. Ensuite pour récupérer le projet, il faut fait un [git clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository). Pour pouvoir utiliser `git pull` et `git push` il faut: 
+ * si on utilise SSH, [générer des clés SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). 
  * si on utilise HTTPS, [créer un token d'accès](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ## Démarrage du projet
 
 Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développements.
 
-Une fois le projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
-Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application.
+Une fois le répertoire du projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
+Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application. Chaque répertoire correspond à une bibliothèque dans laquelle se trouvent des fichiers JS.
 
 Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'application. Rendez-vous sur [`http://localhost:3000/health`](http://localhost:3000/health) et le message `{ health: "ok" }` devrait s'afficher confirmant le bon fonctionnement du site 🎉.
 
-ℹ️ Si le port est déjà pris (très probable sur les clients légers), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
+ℹ️ Si le port est déjà pris (très probable sur les clients légers de l'ISIMA), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
 
 
 ## Création d'une partie

@@ -1,4 +1,4 @@
 ---
 title: "Javascript avancé"
-weight: 3
+weight: 4
 ---

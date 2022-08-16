@@ -1,11 +1,11 @@
 ---
-title: "Javascript avancé"
+title: "Javascript intermédiaire"
 outputs: ["Reveal"]
 weight: 1
 ---
 
-# Javascript 3
-Le Retour du roi
+# Javascript 2
+Le retour
 
 ---
 

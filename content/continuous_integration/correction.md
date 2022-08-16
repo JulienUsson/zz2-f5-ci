@@ -1,7 +1,7 @@
 ---
 title: "Correction TP n°6 L'intégration continue"
 weight: 3
-draft: false
+draft: true
 ---
 
 ## .github/workflows/continuous-integration.yml

@@ -6,6 +6,10 @@ title: "Jaipur"
 
 Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici en vidéo](https://www.youtube.com/watch?v=xdQymiuB5-c).
 
+⚠️ On considèrera que les parties se jouent en une seule manche et non en deux manches gagnantes comme dans le jeu de base.
+
+## Matériel
+
 | Marchandises (goods) | Cartes (cards) | Jetons (tokens) |
 |---|---|---|
 | Diamants (diamonds)  | 6 | 7,7,5,5,5 |
@@ -20,56 +24,47 @@ Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici en vidéo](https
 | 4 Cartes | / | 6,6,5,5,4,4 |
 | 5 Cartes | / | 10,10,9,8,8 |
 
-⚠️ On considèrera que les parties se jouent en une seule manche et non en deux manches gagnantes comme dans le jeu de base.
-
-## Spécification de l'API
-
-Une documentation détaillée de l'ensemble des routes attendues est disponible sur [`https://jaipur-api.usson.me/`](https://jaipur-api.usson.me/). Il est **important** de suivre cette documentation lors du développement du projet.
-
-Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/).
-
-
 ## User Stories
 
-### En tant que joueur, je peux créer une partie [TP4]
+### [TP4] En tant que joueur, je peux créer une partie [[api]](https://jaipur-api.usson.me/#api-Game-createGame)
 
- * Création de la route `POST /games` [[doc]](https://jaipur-api.usson.me/#api-Game-createGame).
+ * Création de la route `POST /games`.
 
-### En tant que joueur, je peux lister les parties [1]
+### [1] En tant que joueur, je peux lister les parties en cours [[api]](https://jaipur-api.usson.me/#api-Game-findAllActiveGames)
 
- * Création de la route `GET /games` [[doc]](https://jaipur-api.usson.me/#api-Game-findAllGames).
+ * Création de la route `GET /games`.
 
-### En tant que joueur, je peux récupérer les informations d'une partie [1]
+### [1] En tant que joueur, je peux récupérer les informations d'une partie [[api]](https://jaipur-api.usson.me/#api-Game-findOneGameById)
 
- * Création de la route `GET /games/[id]` [[doc]](https://jaipur-api.usson.me/#api-Game-findOneGameById).
+ * Création de la route `GET /games/[id]`.
 
-### En tant que joueur, je peux supprimer une partie [1]
+### [1] En tant que joueur, je peux supprimer une partie [[api]](https://jaipur-api.usson.me/#api-Game-deleteGameById) 
 
- * Création de la route `DELETE /games/[id]` [[doc]](https://jaipur-api.usson.me/#api-Game-deleteGameById).
+ * Création de la route `DELETE /games/[id]`.
 
-### En tant que joueur, je peux prendre 1 seule marchandise [2]
+### [2] En tant que joueur, je peux prendre 1 seule marchandise [[api]](https://jaipur-api.usson.me/#api-Game-takeGood) [[règles]](../rules.pdf#page=4)
 
- * Création de la route `PUT /games/[id]/take-good` [[doc]](https://jaipur-api.usson.me/#api-Game-takeGood).
- * Permettre l'action uniquement si c'est le tour du joueur (header playerIndex).
+ * Création de la route `PUT /games/[gameId]/players/[playerId]/take-good`.
+ * Permettre l'action uniquement si c'est le tour du joueur.
  * Prendre en compte la limite de 7 cartes en main.
 
-### En tant que joueur, je peux prendre plusieurs marchandises [2]
+### [2] En tant que joueur, je peux échanger des marchandises [[api]](https://jaipur-api.usson.me/#api-Game-exchange) [[règles]](../rules.pdf#page=4)
 
- * Création de la route `PUT /games/[id]/exchange` [[doc]](https://jaipur-api.usson.me/#api-Game-exchange).
- * Permettre l'action uniquement si c'est le tour du joueur (header playerIndex).
+ * Création de la route `PUT /games/[gameId]/players/[playerId]/exchange`.
+ * Permettre l'action uniquement si c'est le tour du joueur.
 
-### En tant que joueur, je peux prendre les chameaux [2]
+### [2] En tant que joueur, je peux prendre les chameaux [[api]](https://jaipur-api.usson.me/#api-Game-takeCamels) [[règles]](../rules.pdf#page=4)
 
- * Création de la route `PUT /games/[id]/take-camels` [[doc]](https://jaipur-api.usson.me/#api-Game-takeCamels).
- * Permettre l'action uniquement si c'est le tour du joueur (header playerIndex).
- 
-### En tant que joueur, je peux vendre des cartes [1]
+ * Création de la route `PUT /games/[gameId]/players/[playerId]/take-camels`.
+ * Permettre l'action uniquement si c'est le tour du joueur.
 
- * Création de la route `PUT /games/[id]/sell` [[doc]](https://jaipur-api.usson.me/#api-Game-sell).
- * Permettre l'action uniquement si la transaction est valide (paragraphe *"Restriction lors d'une vente"* des règles)
- * Permettre l'action uniquement si c'est le tour du joueur (header playerIndex).
- 
-### En tant que joueur, je peux terminer une partie [1]
+### [1] En tant que joueur, je peux vendre des cartes [[api]](https://jaipur-api.usson.me/#api-Game-sell) [[règles]](../rules.pdf#page=5)
 
- * Une fois qu'une des conditions d'arrêt est remplie (paragraphe *"Fin d'une manche"* des règles) terminer la partie et décompter les points (paragraphe *"Décompte"* des règles)
+ * Création de la route `PUT /games/[gameId]/players/[playerId]/sell`.
+ * Permettre l'action uniquement si la transaction est valide (voir *"Restriction lors d'une vente"*)
+ * Permettre l'action uniquement si c'est le tour du joueur.
+
+### [1] En tant que joueur, je peux terminer une partie [[règles]](../rules.pdf#page=6)
+
+ * Une fois qu'une des conditions d'arrêt est remplie (voir *"Fin d'une manche"*) terminer la partie et décompter les points (voir *"Décompte"*)
  * Empêcher les joueurs de pouvoir effectuer une action sur une partie terminée. 

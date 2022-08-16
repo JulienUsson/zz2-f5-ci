@@ -2,6 +2,9 @@
 /public
 /resources
 
+# Hugo
+.hugo_build.lock
+
 # Visual Studio Code
 .vscode
 

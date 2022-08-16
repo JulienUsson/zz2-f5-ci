@@ -21,14 +21,16 @@
     </article>
     {{ end }}
 
+    {{ if .Site.Params.form }}
     <article>
       <ul>
         <li><a style="font-weight: bold;"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScx8qM4cEUco_rbbq9m4-etHBjuK2bVyANc5oaSkunoB2MGnw/viewform">Questionnaire
+            href="{{ .Site.Params.form }}">Questionnaire
             d'évaluation sur le cours</a>
         </li>
       </ul>
     </article>
+    {{ end }}
 
   </div>
 </section>

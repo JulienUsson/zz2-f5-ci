@@ -2,11 +2,14 @@ baseURL = "https://cours.usson.me/"
 languageCode = "fr-fr"
 title = "Intégration continue pour le web"
 theme = "kiss"
-copyright = '&copy; <a href="https://julien.usson.me/">Julien Usson</a> - Année 2021/2022 - ZZ2 F5'
+copyright = '&copy; <a href="https://julien.usson.me/">Julien Usson</a> - Année 2022/2023 - ZZ2 F5'
 poweredby = false
 googleAnalytics="UA-148716459-1"
 pygmentsUseClasses = true
 pygmentsCodeFences = false # Reveal Hugo bugfix
+
+[params]
+# form = "https://docs.google.com/forms/d/e/1FAIpQLScx8qM4cEUco_rbbq9m4-etHBjuK2bVyANc5oaSkunoB2MGnw/viewform"
 
 [params.assets]
 customCSS = ["css/custom.css", "css/syntax.css"]
