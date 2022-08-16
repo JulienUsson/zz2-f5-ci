@@ -36,7 +36,7 @@ La spécification de la route qui permet de créer une partie est disponible [ic
 ![spécification](/dev_web/swagger.png)
 
 Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de notre route est `/games` et qu'elle répond au verbe HTTP `POST`. Ensuite, notre route prend en entrée (via son corps) un objet json qui contient une propriété name qui est une chaîne de caractères.
- La réponse attendue est un statut 201 qui signifie `created`. Le message contenu dans la réponse est un objet représentant une `game`. Pour savoir comment initialiser un objet `game`, il faut lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles). Comme vous l'avez remarqué (ou pas), l'objet `game` manque d'informations car la spécification définit le minimum pour que le frontend fonctionne. Je vous conseille d'utiliser la structure suivante pour votre objet `game`.
+ La réponse attendue est soit le statut 201 qui signifie `created` en cas de succès soit le statut 400 qui signifie `bad request` en cas d'erreur. Le message contenu dans la réponse est un objet avec uniquement l'identifiant et le nom d'une `game`. Pour savoir comment initialiser un objet `game`, il faut lire les [règles](/jaipur/travaux_pratiques/#r%C3%A8gles). Je vous conseille d'utiliser la structure suivante pour votre objet `game`.
 
 {{< highlight JavaScript >}}
 {
