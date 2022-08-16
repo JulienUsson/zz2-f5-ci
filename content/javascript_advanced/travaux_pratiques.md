@@ -1,5 +1,5 @@
 ---
-title: "TP n°2 Javascript avancé"
+title: "TP n°3 Javascript avancé"
 weight: 2
 ---
 

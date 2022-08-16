@@ -101,6 +101,7 @@ describe("find all cars", () => {
 ## Et pleins d'autres encore 
 
  * Mutation testing
+ * Contract testing
  * Monkey testing
  * Canary testing
  * ...

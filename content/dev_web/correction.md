@@ -13,14 +13,14 @@ router.post("/", function (req, res) {
     return res.status(400).send("Missing name parameter")
   }
   const newGame = gameService.createGame(req.body.name)
-  res.status(201).json(newGame)
+  res.status(201).json({ id: newGame.id, name: newGame.name })
 })
 {{< /highlight >}}
 
 ## src/services/gameService.js
 
 {{< highlight javascript >}}
-import * as databaseService from "./databaseService"
+import * as db from "../database"
 import { shuffle } from "lodash"
 
 // Return a shuffled starting deck except 3 camels
@@ -62,7 +62,7 @@ export function createGame(name) {
   const deck = initDeck()
   const market = ["camel", "camel", "camel", ...drawCards(deck, 2)]
   const game = {
-    id: databaseService.getGames().length + 1,
+    id: db.getGames().length + 1,
     name,
     market,
     _deck: deck,
@@ -84,10 +84,10 @@ export function createGame(name) {
       4: shuffle([4, 6, 6, 4, 5, 5]),
       5: shuffle([8, 10, 9, 8, 10]),
     },
-    isDone: false,
+     winnerId: undefined,
   }
   putCamelsFromHandToHerd(game)
-  databaseService.saveGame(game)
+  db.saveGame(game)
   return game
 }
 {{< /highlight >}}

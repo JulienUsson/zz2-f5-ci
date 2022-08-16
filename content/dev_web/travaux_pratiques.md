@@ -78,8 +78,8 @@ Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de not
         "4": [4,6,6,4,5,5],
         "5": [8,10,9,8,10]
     },
-    // est-ce que la partie est terminée?
-    "isDone": false
+    // Identifiant du gagnant si la partie est terminée sinon vaut undefined.
+    "winnerId": undefined
 }
 {{< /highlight >}}
 
@@ -100,7 +100,7 @@ const router = express.Router()
 router.post("/", function (req, res) {
   // TODO return 400 if req.body.name doesn't exist
   const newGame = gameService.createGame(req.body.name)
-  res.status(201).json(newGame)
+  res.status(201).json({ id: newGame.id, name: newGame.name })
 })
 
 export default router
@@ -108,7 +108,7 @@ export default router
 
 `/src/services/gameService.js`
 {{< highlight javascript >}}
-import * as databaseService from "./databaseService"
+import * as db from "../database"
 import { shuffle } from "lodash"
 
 // Return a shuffled starting deck except 3 camels
@@ -151,7 +151,7 @@ export default router
 
 ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/).
 
-ℹ️ Les parties sont sauvegardées sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `databaseService`.
+ℹ️ Les parties sont sauvegardées sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `database/index.js`.
 
 ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
