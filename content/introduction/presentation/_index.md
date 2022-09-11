@@ -10,9 +10,9 @@ weight: 1
 
 # Présentation du cours
 
- * Séance 1 à 3 => 1h de cours, 1h de TP indépendant
- * Séance 4 à 6 => 1h de cours, 1h de TP fil rouge **seul**
- * Séance 7 à 10 => 2h de TP fil rouge en **binôme**
+ * Séance 1 et 2 => 1h de cours, 1h de TP indépendant
+ * Séance 3 à 5 => 1h de cours, 1h de TP fil rouge **seul**
+ * Séance 6 à 10 => 2h de TP fil rouge en **binôme**
  * ⚠️ **Prenez des notes !**
 
 ---
@@ -26,7 +26,6 @@ Création d'un backend REST en NodeJS.
 ---
 
 # Thèmes abordés
-
 
  * Javascript
  * NodeJS
