@@ -43,7 +43,7 @@ Création d'un backend REST en NodeJS.
 
 # Notation
 
-Partiel de 2h sur le cours
+Partiel de 1h30 sur le cours
 
 **Sans documents**
 

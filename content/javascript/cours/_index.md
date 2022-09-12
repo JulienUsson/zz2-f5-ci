@@ -78,6 +78,8 @@ console.log("Hello World !")
 let var1 = "toto"
 let var2 = 2
 let var3 = 3.5
+let var4 = null
+let var5 = undefined
 
 var1 = 5
 var1 = "tutu"
@@ -175,27 +177,8 @@ console.log(tableau.includes("toto")) // true
 console.log([0, 1, 2] === [0, 1, 2])  // false
 ```
 
-
----
-
-## Les tableaux
-
-```javascript
-const users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
-users.forEach(user => console.log(user.name))
-// toto titi tutu
-
-const uppercaseUsers = users.map(user => user.name.toUpperCase())
-// ["TOTO", "TITI", "TUTU"]
-
-const majorUsers = users.filter(user => user.age >= 18)
-// [{name: "toto", age: 18}, {name: "titi", age: 22}]
-
-const toto = users.find(user => user.name === "toto")
-// {name: "toto", age: 18}
-```
-
 [Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
 
 ---
 
@@ -223,8 +206,22 @@ console.log({tutu: "toto"} === {tutu: "toto"})  // false
 ```javascript
 const collection = [ {toto: 3, tutu: 2}, {toto: 5, tutu: 2}, {toto: 7, tutu: 1}]
 
-console.log(collection[0])      // {toto: 3, tutu: 2}
-console.log(collection[0].toto) // 3
+console.log(collection[0])          // {toto: 3, tutu: 2}
+console.log(collection[0].toto)     // 3
+console.log(collection[0]["toto"])  // 3
+
+const users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+users.forEach(user => console.log(user.name))
+// toto titi tutu
+
+const uppercaseUsers = users.map(user => user.name.toUpperCase())
+// ["TOTO", "TITI", "TUTU"]
+
+const majorUsers = users.filter(user => user.age >= 18)
+// [{name: "toto", age: 18}, {name: "titi", age: 22}]
+
+const toto = users.find(user => user.name === "toto")
+// {name: "toto", age: 18}
 ```
 
 ---
@@ -238,7 +235,7 @@ console.log(collection[0].toto) // 3
  * Créé en 2009 par Ryan Dahl
  * Interpréteur Javascript (machine virtuelle)
  * Utilise le V8 de Google créé en 2009
- * Il existe des alternatives: Bun, Deno, ...
+ * Il existe des alternatives: [Bun](https://bun.sh/), [Deno](https://deno.land/), ...
 
 ---
 
@@ -247,7 +244,7 @@ console.log(collection[0].toto) // 3
  * Node Package Manager
  * Inclus avec NodeJS
  * Permet l'installation et la gestion des bibliothèques
- * Il existe des alternatives: Yarn, PNPM, Bun, ...
+ * Il existe des alternatives: [Yarn](https://yarnpkg.com/), [PNPM](https://pnpm.io/), [Bun](https://bun.sh/), ...
 
 ---
 
