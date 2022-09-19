@@ -162,10 +162,10 @@ function getPostsPromise() {
 
 ## Pour résumer
 
-Les promesses c'est comme une boîte Schrödinger avec une valeur à la place d'un chat
+Les promesses c'est comme une boîte de Schrödinger avec une valeur à la place d'un chat
 
 ![box](./box.jpg)
 
-et pour l'ouvrir 
+et pour savoir ce qu'il y a dedans 
  * `.then()`
  * `await`
