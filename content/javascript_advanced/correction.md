@@ -1,7 +1,7 @@
 ---
 title: "Correction TP n°2 Javascript avancé"
 weight: 3
-draft: true
+draft: false
 ---
 
 ## Exercice 1 :

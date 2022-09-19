@@ -33,7 +33,7 @@ console.log("Hello World !")
 ## l'ECMAScript
 
  * Avant ES5, une version tous les 3-5ans
- * A partir d'ES6 (ES2015), une version tous les ans
+ * A partir d'ES6 (ES2015), une version tous les ans ([TC39](https://tc39.es/))
  * Tous les navigateurs modernes supportent ES5
  * mais ne supportent **pas** ES6 ([Caniuse](https://caniuse.com/es6))
  * Aujourd'hui ES2022

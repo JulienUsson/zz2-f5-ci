@@ -94,13 +94,13 @@ import fs from "fs"
 
 console.log("Foo")
 
-fs.promises.readFile('./foo.txt').then(function (data) {
-    console.log(data)
-})
-.catch(function (err) {
-    console.error("Impossible de lire le fichier")
-    throw err
-})
+fs.promises.readFile('./foo.txt')
+    .then(function (data) {
+        console.log(data)
+    })
+    .catch(function (err) {
+        console.error("Impossible de lire le fichier")
+    })
 
 console.log("Bar")
 // Foo Bar data
@@ -157,3 +157,15 @@ function getPostsPromise() {
     })
 }
 ```
+
+---
+
+## Pour résumer
+
+Les promesses c'est comme une boîte Schrödinger avec une valeur à la place d'un chat
+
+![box](./box.jpg)
+
+et pour l'ouvrir 
+ * `.then()`
+ * `await`
