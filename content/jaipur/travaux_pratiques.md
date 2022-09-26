@@ -24,6 +24,11 @@ Les règles du jeu sont disponibles [ici](../rules.pdf) ou [ici en vidéo](https
 | 4 Cartes | / | 6,6,5,5,4,4 |
 | 5 Cartes | / | 10,10,9,8,8 |
 
+
+## Frontend
+
+Un frontend est disponible [ici](https://jaipur.usson.me/) pour tester votre application. N'oubliez pas de changer le port de l'application via le bouton `Paramètres` si votre application n'écoute pas sur le port `3000`.
+
 ## User Stories
 
 ### [TP4] En tant que joueur, je peux créer une partie [[api]](https://jaipur-api.usson.me/#api-Game-createGame)

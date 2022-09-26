@@ -1,5 +1,5 @@
 ---
-title: "TP n°6 L'intégration continue"
+title: "TP n°5 L'intégration continue"
 weight: 2
 ---
 

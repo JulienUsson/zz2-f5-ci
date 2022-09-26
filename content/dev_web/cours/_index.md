@@ -80,8 +80,11 @@ date: Wed, 26 Aug 2020 13:59:36 GMT
 
 | Headers       | Définition                    |
 | ------------- | ----------------------------- |
+| 1xx           | Informational                 |
 | 2xx           | Success                       |
 | 200           | Ok                            |
+| 201           | Created                       |
+| 3xx           | Redirection                   |
 | 4xx           | Client errors                 |
 | 400           | Bad Request                   |
 | 401           | Unauthorized                  |
@@ -94,6 +97,8 @@ date: Wed, 26 Aug 2020 13:59:36 GMT
 
 ## La norme REST
 
+ * REpresentational State Transfer
+ * Créer par Roy Fielding en 2000
  * Se base sur les url, les verbes et les headers
  * Permet de faire une API facilement utilisable
  * Simple à comprendre
@@ -242,9 +247,9 @@ app.get('/pizzas/:id', (req, res) => {
     res.status(200).json(updatedPizza)
 })
 
-app.post('/pizzas/:id', (req, res) => {
-    const updatedPizza = pizzaService.update(req.params.id, req.body)
-    res.status(201).json(updatedPizza)
+app.post('/pizzas', (req, res) => {
+    const newPizza = pizzaService.create(req.body)
+    res.status(201).json(newPizza)
 })
 
 app.delete('/pizzas/:id', (req, res) => {
