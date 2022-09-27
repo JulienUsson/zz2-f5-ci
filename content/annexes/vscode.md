@@ -18,7 +18,6 @@ Il est installé par défault sur les ordinateurs de l'ISIMA.
  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
  - [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
  - [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare-pack)
- - [Vscode-pdf](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
 
 ```sh
 code --install-extension dbaeumer.vscode-eslint
@@ -27,5 +26,4 @@ code --install-extension mhutchie.git-graph
 code --install-extension eamodio.gitlens
 code --install-extension usernamehw.errorlens
 code --install-extension MS-vsliveshare.vsliveshare-pack
-code --install-extension tomoki1207.pdf
 ```
