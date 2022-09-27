@@ -13,19 +13,19 @@ Le projet est disponible sur [Github](https://github.com/JulienUsson/jaipur-back
 
 ## Démarrage du projet
 
-Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développements.
+Je vous conseille d'utiliser [Visual Studio Code](/annexes/vscode/) lors de vos développements (n'oubliez pas d'installer les plugins que je vous conseille).
 
-Une fois le répertoire du projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.
-Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application. Chaque répertoire correspond à une bibliothèque dans laquelle se trouvent des fichiers JS.
+Une fois le répertoire du projet ouvert, ouvrez un terminal depuis *code* (Menu Terminal -> New Terminal) puis installer les dépendances *Node* via la commande `npm install`.<br/>
+Un répertoire *node_modules* a été créé contenant l'ensemble des dépendances de l'application (n'hésitez pas à y jeter un coup d'oeil). Chaque répertoire correspond à une bibliothèque dans laquelle se trouvent des fichiers JS.
 
 Il suffit maintenant d'utiliser la commande `npm run start` pour démarrer l'application. Rendez-vous sur [`http://localhost:3000/health`](http://localhost:3000/health) et le message `{ health: "ok" }` devrait s'afficher confirmant le bon fonctionnement du site 🎉.
 
-ℹ️ Si le port est déjà pris (très probable sur les clients légers de l'ISIMA), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
+ℹ️ Si le port est déjà pris (très probable sur les clients légers de l'ISIMA, les ports étant partagés), vous pouvez utiliser `PORT=xxxx npm run start` pour démarrer l'application sur le port `xxxx`.
 
 
 ## Création d'une partie
 
-Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](/jaipur/travaux_pratiques/#en-tant-que-joueur-je-peux-cr%C3%A9er-une-partie-tp4). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listées dans la [spécification](/jaipur/travaux_pratiques/#spécification-de-lapi). Grâce à cela, tous les TP fonctionneront de la même façon et la même application frontend fonctionnera avec chacun de vos backends.
+Lors de ce tp nous allons développer notre première fonctionnalité : **En tant que joueur, je peux créer une partie** [[voir]](/jaipur/travaux_pratiques/#tp4-en-tant-que-joueur-je-peux-créer-une-partie-apihttpsjaipur-apiussonmeapi-game-creategame). Toutes les fonctions de notre application seront liées à des routes HTTP qui sont listées dans la [spécification](https://jaipur-api.usson.me/). Grâce à cela, tous les TP fonctionneront de la même façon et le [frontend](https://jaipur.usson.me/) fonctionnera avec chacun de vos backends.
 
 
 Avant de commencer à développer, il est important de **toujours** travailler dans une branche. Pour cela, nous allons créer une branche `feature/create-game` avec la commande `git branch feature/create-game` puis nous déplacer dessus avec la commande `git checkout feature/create-game`. Je vous invite à découper votre travail en plusieurs commits. Pour rappel, les commits doivent être **atomiques** avec une description **claire**.
@@ -87,7 +87,7 @@ Essayons de la comprendre. Premièrement, on peut remarquer que l'adresse de not
 
 ## Let's code
 
-Utiliser ces squelettes de code pour coder votre première fonctionnalité.
+Utiliser ces squelettes de code et compléter les trous (représenté par le commentaire TODO) pour coder votre première fonctionnalité.
 
 `/src/routes/gameRouter.js`
 {{< highlight javascript >}}
@@ -96,9 +96,9 @@ import * as gameService from "../services/gameService"
 
 const router = express.Router()
 
-// Listen to POST /games
+// Ecoute la requête POST /games.
 router.post("/", function (req, res) {
-  // TODO return 400 if req.body.name doesn't exist
+  // TODO retourner le status 400 si le nom n'existe pas.
   const newGame = gameService.createGame(req.body.name)
   res.status(201).json({ id: newGame.id, name: newGame.name })
 })
@@ -111,25 +111,46 @@ export default router
 import * as db from "../database"
 import { shuffle } from "lodash"
 
-// Return a shuffled starting deck except 3 camels
+// Créer et retourne un deck mélangé avec 3 chameaux en moins.
 export function initDeck() {
   // TODO
+  // Créer un tableau vide
+  // Ajouter les diamants, l'or, l'argent, les tissus, les épices, le cuir et les chameaux
+  // Retourner le tableau remplis
   return []
 }
 
-// Draw {count} cards of a deck
+// Pioche x cartes d'un deck.
 export function drawCards(deck, count = 1) {
   // TODO
+  // Créer un tableau vide
+  // Pour chaque carte à piocher:
+  //  Retirer la carte piochée du deck et la mettre dans le tableau
+  // Retourner le tableau contenant les cartes piochées
 }
 
-// Transfer camels from players hand (_players[i].hand) to their herd (_players[i].camelsCount)
+// Déplace les chameaux de la main d'un joueur (_players[i].hand) vers son enclos (_players[i].camelsCount).
 export function putCamelsFromHandToHerd(game) {
   // TODO
+  // Pour chaque joueur:
+  //  Pour chaque chameau dans la main du joueur
+  //  Enlever le chameau de la main et le mettre dans l'enclos
 }
 
-// Create a game object
+// Créer un objet game.
 export function createGame(name) {
   // TODO
+  // Initialiser un nouveau deck avec la fonction précédente
+  // Créer le marché avec 3 chameaux et 2 cartes piochés du deck
+  // Générer un nouvel identifiant pour la partie
+  // Pour chaque joueur:
+  //  Créer la main en piochant 5 cartes du deck
+  //  Initialiser l'enclos à 0
+  //  Initialiser le score à 0
+  // Créer les objets contenant les jetons
+  // Rassembler le tout pour créer la partie
+  // Mettre les chameaux des mains des joueurs dans leurs enclos avec la fonction précédente
+  // Retourner la partie 
   return {}
 }
 {{< /highlight >}}
@@ -144,19 +165,25 @@ import gameRouter from "./gameRouter"
 const router = express.Router()
 
 router.use("/health", healthRouter)
+// On ajoute ici notre nouveau routeur.
 router.use("/games", gameRouter)
 
 export default router
 {{< /highlight >}}
 
-ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/).
+ℹ️ Pour tester vos routes, il est **recommandé** d'utiliser le logiciel [Postman](/annexes/postman/) ou directement le [frontend](https://jaipur.usson.me/).
 
 ℹ️ Les parties sont sauvegardées sous forme d'un tableau de parties dans le fichier `storage/database.json` grâce à `database/index.js`.
 
 ℹ️ Pour générer l'identifiant, il suffit de récupérer le nombre de parties sauvegardées et d'y ajouter 1.
 
-ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau.
+ℹ️ [shuffle()](https://lodash.com/docs/4.17.15#shuffle) permet de mélanger un tableau (Pour importer lodash: `import _ from "lodash"`).
 
 ℹ️ [Array.shift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) permet de supprimer le premier élément d'un tableau et de le récupérer.
 
 ℹ️ [Array.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) permet de supprimer un élément d'un tableau.
+
+ℹ️ [Array.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) permet d'ajouter un élément dans un tableau.
+
+ℹ️ [Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) permet de rechercher l'indice d'un élément dans un tableau.
+
