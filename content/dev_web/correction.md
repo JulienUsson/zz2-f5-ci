@@ -1,7 +1,7 @@
 ---
 title: "Correction TP n°3 Le developpement web"
 weight: 3
-draft: true
+draft: false
 ---
 
 ## src/routes/gameRouter.js
