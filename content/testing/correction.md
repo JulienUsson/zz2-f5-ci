@@ -20,9 +20,9 @@ describe("Game service", () => {
 
   test("should draw cards", () => {
     const deck = ["camel", "diamonds", "gold"]
-    const drawedCard = gameService.drawCards(deck, 1)
+    const drawnCard = gameService.drawCards(deck, 1)
     expect(deck.length).toBe(2)
-    expect(drawedCard).toStrictEqual(["camel"])
+    expect(drawnCard).toStrictEqual(["camel"])
   })
 
   test("should put camels from hand to herd", () => {

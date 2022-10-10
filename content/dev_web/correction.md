@@ -38,11 +38,11 @@ export function initDeck() {
 
 // Draw {count} cards of a deck
 export function drawCards(deck, count = 1) {
-  const drawedCards = []
+  const drawnCards = []
   for (let i = 0; i < count; i++) {
-    drawedCards.push(deck.shift())
+    drawnCards.push(deck.shift())
   }
-  return drawedCards
+  return drawnCards
 }
 
 // Transfer camels from players hand (_players[i].hand) to their herd (_players[i].camelsCount)
