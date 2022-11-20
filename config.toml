@@ -9,7 +9,7 @@ pygmentsUseClasses = true
 pygmentsCodeFences = false # Reveal Hugo bugfix
 
 [params]
-# form = "https://docs.google.com/forms/d/e/1FAIpQLScx8qM4cEUco_rbbq9m4-etHBjuK2bVyANc5oaSkunoB2MGnw/viewform"
+form = "https://docs.google.com/forms/d/e/1FAIpQLSeBx7Ay0iim8EE4EXASIY6QBH7at3lBVoFKvzbDwMjN55_TUg/viewform"
 
 [params.assets]
 customCSS = ["css/custom.css", "css/syntax.css"]
